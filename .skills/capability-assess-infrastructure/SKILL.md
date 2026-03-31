@@ -23,7 +23,7 @@ Evaluate and decide on infrastructure strategy: cloud provider, CI/CD pipeline, 
 
 ## Adoption File
 
-- **Target**: [adoption/tech/infrastructure.md](../../../.pair/adoption/tech/infrastructure.md) — core infrastructure sections
+- **Target**: [adoption/tech/infrastructure.md](../../.pair/adoption/tech/infrastructure.md) — core infrastructure sections
 - **Ownership**: Full file, except observability section (owned by /capability-assess-observability)
 
 ## Algorithm
@@ -39,7 +39,7 @@ Evaluate and decide on infrastructure strategy: cloud provider, CI/CD pipeline, 
 
 #### Path B — Adoption Exists
 
-1. **Check**: Does [adoption/tech/infrastructure.md](../../../.pair/adoption/tech/infrastructure.md) exist and is it populated?
+1. **Check**: Does [adoption/tech/infrastructure.md](../../.pair/adoption/tech/infrastructure.md) exist and is it populated?
 2. **Skip**: If not populated or missing, go to Path C.
 3. **Act**: Read current adoption. Confirm it's valid.
 4. **Check**: Does a corresponding decision record exist?
@@ -53,14 +53,14 @@ Evaluate and decide on infrastructure strategy: cloud provider, CI/CD pipeline, 
 ### Step 2: Read Guidelines
 
 1. **Act**: Read infrastructure guidelines:
-   - [Infrastructure README](../../../.pair/knowledge/guidelines/infrastructure/README.md) — practice areas and decision framework
-   - [CI/CD Strategy](../../../.pair/knowledge/guidelines/infrastructure/cicd-strategy) — pipeline design and automation
-   - [Cloud Services](../../../.pair/knowledge/guidelines/infrastructure/cloud-services) — cloud platform selection
-   - [Deployment Patterns](../../../.pair/knowledge/guidelines/infrastructure/deployment-patterns) — deployment strategies
-   - [Infrastructure as Code](../../../.pair/knowledge/guidelines/infrastructure/infrastructure-as-code) — IaC practices
+   - [Infrastructure README](../../.pair/knowledge/guidelines/infrastructure/README.md) — practice areas and decision framework
+   - [CI/CD Strategy](../../.pair/knowledge/guidelines/infrastructure/cicd-strategy) — pipeline design and automation
+   - [Cloud Services](../../.pair/knowledge/guidelines/infrastructure/cloud-services) — cloud platform selection
+   - [Deployment Patterns](../../.pair/knowledge/guidelines/infrastructure/deployment-patterns) — deployment strategies
+   - [Infrastructure as Code](../../.pair/knowledge/guidelines/infrastructure/infrastructure-as-code) — IaC practices
 2. **Act**: Read project context:
-   - [adoption/product/PRD.md](../../../.pair/adoption/product/PRD.md) — scale, budget, compliance
-   - [adoption/tech/architecture.md](../../../.pair/adoption/tech/architecture.md) — architecture pattern (infra must support it)
+   - [adoption/product/PRD.md](../../.pair/adoption/product/PRD.md) — scale, budget, compliance
+   - [adoption/tech/architecture.md](../../.pair/adoption/tech/architecture.md) — architecture pattern (infra must support it)
 3. **Verify**: Guidelines and context loaded.
 
 ### Step 3: Evaluate Options
@@ -84,7 +84,7 @@ Evaluate and decide on infrastructure strategy: cloud provider, CI/CD pipeline, 
 
 ### Step 4: Write Adoption File
 
-1. **Act**: Write or update [adoption/tech/infrastructure.md](../../../.pair/adoption/tech/infrastructure.md):
+1. **Act**: Write or update [adoption/tech/infrastructure.md](../../.pair/adoption/tech/infrastructure.md):
    - Concise, prescriptive statements
    - Preserve observability section if it exists (owned by /capability-assess-observability)
 2. **Verify**: Adoption file written and consistent.

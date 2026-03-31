@@ -26,9 +26,9 @@ Transform epics into user stories through vertical slicing, INVEST validation, a
 ### Step 0: Prerequisite Check
 
 1. **Check**: Prerequisites present?
-   - Bootstrap complete: [way-of-working.md](../../../.pair/adoption/tech/way-of-working.md)
+   - Bootstrap complete: [way-of-working.md](../../.pair/adoption/tech/way-of-working.md)
    - Epics exist in PM tool
-   - [User story template](../../../.pair/knowledge/guidelines/collaboration/templates/user-story-template.md) available
+   - [User story template](../../.pair/knowledge/guidelines/collaboration/templates/user-story-template.md) available
 2. **Skip**: If all present, proceed to Step 1.
 3. **Act**: If any missing → **HALT**:
 
@@ -95,7 +95,7 @@ For each approved story not already in the registry:
 
    > Story `[Title]` already exists (#ID). Skipping.
 
-3. **Act**: Define story scope using the Initial Breakdown section of [user-story-template.md](../../../.pair/knowledge/guidelines/collaboration/templates/user-story-template.md):
+3. **Act**: Define story scope using the Initial Breakdown section of [user-story-template.md](../../.pair/knowledge/guidelines/collaboration/templates/user-story-template.md):
    - Story statement (As a / I want / So that).
    - Rough scope boundaries with expected uncertainty.
    - Initial sizing: XS(1), S(2), M(3), L(5), XL(8).

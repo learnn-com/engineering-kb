@@ -7,7 +7,7 @@ author: Foomakers
 
 # /capability-assess-code-quality — Code Quality Assessment
 
-Evaluate code quality using objective metrics from [code-metrics.md](../../../.pair/knowledge/guidelines/code-design/quality-standards/code-metrics.md). Produces a quality report with complexity, size, coverage, duplication, and maintainability scores. Includes actionable recommendations for improvement.
+Evaluate code quality using objective metrics from [code-metrics.md](../../.pair/knowledge/guidelines/code-design/quality-standards/code-metrics.md). Produces a quality report with complexity, size, coverage, duplication, and maintainability scores. Includes actionable recommendations for improvement.
 
 ## Arguments
 
@@ -40,7 +40,7 @@ Evaluate code quality using objective metrics from [code-metrics.md](../../../.p
 
 ### Step 2: Read Quality Metrics Guidelines
 
-1. **Act**: Read [code-metrics.md](../../../.pair/knowledge/guidelines/code-design/quality-standards/code-metrics.md) for:
+1. **Act**: Read [code-metrics.md](../../.pair/knowledge/guidelines/code-design/quality-standards/code-metrics.md) for:
    - Complexity metrics: cyclomatic complexity, cognitive complexity, nesting depth
    - Size metrics: lines of code, function length, class/module size, file size
    - Quality metrics: test coverage, code duplication, maintainability index
@@ -153,7 +153,7 @@ When invoked **independently**:
 
 ## Graceful Degradation
 
-- If [code-metrics.md](../../../.pair/knowledge/guidelines/code-design/quality-standards/code-metrics.md) is not found, use built-in thresholds (cyclomatic > 10, function > 50 lines, file > 300 lines, coverage > 70%).
+- If [code-metrics.md](../../.pair/knowledge/guidelines/code-design/quality-standards/code-metrics.md) is not found, use built-in thresholds (cyclomatic > 10, function > 50 lines, file > 300 lines, coverage > 70%).
 - If coverage tools are not available, skip test coverage metrics and note: "Coverage: SKIPPED — no coverage tool detected."
 - If duplication detection is not feasible (no tool), use heuristic scanning for obvious copy-paste patterns.
 - If the codebase is too large for full analysis, limit to changed files (PR scope) and note: "Partial analysis — limited to changed files."

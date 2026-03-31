@@ -23,7 +23,7 @@ Evaluate and decide on AI development tools: AI assistants, MCP integrations, AI
 
 ## Adoption File
 
-- **Target**: [adoption/tech/tech-stack.md](../../../.pair/adoption/tech/tech-stack.md) — **AI section only**
+- **Target**: [adoption/tech/tech-stack.md](../../.pair/adoption/tech/tech-stack.md) — **AI section only**
 - **Ownership**: AI section (shared file — /capability-assess-stack owns core sections, /capability-assess-testing owns testing section)
 
 ## Algorithm
@@ -39,7 +39,7 @@ Evaluate and decide on AI development tools: AI assistants, MCP integrations, AI
 
 #### Path B — Adoption Exists
 
-1. **Check**: Does [adoption/tech/tech-stack.md](../../../.pair/adoption/tech/tech-stack.md) exist and contain a populated **AI** section?
+1. **Check**: Does [adoption/tech/tech-stack.md](../../.pair/adoption/tech/tech-stack.md) exist and contain a populated **AI** section?
 2. **Skip**: If no AI section or empty, go to Path C.
 3. **Act**: Read current AI adoption. Confirm it's valid.
 4. **Check**: Does a corresponding decision record exist?
@@ -53,12 +53,12 @@ Evaluate and decide on AI development tools: AI assistants, MCP integrations, AI
 ### Step 2: Read Guidelines
 
 1. **Act**: Read AI development guidelines:
-   - [AI Development README](../../../.pair/knowledge/guidelines/technical-standards/ai-development/README.md) — maturity model, tool selection matrix, implementation strategies
-   - [AI Tools](../../../.pair/knowledge/guidelines/technical-standards/ai-development/ai-tools.md) — tool comparison and configuration
-   - [MCP Integration](../../../.pair/knowledge/guidelines/technical-standards/ai-development/mcp-integration.md) — MCP protocol standards
+   - [AI Development README](../../.pair/knowledge/guidelines/technical-standards/ai-development/README.md) — maturity model, tool selection matrix, implementation strategies
+   - [AI Tools](../../.pair/knowledge/guidelines/technical-standards/ai-development/ai-tools.md) — tool comparison and configuration
+   - [MCP Integration](../../.pair/knowledge/guidelines/technical-standards/ai-development/mcp-integration.md) — MCP protocol standards
 2. **Act**: Read project context:
-   - [adoption/product/PRD.md](../../../.pair/adoption/product/PRD.md) — AI requirements, team size
-   - [adoption/tech/tech-stack.md](../../../.pair/adoption/tech/tech-stack.md) — existing stack (AI tools must integrate)
+   - [adoption/product/PRD.md](../../.pair/adoption/product/PRD.md) — AI requirements, team size
+   - [adoption/tech/tech-stack.md](../../.pair/adoption/tech/tech-stack.md) — existing stack (AI tools must integrate)
 3. **Verify**: Guidelines and context loaded.
 
 ### Step 3: Evaluate Options
@@ -92,7 +92,7 @@ Evaluate and decide on AI development tools: AI assistants, MCP integrations, AI
 
 ### Step 4: Write Adoption File
 
-1. **Act**: Write or update **only the AI section** of [tech-stack.md](../../../.pair/adoption/tech/tech-stack.md):
+1. **Act**: Write or update **only the AI section** of [tech-stack.md](../../.pair/adoption/tech/tech-stack.md):
    - AI assistants with versions/tiers
    - MCP integrations if applicable
    - AI-specific SDKs and libraries with versions

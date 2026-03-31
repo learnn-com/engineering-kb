@@ -25,7 +25,7 @@ Configure the project management tool for the current project. Guides the develo
 
 ### Step 1: Detect Existing Configuration
 
-1. **Check**: Read [adoption/tech/way-of-working.md](../../../.pair/adoption/tech/way-of-working.md). Does it contain a PM tool configuration (e.g., "Github Projects is adopted" or "Filesystem is adopted" for project management)?
+1. **Check**: Read [adoption/tech/way-of-working.md](../../.pair/adoption/tech/way-of-working.md). Does it contain a PM tool configuration (e.g., "Github Projects is adopted" or "Filesystem is adopted" for project management)?
 2. **Skip** (not configured): Proceed to Step 2.
 3. **Act** (already configured): Present current configuration:
 
@@ -45,7 +45,7 @@ Configure the project management tool for the current project. Guides the develo
 
 1. **Check**: Is `$tool` provided and valid?
 2. **Skip**: If valid `$tool`, proceed to Step 3 with that tool.
-3. **Act**: Present PM tool options using the [selection framework](../../../.pair/knowledge/guidelines/collaboration/project-management-tool/README.md):
+3. **Act**: Present PM tool options using the [selection framework](../../.pair/knowledge/guidelines/collaboration/project-management-tool/README.md):
 
    > **Select a project management tool:**
    >
@@ -70,8 +70,8 @@ Configure the project management tool for the current project. Guides the develo
 ### Step 3: Apply Implementation Guide
 
 1. **Act**: Read the implementation guide for the selected tool:
-   - GitHub: [github-implementation.md](../../../.pair/knowledge/guidelines/collaboration/project-management-tool/github-implementation.md)
-   - Filesystem: [filesystem-implementation.md](../../../.pair/knowledge/guidelines/collaboration/project-management-tool/filesystem-implementation.md)
+   - GitHub: [github-implementation.md](../../.pair/knowledge/guidelines/collaboration/project-management-tool/github-implementation.md)
+   - Filesystem: [filesystem-implementation.md](../../.pair/knowledge/guidelines/collaboration/project-management-tool/filesystem-implementation.md)
 
 2. **Act**: Walk the developer through the setup steps from the implementation guide:
    - For **GitHub Projects**: project creation, board configuration, label setup, automation rules, MCP integration
@@ -87,7 +87,7 @@ Configure the project management tool for the current project. Guides the develo
 
 ### Step 4: Update Way-of-Working
 
-1. **Check**: Read current [adoption/tech/way-of-working.md](../../../.pair/adoption/tech/way-of-working.md).
+1. **Check**: Read current [adoption/tech/way-of-working.md](../../.pair/adoption/tech/way-of-working.md).
 2. **Act**: Add or update the PM tool section with:
    - Tool name and version/tier
    - Workflow methodology (Kanban, Scrum, etc.)
@@ -138,13 +138,13 @@ When invoked **independently**:
 
 ## Graceful Degradation
 
-- If [way-of-working.md](../../../.pair/adoption/tech/way-of-working.md) doesn't exist, create it with PM section as initial content. Warn: "Created way-of-working.md — this appears to be a new project."
+- If [way-of-working.md](../../.pair/adoption/tech/way-of-working.md) doesn't exist, create it with PM section as initial content. Warn: "Created way-of-working.md — this appears to be a new project."
 - If implementation guide not found for selected tool, HALT with contribution instructions (Step 2.4).
 - If `/capability-record-decision` is not installed, warn and skip ADL recording: "Decision not recorded — /capability-record-decision not installed. Please manually document the PM tool choice."
 
 ## Notes
 
 - Supported tools with implementation guides: **GitHub Projects**, **Filesystem**.
-- The [selection framework](../../../.pair/knowledge/guidelines/collaboration/project-management-tool/README.md) provides decision matrix and cost-benefit analysis for tool selection.
+- The [selection framework](../../.pair/knowledge/guidelines/collaboration/project-management-tool/README.md) provides decision matrix and cost-benefit analysis for tool selection.
 - This skill modifies: `adoption/tech/way-of-working.md` and creates an ADL entry via `/capability-record-decision`.
 - PM tool configuration is a project-level decision — it applies to all team members and workflows.

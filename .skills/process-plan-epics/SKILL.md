@@ -26,7 +26,7 @@ Transform strategic initiatives into comprehensive epic breakdowns. Each epic de
 ### Step 0: Prerequisite Check
 
 1. **Check**: Prerequisites present?
-   - Bootstrap complete: [way-of-working.md](../../../.pair/adoption/tech/way-of-working.md), PRD, architecture, tech-stack
+   - Bootstrap complete: [way-of-working.md](../../.pair/adoption/tech/way-of-working.md), PRD, architecture, tech-stack
    - Initiatives exist in PM tool
 2. **Skip**: If all present, proceed to Step 1.
 3. **Act**: If bootstrap incomplete → **HALT**.
@@ -95,7 +95,7 @@ Process epics sequentially (Epic 0 first if needed). For each epic:
 
    > Epic `[Title]` already exists (#ID). Skipping.
 
-3. **Act**: Draft the epic following [epic-template.md](../../../.pair/knowledge/guidelines/collaboration/templates/epic-template.md):
+3. **Act**: Draft the epic following [epic-template.md](../../.pair/knowledge/guidelines/collaboration/templates/epic-template.md):
    - Fill template sections: Epic Statement, Business Value, Solution Overview, Epic Breakdown, Technical Considerations.
    - Present to developer for validation.
 4. **Act**: Compose `/capability-write-issue` with:

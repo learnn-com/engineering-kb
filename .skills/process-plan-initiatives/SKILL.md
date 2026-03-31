@@ -26,9 +26,9 @@ Transform Product Requirements Documents into strategic initiatives through PRD 
 ### Step 0: Prerequisite Check
 
 1. **Check**: Prerequisites present?
-   - PRD exists: [`.pair/adoption/product/PRD.md`](../../../.pair/adoption/product/PRD.md)
-   - Bootstrap complete: [`.pair/adoption/tech/`](../../../.pair/adoption/tech) has `way-of-working.md`, `architecture.md`, `tech-stack.md`
-   - PM tool configured: [way-of-working.md](../../../.pair/adoption/tech/way-of-working.md) specifies the adopted tool
+   - PRD exists: [`.pair/adoption/product/PRD.md`](../../.pair/adoption/product/PRD.md)
+   - Bootstrap complete: [`.pair/adoption/tech/`](../../.pair/adoption/tech) has `way-of-working.md`, `architecture.md`, `tech-stack.md`
+   - PM tool configured: [way-of-working.md](../../.pair/adoption/tech/way-of-working.md) specifies the adopted tool
 2. **Skip**: If all present, proceed to Step 1.
 3. **Act**: If any missing → **HALT**:
 
@@ -90,7 +90,7 @@ Process initiatives by priority (P0 → P1 → P2). For each initiative:
 
    > Initiative `[Title]` already exists (#ID). Skipping.
 
-3. **Act**: Draft the initiative following the [initiative-template.md](../../../.pair/knowledge/guidelines/collaboration/templates/initiative-template.md):
+3. **Act**: Draft the initiative following the [initiative-template.md](../../.pair/knowledge/guidelines/collaboration/templates/initiative-template.md):
    - Fill template sections with PRD-derived content.
    - Include business rationale, scope, success metrics, risk assessment, timeline.
    - Present to developer for validation.

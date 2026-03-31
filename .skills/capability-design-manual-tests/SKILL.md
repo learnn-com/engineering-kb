@@ -9,7 +9,7 @@ author: Foomakers
 
 Analyze a project's released artifacts, deployment targets, and user-facing surfaces to generate a complete manual test suite. Produces critical path files (`CP*.md`) and a suite `README.md` in the test suite directory.
 
-Each test case follows the [manual-test-case-template](../../../.pair/knowledge/guidelines/collaboration/templates/manual-test-case-template.md). For design principles, see [manual-testing.md](../../../.pair/knowledge/guidelines/quality-assurance/manual-testing.md). For the organizational context, see [manual-verification.md](../../../.pair/knowledge/guidelines/quality-assurance/manual-verification.md).
+Each test case follows the [manual-test-case-template](../../.pair/knowledge/guidelines/collaboration/templates/manual-test-case-template.md). For design principles, see [manual-testing.md](../../.pair/knowledge/guidelines/quality-assurance/manual-testing.md). For the organizational context, see [manual-verification.md](../../.pair/knowledge/guidelines/quality-assurance/manual-verification.md).
 
 ## Arguments
 
@@ -98,7 +98,7 @@ For each CP, generate individual test cases.
    - Write objective expected results (HTTP status, exit code, file existence, string match — no subjective criteria)
    - Add notes for edge cases, platform differences, related tests
 
-2. **Act**: Apply test design principles from [manual-testing.md](../../../.pair/knowledge/guidelines/quality-assurance/manual-testing.md):
+2. **Act**: Apply test design principles from [manual-testing.md](../../.pair/knowledge/guidelines/quality-assurance/manual-testing.md):
    - **Version-agnostic**: never hardcode versions
    - **Environment-isolated**: filesystem tests use `$WORKDIR`
    - **Idempotent**: re-running produces same result

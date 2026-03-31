@@ -26,7 +26,7 @@ Implement a user story by processing its tasks sequentially. Each task follows a
 
 1. **Check**: Is the user story already loaded in this session?
 2. **Skip**: If yes, confirm story ID and move to Step 0.1b.
-3. **Act**: Read the story from the PM tool (per [way-of-working.md](../../../.pair/adoption/tech/way-of-working.md)).
+3. **Act**: Read the story from the PM tool (per [way-of-working.md](../../.pair/adoption/tech/way-of-working.md)).
    - Understand business value and acceptance criteria.
    - Confirm epic context.
 4. **Verify**: Story is fully loaded. If not → **HALT**.
@@ -73,9 +73,9 @@ Ask: _"Ready to proceed with implementation?"_
 1. **Check**: Are adoption files already loaded in this session?
 2. **Skip**: If yes, move to Step 1.2.
 3. **Act**: Read:
-   - [architecture.md](../../../.pair/adoption/tech/architecture.md) — architectural patterns
-   - [tech-stack.md](../../../.pair/adoption/tech/tech-stack.md) — approved libraries and versions
-   - [way-of-working.md](../../../.pair/adoption/tech/way-of-working.md) — development process
+   - [architecture.md](../../.pair/adoption/tech/architecture.md) — architectural patterns
+   - [tech-stack.md](../../.pair/adoption/tech/tech-stack.md) — approved libraries and versions
+   - [way-of-working.md](../../.pair/adoption/tech/way-of-working.md) — development process
 4. **Verify**: Technical context loaded. If adoption files missing, warn and proceed with guideline defaults.
 
 ### Step 1.2: Create or Switch to Feature Branch
@@ -153,13 +153,13 @@ Follow the TDD discipline rules strictly:
 
 ### Step 2.4: Check for New Dependencies
 
-1. **Check**: Did the implementation introduce any new dependency not listed in [tech-stack.md](../../../.pair/adoption/tech/tech-stack.md)?
+1. **Check**: Did the implementation introduce any new dependency not listed in [tech-stack.md](../../.pair/adoption/tech/tech-stack.md)?
 2. **Skip**: If no new dependencies, move to Step 2.5.
 3. **Act**: Is `/capability-assess-stack` installed?
    - **Yes**: Compose `/capability-assess-stack` to validate and register the dependency. If `/capability-assess-stack` rejects (incompatible) → **HALT**.
    - **No**: Warn the developer:
 
-     > New dependency detected: `[package@version]`. `/capability-assess-stack` is not installed — please manually verify against the tech stack and update [tech-stack.md](../../../.pair/adoption/tech/tech-stack.md).
+     > New dependency detected: `[package@version]`. `/capability-assess-stack` is not installed — please manually verify against the tech stack and update [tech-stack.md](../../.pair/adoption/tech/tech-stack.md).
 
 4. **Verify**: Dependency is either validated by `/capability-assess-stack` or acknowledged by developer.
 
@@ -205,7 +205,7 @@ Follow the TDD discipline rules strictly:
    **This confirmation is required for EVERY task.** The purpose of commit-per-task is precisely to give the developer a checkpoint between tasks.
 
 4. **Verify**: Developer confirms. If changes needed → apply changes, re-run quality (Step 2.7), ask again.
-5. **Act**: Stage and commit following the [commit template](../../../.pair/knowledge/guidelines/collaboration/templates/commit-template.md):
+5. **Act**: Stage and commit following the [commit template](../../.pair/knowledge/guidelines/collaboration/templates/commit-template.md):
 
    ```text
    [#<story-id>] <type>: <task-description>
@@ -290,7 +290,7 @@ Follow the TDD discipline rules strictly:
 
 1. **Check**: Does a PR already exist for this branch?
 2. **Skip**: If PR exists, update its description and move to output.
-3. **Act**: Read the [PR template](../../../.pair/knowledge/guidelines/collaboration/templates/pr-template.md) and fill ALL its sections:
+3. **Act**: Read the [PR template](../../.pair/knowledge/guidelines/collaboration/templates/pr-template.md) and fill ALL its sections:
    - **Title**: `[#<story-id>] <type>: <brief description>`
    - **Body**: Use the PR template structure exactly. Fill each section:
      - **Summary** (What Changed + Why): from story statement and implementation
@@ -315,9 +315,9 @@ After code review approval (typically via `/process-review`), re-invoke `/proces
 
 ### Step 4.2: Prepare Merge Commit Message
 
-1. **Check**: Read [way-of-working.md](../../../.pair/adoption/tech/way-of-working.md) for merge strategy (squash, merge, rebase).
+1. **Check**: Read [way-of-working.md](../../.pair/adoption/tech/way-of-working.md) for merge strategy (squash, merge, rebase).
 2. **Act**: Draft the final commit message:
-   - **If squash**: combine all commits into a single message following the [commit template](../../../.pair/knowledge/guidelines/collaboration/templates/commit-template.md).
+   - **If squash**: combine all commits into a single message following the [commit template](../../.pair/knowledge/guidelines/collaboration/templates/commit-template.md).
    - **If merge or rebase**: use the default merge/rebase message.
 3. **Act** (BLOCKING): Present the commit message to the developer for confirmation:
 
@@ -417,6 +417,6 @@ The skill resumes from the first incomplete step — never re-does completed wor
 - The developer can stop between tasks. Re-invoke to resume (idempotency ensures correct state).
 - Single PR per story regardless of commit strategy.
 - **Squash happens at merge** (Phase 4), not before PR creation. Individual commits are preserved on the branch during review.
-- Commit messages follow the [commit template](../../../.pair/knowledge/guidelines/collaboration/templates/commit-template.md).
-- PR description follows the [PR template](../../../.pair/knowledge/guidelines/collaboration/templates/pr-template.md).
+- Commit messages follow the [commit template](../../.pair/knowledge/guidelines/collaboration/templates/commit-template.md).
+- PR description follows the [PR template](../../.pair/knowledge/guidelines/collaboration/templates/pr-template.md).
 - **Phase 4 is invoked separately** after code review approval — re-invoke `/process-implement` to merge and update status.

@@ -7,7 +7,7 @@ author: Foomakers
 
 # /capability-estimate — Story Estimation
 
-Apply the adopted estimation methodology to size a refined user story. Reads the estimation framework from [guidelines](../../../.pair/knowledge/guidelines/collaboration/estimation/README.md) and the adopted methodology from [way-of-working](../../../.pair/adoption/tech/way-of-working.md).
+Apply the adopted estimation methodology to size a refined user story. Reads the estimation framework from [guidelines](../../.pair/knowledge/guidelines/collaboration/estimation/README.md) and the adopted methodology from [way-of-working](../../.pair/adoption/tech/way-of-working.md).
 
 ## Arguments
 
@@ -20,7 +20,7 @@ Apply the adopted estimation methodology to size a refined user story. Reads the
 
 ### Step 1: Load Story
 
-1. **Check**: Read the story from the PM tool (per [way-of-working.md](../../../.pair/adoption/tech/way-of-working.md)).
+1. **Check**: Read the story from the PM tool (per [way-of-working.md](../../.pair/adoption/tech/way-of-working.md)).
 2. **Verify**: Story exists and has acceptance criteria. If not refined → **HALT**: "Story must be refined before estimation."
 
 ### Step 2: Check Existing Estimate
@@ -38,8 +38,8 @@ Apply the adopted estimation methodology to size a refined user story. Reads the
 
 1. **Check**: Is `$method` provided?
 2. **Skip**: If provided, use it. Proceed to Step 4.
-3. **Act**: Read [way-of-working.md](../../../.pair/adoption/tech/way-of-working.md) for the adopted estimation methodology.
-4. **Act**: If no methodology adopted, read the [Estimation Method Decision Matrix](../../../.pair/knowledge/guidelines/collaboration/estimation/README.md) and recommend based on project context:
+3. **Act**: Read [way-of-working.md](../../.pair/adoption/tech/way-of-working.md) for the adopted estimation methodology.
+4. **Act**: If no methodology adopted, read the [Estimation Method Decision Matrix](../../.pair/knowledge/guidelines/collaboration/estimation/README.md) and recommend based on project context:
    - Team maturity, data availability, time pressure → select recommended primary method.
    - Present recommendation to developer for approval.
 5. **Verify**: Method selected.
@@ -47,11 +47,11 @@ Apply the adopted estimation methodology to size a refined user story. Reads the
 ### Step 4: Read Estimation Guidelines
 
 1. **Act**: Read the methodology-specific guideline:
-   - `complexity` → [complexity-based-estimation.md](../../../.pair/knowledge/guidelines/collaboration/estimation/complexity-based-estimation.md)
-   - `time` → [time-based-estimation.md](../../../.pair/knowledge/guidelines/collaboration/estimation/time-based-estimation.md)
-   - `ai-assisted` → [ai-assisted-estimation.md](../../../.pair/knowledge/guidelines/collaboration/estimation/ai-assisted-estimation.md)
-   - `forecast` → [forecast-based-estimation.md](../../../.pair/knowledge/guidelines/collaboration/estimation/forecast-based-estimation.md)
-   - `hybrid` → [hybrid-estimation.md](../../../.pair/knowledge/guidelines/collaboration/estimation/hybrid-estimation.md)
+   - `complexity` → [complexity-based-estimation.md](../../.pair/knowledge/guidelines/collaboration/estimation/complexity-based-estimation.md)
+   - `time` → [time-based-estimation.md](../../.pair/knowledge/guidelines/collaboration/estimation/time-based-estimation.md)
+   - `ai-assisted` → [ai-assisted-estimation.md](../../.pair/knowledge/guidelines/collaboration/estimation/ai-assisted-estimation.md)
+   - `forecast` → [forecast-based-estimation.md](../../.pair/knowledge/guidelines/collaboration/estimation/forecast-based-estimation.md)
+   - `hybrid` → [hybrid-estimation.md](../../.pair/knowledge/guidelines/collaboration/estimation/hybrid-estimation.md)
 2. **Verify**: Guidelines loaded.
 
 ### Step 5: Apply Estimation
@@ -108,7 +108,7 @@ When invoked **independently**:
 
 ## Graceful Degradation
 
-- If [way-of-working.md](../../../.pair/adoption/tech/way-of-working.md) does not specify an estimation methodology, use the Decision Matrix from the estimation guidelines to recommend one.
+- If [way-of-working.md](../../.pair/adoption/tech/way-of-working.md) does not specify an estimation methodology, use the Decision Matrix from the estimation guidelines to recommend one.
 - If estimation guidelines are not found, fall back to developer judgment: ask the developer to provide an estimate directly and record it.
 - If the PM tool is not accessible, present the estimate and ask the developer to record it manually.
 - If the story has no acceptance criteria, warn: "Story lacks AC — estimation may be inaccurate. Consider refining first."

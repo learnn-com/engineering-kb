@@ -19,7 +19,7 @@ Create a comprehensive Product Requirements Document through collaborative analy
 
 ### Step 0.1: Check Current State
 
-1. **Check**: Does [adoption/product/PRD.md](../../../.pair/adoption/product/PRD.md) exist?
+1. **Check**: Does [adoption/product/PRD.md](../../.pair/adoption/product/PRD.md) exist?
 2. **Act** (file exists): Read the file. Determine if it is a **template** (contains `[Product/feature name]` or `[Creation date]`) or a **populated** PRD.
    - If **template**: treat as new PRD. Proceed to Phase 1.
    - If **populated** and `$section` provided: jump to Phase 3 (selective update of that section).
@@ -39,8 +39,8 @@ Create a comprehensive Product Requirements Document through collaborative analy
 1. **Check**: Has the PRD template been analyzed in this session?
 2. **Skip**: If yes, proceed to Step 1.2.
 3. **Act**: Read and analyze:
-   - [PRD template](../../../.pair/knowledge/assets/PRD_template.md) — understand all required sections and structure
-   - [PRD example](../../../.pair/knowledge/assets/PRD_example.md) — understand quality standards, specificity level, writing tone
+   - [PRD template](../../.pair/knowledge/assets/PRD_template.md) — understand all required sections and structure
+   - [PRD example](../../.pair/knowledge/assets/PRD_example.md) — understand quality standards, specificity level, writing tone
 4. **Verify**: Template structure and quality expectations are understood.
 
 ### Step 1.2: Create Section Checklist
@@ -111,9 +111,9 @@ For each uncovered checklist section, gather information using this pattern:
 ### Step 3.1: Write PRD
 
 1. **Check**: If mode is `update-section`, read existing PRD and modify only the target section. Skip to Step 3.2.
-2. **Act**: Create (or overwrite template) at [adoption/product/PRD.md](../../../.pair/adoption/product/PRD.md):
-   - Follow [PRD template](../../../.pair/knowledge/assets/PRD_template.md) structure exactly
-   - Match quality standard from [PRD example](../../../.pair/knowledge/assets/PRD_example.md)
+2. **Act**: Create (or overwrite template) at [adoption/product/PRD.md](../../.pair/adoption/product/PRD.md):
+   - Follow [PRD template](../../.pair/knowledge/assets/PRD_template.md) structure exactly
+   - Match quality standard from [PRD example](../../.pair/knowledge/assets/PRD_example.md)
    - Replace all placeholders with gathered information
    - Use specific numbers, dates, and measurable criteria
    - Structure user stories and acceptance criteria per example format
@@ -183,13 +183,13 @@ When invoked **independently**:
 
 ## Graceful Degradation
 
-- If [PRD template](../../../.pair/knowledge/assets/PRD_template.md) not found, use the 13-section structure defined in Phase 1 Step 1.2 checklist as a minimal template.
-- If [PRD example](../../../.pair/knowledge/assets/PRD_example.md) not found, proceed without quality reference but warn: "No PRD example found — quality benchmarking unavailable."
+- If [PRD template](../../.pair/knowledge/assets/PRD_template.md) not found, use the 13-section structure defined in Phase 1 Step 1.2 checklist as a minimal template.
+- If [PRD example](../../.pair/knowledge/assets/PRD_example.md) not found, proceed without quality reference but warn: "No PRD example found — quality benchmarking unavailable."
 - If adoption directory doesn't exist, create `adoption/product/` and warn: "Created adoption directory — this appears to be a new project."
 
 ## Notes
 
-- Target file is always [adoption/product/PRD.md](../../../.pair/adoption/product/PRD.md) — the single source of truth for product requirements.
+- Target file is always [adoption/product/PRD.md](../../.pair/adoption/product/PRD.md) — the single source of truth for product requirements.
 - This skill modifies one file: the PRD. Changes should be committed by the calling skill or developer.
 - Hypothesis-driven questioning reduces developer effort: confirm/correct is faster than open-ended answers.
 - One question at a time prevents cognitive overload and ensures thorough coverage.

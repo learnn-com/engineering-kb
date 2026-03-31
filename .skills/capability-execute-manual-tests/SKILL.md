@@ -7,11 +7,11 @@ author: Foomakers
 
 # /capability-execute-manual-tests — Manual Test Suite Executor
 
-Execute a manual test suite against released or deployed artifacts (website, CLI packages, registries). Produces a structured report following the [manual-test-report-template](../../../.pair/knowledge/guidelines/collaboration/templates/manual-test-report-template.md).
+Execute a manual test suite against released or deployed artifacts (website, CLI packages, registries). Produces a structured report following the [manual-test-report-template](../../.pair/knowledge/guidelines/collaboration/templates/manual-test-report-template.md).
 
-Reads test case files from the project's manual test suite directory. Each test case follows the format defined in [manual-test-case-template](../../../.pair/knowledge/guidelines/collaboration/templates/manual-test-case-template.md).
+Reads test case files from the project's manual test suite directory. Each test case follows the format defined in [manual-test-case-template](../../.pair/knowledge/guidelines/collaboration/templates/manual-test-case-template.md).
 
-For the organizational context (who, when, which areas), see [manual-verification.md](../../../.pair/knowledge/guidelines/quality-assurance/manual-verification.md). For test case design principles, see [manual-testing.md](../../../.pair/knowledge/guidelines/quality-assurance/manual-testing.md).
+For the organizational context (who, when, which areas), see [manual-verification.md](../../.pair/knowledge/guidelines/quality-assurance/manual-verification.md). For test case design principles, see [manual-testing.md](../../.pair/knowledge/guidelines/quality-assurance/manual-testing.md).
 
 ## Arguments
 
@@ -97,7 +97,7 @@ CP{N} COMPLETE: [X pass | Y fail | Z skip | W blocked] of N total
 
 ### Step 5: Generate Report
 
-1. **Check**: Is the [manual-test-report-template](../../../.pair/knowledge/guidelines/collaboration/templates/manual-test-report-template.md) available?
+1. **Check**: Is the [manual-test-report-template](../../.pair/knowledge/guidelines/collaboration/templates/manual-test-report-template.md) available?
 2. **Skip**: If not found → generate a minimal plain-text report.
 3. **Act**: Fill the report template with:
    - Test suite name, version, date, tester (AI agent ID), environment details

@@ -49,7 +49,7 @@ CODE REVIEW STATE:
 
 1. **Check**: Is the PR already loaded in this session?
 2. **Skip**: If yes, confirm PR number and move to Step 1.2.
-3. **Act**: Read PR from the PM tool (per [way-of-working.md](../../../.pair/adoption/tech/way-of-working.md)):
+3. **Act**: Read PR from the PM tool (per [way-of-working.md](../../.pair/adoption/tech/way-of-working.md)):
    - PR metadata (author, branch, target, status)
    - Changed files and diff
    - PR description and linked story
@@ -104,8 +104,8 @@ Ask: _"Proceed with review?"_
 1. **Check**: Have code quality issues already been identified in this session?
 2. **Skip**: If already assessed — move to Step 2.3.
 3. **Act**: Review changed files against:
-   - [Code design guidelines](../../../.pair/knowledge/guidelines/code-design/README.md) — readability, maintainability, naming
-   - [Technical standards](../../../.pair/knowledge/guidelines/technical-standards/README.md) — patterns, conventions
+   - [Code design guidelines](../../.pair/knowledge/guidelines/code-design/README.md) — readability, maintainability, naming
+   - [Technical standards](../../.pair/knowledge/guidelines/technical-standards/README.md) — patterns, conventions
    - Review type-specific concerns (e.g., behavior preservation for refactors, regression tests for bugs)
 4. **Verify**: Issues catalogued by severity (critical / major / minor).
 
@@ -115,7 +115,7 @@ Ask: _"Proceed with review?"_
 2. **Skip**: If no new decisions detected — move to Phase 3.
 3. **Act**: For each new decision, verify:
    - ADR exists in `adoption/tech/adr/`
-   - [tech-stack.md](../../../.pair/adoption/tech/tech-stack.md) updated
+   - [tech-stack.md](../../.pair/adoption/tech/tech-stack.md) updated
    - Version consistency across workspaces
 4. **Verify**: All decisions documented. **Missing ADR → HALT**:
    - Compose `/capability-record-decision` with `$type = architectural` and `$topic` describing the gap.
@@ -159,7 +159,7 @@ This phase uses a **4-level graceful degradation cascade** depending on which op
 
 **Level 3** (/capability-assess-stack only):
 
-1. Inline check: scan PR diff for new dependencies not in [tech-stack.md](../../../.pair/adoption/tech/tech-stack.md).
+1. Inline check: scan PR diff for new dependencies not in [tech-stack.md](../../.pair/adoption/tech/tech-stack.md).
 2. For unlisted dependencies: compose `/capability-assess-stack` → developer approves or rejects.
 3. No broader adoption compliance check (security, architecture, etc. — covered partially by Phase 2).
 4. Record results.
@@ -199,7 +199,7 @@ This phase uses a **4-level graceful degradation cascade** depending on which op
 
 ### Step 5.1: Compile Review Report
 
-1. **Act**: Compile all findings into a review report following the [code-review-template.md](../../../.pair/knowledge/guidelines/collaboration/templates/code-review-template.md):
+1. **Act**: Compile all findings into a review report following the [code-review-template.md](../../.pair/knowledge/guidelines/collaboration/templates/code-review-template.md):
    - **Review Information**: PR number, author, reviewer, date, story, review type
    - **Review Summary**: overall assessment, key changes, business value
    - **Code Review Checklist**: functionality, code quality, technical standards (from Phase 2)
@@ -224,7 +224,7 @@ Based on compiled findings:
 ### Step 5.3: Post Review
 
 1. **Act**: Post the review report as a PR comment.
-2. **Act**: Set PR review status using the PM tool (per [github-implementation.md](../../../.pair/knowledge/guidelines/collaboration/project-management-tool/github-implementation.md)):
+2. **Act**: Set PR review status using the PM tool (per [github-implementation.md](../../.pair/knowledge/guidelines/collaboration/project-management-tool/github-implementation.md)):
    - **APPROVED / TECH-DEBT**: Submit review with `event = APPROVE`.
    - **CHANGES-REQUESTED**: Submit review with `event = REQUEST_CHANGES`.
    - MCP-first: use `pull_request_review_write` with `method = create` and appropriate `event`.
@@ -247,14 +247,14 @@ Based on compiled findings:
 
 ### Step 6.1: Read Merge Strategy
 
-1. **Check**: Is merge strategy specified in [way-of-working.md](../../../.pair/adoption/tech/way-of-working.md)?
+1. **Check**: Is merge strategy specified in [way-of-working.md](../../.pair/adoption/tech/way-of-working.md)?
 2. **Skip**: If not specified, default to `squash`.
 3. **Act**: Read the adopted merge strategy (`squash`, `merge`, or `rebase`).
 4. **Verify**: Strategy determined.
 
 ### Step 6.2: Prepare Merge Commit
 
-1. **Act**: Draft the merge commit message following the [commit template](../../../.pair/knowledge/guidelines/collaboration/templates/commit-template.md):
+1. **Act**: Draft the merge commit message following the [commit template](../../.pair/knowledge/guidelines/collaboration/templates/commit-template.md):
 
    ```text
    [#<story-id>] feat: <story description>
@@ -279,7 +279,7 @@ Based on compiled findings:
 
 ### Step 6.3: Merge PR
 
-1. **Act**: Merge the PR using the adopted strategy (per [github-implementation.md](../../../.pair/knowledge/guidelines/collaboration/project-management-tool/github-implementation.md)):
+1. **Act**: Merge the PR using the adopted strategy (per [github-implementation.md](../../.pair/knowledge/guidelines/collaboration/project-management-tool/github-implementation.md)):
    - MCP-first: use `merge_pull_request` with `merge_method` and `commit_title` + `commit_message`.
    - CLI fallback: `gh pr merge <number> --squash --subject "<title>" --body "<body>"`.
 2. **Verify**: PR merged and closed.
@@ -367,7 +367,7 @@ Re-invoking `/process-review` on a partially reviewed PR is safe:
 
 ## Graceful Degradation
 
-- **/verify-adoption not installed**: Falls back to inline dependency checking against [tech-stack.md](../../../.pair/adoption/tech/tech-stack.md). Warning logged. See degradation cascade (Phase 3).
+- **/verify-adoption not installed**: Falls back to inline dependency checking against [tech-stack.md](../../.pair/adoption/tech/tech-stack.md). Warning logged. See degradation cascade (Phase 3).
 - **/assess-stack not installed**: Unlisted dependencies flagged as warnings for manual verification. Does NOT HALT.
 - **/assess-debt not available**: Skip debt assessment, note in report.
 - **Story not found**: Review proceeds with PR-only validation (no AC check). Phase 6 skips parent cascade.
@@ -383,7 +383,7 @@ Re-invoking `/process-review` on a partially reviewed PR is safe:
 - First skill to compose 7 atomic skills (4 required + 3 optional). Proves composition pattern at scale.
 - Review phases are sequential — each phase builds on findings from prior phases.
 - The reviewer can stop between phases. Re-invoke to resume (idempotency ensures correct state).
-- Output follows [code-review-template.md](../../../.pair/knowledge/guidelines/collaboration/templates/code-review-template.md) — the template defines structure, /process-review fills it with findings.
-- HALT on missing ADR is inherited from [how-to-09](../../../.pair/knowledge/how-to/09-how-to-code-review.md) — this is a business rule, not a skill limitation.
+- Output follows [code-review-template.md](../../.pair/knowledge/guidelines/collaboration/templates/code-review-template.md) — the template defines structure, /process-review fills it with findings.
+- HALT on missing ADR is inherited from [how-to-09](../../.pair/knowledge/how-to/09-how-to-code-review.md) — this is a business rule, not a skill limitation.
 - **Phase 6 is optional** — the reviewer can stop after Phase 5. The author can alternatively merge via `/process-implement` Phase 4.
 - **Parent cascade is best-effort** — if sub-issue queries fail, the skill reports which updates need manual attention.

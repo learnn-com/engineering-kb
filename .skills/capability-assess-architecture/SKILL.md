@@ -23,7 +23,7 @@ Evaluate and decide on the system architecture pattern. Follows the resolution c
 
 ## Adoption File
 
-- **Target**: [adoption/tech/architecture.md](../../../.pair/adoption/tech/architecture.md)
+- **Target**: [adoption/tech/architecture.md](../../.pair/adoption/tech/architecture.md)
 - **Ownership**: Full file (sole owner)
 
 ## Algorithm
@@ -46,14 +46,14 @@ Evaluate and decide on the system architecture pattern. Follows the resolution c
 
 #### Path B — Adoption Exists
 
-1. **Check**: Does [adoption/tech/architecture.md](../../../.pair/adoption/tech/architecture.md) exist and is it populated (not template)?
+1. **Check**: Does [adoption/tech/architecture.md](../../.pair/adoption/tech/architecture.md) exist and is it populated (not template)?
 2. **Skip**: If not populated or missing, go to Path C.
 3. **Act**: Read current adoption. Present:
 
    > Architecture already adopted: **[pattern name]**.
    > Adoption file is current and valid.
 
-4. **Check**: Does a corresponding decision record exist? (Scan [adoption/tech/adr/](../../../.pair/adoption/tech/adr) for `*architecture*` files.)
+4. **Check**: Does a corresponding decision record exist? (Scan [adoption/tech/adr/](../../.pair/adoption/tech/adr) for `*architecture*` files.)
 5. **Act**: If decision record missing, compose `/capability-record-decision` to backfill.
 6. **Verify**: Adoption and decision record consistent. Done — exit skill.
 
@@ -64,10 +64,10 @@ Evaluate and decide on the system architecture pattern. Follows the resolution c
 ### Step 2: Read Guidelines
 
 1. **Act**: Read architecture guidelines:
-   - [Architecture README](../../../.pair/knowledge/guidelines/architecture/README.md) — decision tree, complexity matrix, selection criteria
-   - [Architectural Patterns](../../../.pair/knowledge/guidelines/architecture/architectural-patterns/README.md) — pattern descriptions and trade-offs
-   - [Project Constraints](../../../.pair/knowledge/guidelines/architecture/project-constraints/README.md) — team, platform, deployment constraints
-2. **Act**: If PRD exists, read [adoption/product/PRD.md](../../../.pair/adoption/product/PRD.md) for project context (team size, scale, compliance).
+   - [Architecture README](../../.pair/knowledge/guidelines/architecture/README.md) — decision tree, complexity matrix, selection criteria
+   - [Architectural Patterns](../../.pair/knowledge/guidelines/architecture/architectural-patterns/README.md) — pattern descriptions and trade-offs
+   - [Project Constraints](../../.pair/knowledge/guidelines/architecture/project-constraints/README.md) — team, platform, deployment constraints
+2. **Act**: If PRD exists, read [adoption/product/PRD.md](../../.pair/adoption/product/PRD.md) for project context (team size, scale, compliance).
 3. **Verify**: Guidelines and project context loaded.
 
 ### Step 3: Evaluate Options
@@ -94,7 +94,7 @@ Evaluate and decide on the system architecture pattern. Follows the resolution c
 
 ### Step 4: Write Adoption File
 
-1. **Check**: Does [adoption/tech/architecture.md](../../../.pair/adoption/tech/architecture.md) exist?
+1. **Check**: Does [adoption/tech/architecture.md](../../.pair/adoption/tech/architecture.md) exist?
 2. **Act**: Write or update the adoption file with the chosen pattern:
    - Concise, prescriptive statements (what IS adopted, not options)
    - Reference guidelines for detailed rationale

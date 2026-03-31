@@ -33,21 +33,21 @@ Create or update issues in the adopted PM tool. Template-driven: reads the type-
 
 ### Step 2: Detect PM Tool
 
-1. **Check**: Read [way-of-working.md](../../../.pair/adoption/tech/way-of-working.md) and identify the adopted PM tool.
+1. **Check**: Read [way-of-working.md](../../.pair/adoption/tech/way-of-working.md) and identify the adopted PM tool.
 2. **Skip**: If PM tool is identified, proceed to Step 3.
 3. **Act**: If no PM tool configured → **HALT**:
 
-   > No PM tool configured in `way-of-working.md`. Configure via `/capability-setup-pm` or manually set the PM tool in [way-of-working.md](../../../.pair/adoption/tech/way-of-working.md).
+   > No PM tool configured in `way-of-working.md`. Configure via `/capability-setup-pm` or manually set the PM tool in [way-of-working.md](../../.pair/adoption/tech/way-of-working.md).
 
 4. **Verify**: PM tool identified (e.g., `github-projects`, `jira`, `linear`, `filesystem`).
 
 ### Step 3: Load Template
 
 1. **Check**: Resolve template path based on `$type`:
-   - `story` → [user-story-template.md](../../../.pair/knowledge/guidelines/collaboration/templates/user-story-template.md)
-   - `task` → [task-template.md](../../../.pair/knowledge/guidelines/collaboration/templates/task-template.md)
-   - `epic` → [epic-template.md](../../../.pair/knowledge/guidelines/collaboration/templates/epic-template.md)
-   - `initiative` → [initiative-template.md](../../../.pair/knowledge/guidelines/collaboration/templates/initiative-template.md)
+   - `story` → [user-story-template.md](../../.pair/knowledge/guidelines/collaboration/templates/user-story-template.md)
+   - `task` → [task-template.md](../../.pair/knowledge/guidelines/collaboration/templates/task-template.md)
+   - `epic` → [epic-template.md](../../.pair/knowledge/guidelines/collaboration/templates/epic-template.md)
+   - `initiative` → [initiative-template.md](../../.pair/knowledge/guidelines/collaboration/templates/initiative-template.md)
 2. **Skip**: If template file found, proceed to Step 4.
 3. **Act**: If template not found → **HALT**:
 
@@ -67,8 +67,8 @@ Create or update issues in the adopted PM tool. Template-driven: reads the type-
 ### Step 5: Load PM Tool Implementation Guide
 
 1. **Check**: Resolve the PM tool implementation guide based on the adopted tool:
-   - `github-projects` → [github-implementation.md](../../../.pair/knowledge/guidelines/collaboration/project-management-tool/github-implementation.md)
-   - `filesystem` → [filesystem-implementation.md](../../../.pair/knowledge/guidelines/collaboration/project-management-tool/filesystem-implementation.md)
+   - `github-projects` → [github-implementation.md](../../.pair/knowledge/guidelines/collaboration/project-management-tool/github-implementation.md)
+   - `filesystem` → [filesystem-implementation.md](../../.pair/knowledge/guidelines/collaboration/project-management-tool/filesystem-implementation.md)
    - Other tools → use the tool-specific guide if available.
 2. **Skip**: If guide found, proceed to Step 6.
 3. **Act**: If guide not found, warn and proceed with best-effort PM tool interaction:
@@ -168,7 +168,7 @@ This skill supports `story`, `task`, `epic`, and `initiative` types. Adding a ne
 
 ## Graceful Degradation
 
-- If [way-of-working.md](../../../.pair/adoption/tech/way-of-working.md) is not found, HALT — PM tool is required.
+- If [way-of-working.md](../../.pair/adoption/tech/way-of-working.md) is not found, HALT — PM tool is required.
 - If the template file is not found, HALT — template-driven formatting is mandatory.
 - If the PM tool implementation guide is not found, warn and proceed with default behavior.
 - If the PM tool is not accessible (auth failure, rate limit, network), HALT with descriptive error — no fallback.

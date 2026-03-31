@@ -9,8 +9,8 @@ author: Foomakers
 
 Validate a work item against Definition of Done criteria. Two sources of truth:
 
-- **[definition-of-done.md](../../../.pair/knowledge/guidelines/quality-assurance/quality-standards/definition-of-done.md)** — universal DoD checklist (18 criteria covering requirements, code standards, testing, security, performance, accessibility, deployment, documentation).
-- **Adoption files** (`../../../.pair/adoption/tech/`) — project-specific criteria derived from adopted architecture, tech-stack, and way-of-working decisions.
+- **[definition-of-done.md](../../.pair/knowledge/guidelines/quality-assurance/quality-standards/definition-of-done.md)** — universal DoD checklist (18 criteria covering requirements, code standards, testing, security, performance, accessibility, deployment, documentation).
+- **Adoption files** (`../../.pair/adoption/tech/`) — project-specific criteria derived from adopted architecture, tech-stack, and way-of-working decisions.
 
 Only check criteria that are not already passing.
 
@@ -27,7 +27,7 @@ Execute each criterion group in order. For every criterion, follow the **check �
 
 ### Step 1: Load DoD Criteria
 
-1. **Check**: Read [definition-of-done.md](../../../.pair/knowledge/guidelines/quality-assurance/quality-standards/definition-of-done.md) and extract the DoD checklist.
+1. **Check**: Read [definition-of-done.md](../../.pair/knowledge/guidelines/quality-assurance/quality-standards/definition-of-done.md) and extract the DoD checklist.
 2. **Skip**: If `$scope` is set, filter to only the matching criterion group.
 3. **Act**: Build the working checklist. If `$story` is provided, prepend story-specific acceptance criteria from the PM tool.
 4. **Verify**: Checklist loaded. If definition-of-done.md is not found, warn and proceed with adoption-only criteria.
@@ -43,19 +43,19 @@ Execute each criterion group in order. For every criterion, follow the **check �
 
 1. **Check**: Does the code follow adopted code design guidelines and technical standards?
 2. **Skip**: If already verified (e.g., by a prior /capability-verify-quality run in the same session) — mark PASS.
-3. **Act**: Check code against [code-design guidelines](../../../.pair/knowledge/guidelines/code-design/README.md) and [technical standards](../../../.pair/knowledge/guidelines/technical-standards/README.md). Report non-conformities.
+3. **Act**: Check code against [code-design guidelines](../../.pair/knowledge/guidelines/code-design/README.md) and [technical standards](../../.pair/knowledge/guidelines/technical-standards/README.md). Report non-conformities.
 4. **Verify**: Standards met or non-conformities reported.
 
 ### Step 4: Architecture & ADR Compliance
 
-1. **Check**: Does the solution align with adopted [architecture](../../../.pair/adoption/tech/architecture.md)? Are relevant ADRs followed?
+1. **Check**: Does the solution align with adopted [architecture](../../.pair/adoption/tech/architecture.md)? Are relevant ADRs followed?
 2. **Skip**: If no architectural changes in the PR — mark PASS.
 3. **Act**: Cross-reference changes against architecture adoption and existing ADRs in `adoption/tech/adr/`. Report gaps.
 4. **Verify**: Compliant or gaps reported. Missing ADR is a **HALT condition** for the composing skill.
 
 ### Step 5: Testing
 
-1. **Check**: Are tests written per [testing strategy](../../../.pair/knowledge/guidelines/testing/test-strategy/README.md)? Do all tests pass?
+1. **Check**: Are tests written per [testing strategy](../../.pair/knowledge/guidelines/testing/test-strategy/README.md)? Do all tests pass?
 2. **Skip**: If already verified by /capability-verify-quality in the same session — mark PASS.
 3. **Act**: Verify test existence for new/modified modules (1:1 mapping). Check test quality (behavior-based, not implementation-based). Report gaps.
 4. **Verify**: Testing criteria met or gaps reported.
@@ -64,7 +64,7 @@ Execute each criterion group in order. For every criterion, follow the **check �
 
 1. **Check**: Are security considerations identified and practices followed?
 2. **Skip**: If no security-relevant changes in the PR — mark PASS.
-3. **Act**: Check against [security guidelines](../../../.pair/knowledge/guidelines/quality-assurance/security/security-guidelines.md). Look for: hardcoded secrets, injection vulnerabilities, improper data handling, missing input validation.
+3. **Act**: Check against [security guidelines](../../.pair/knowledge/guidelines/quality-assurance/security/security-guidelines.md). Look for: hardcoded secrets, injection vulnerabilities, improper data handling, missing input validation.
 4. **Verify**: Secure or issues reported.
 
 ### Step 7: Performance
@@ -123,7 +123,7 @@ When invoked **independently**:
 
 ## Graceful Degradation
 
-- If [definition-of-done.md](../../../.pair/knowledge/guidelines/quality-assurance/quality-standards/definition-of-done.md) is not found, warn and check only adoption-derived criteria.
+- If [definition-of-done.md](../../.pair/knowledge/guidelines/quality-assurance/quality-standards/definition-of-done.md) is not found, warn and check only adoption-derived criteria.
 - If adoption files are missing, warn and check only universal DoD criteria.
 - If `$story` is not provided, skip requirements/AC check and evaluate only universal criteria.
 - If specific guideline files are not found (e.g., security guidelines), skip that criterion group and report: "[Area]: SKIPPED — guidelines not found."

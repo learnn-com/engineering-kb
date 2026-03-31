@@ -91,7 +91,7 @@ Transform a user story from rough breakdown (Todo) into a development-ready spec
    - **Strategy**: high-level technical approach and architecture alignment.
    - **Key components**: modules, integration points, data flow.
    - **Risks**: technical unknowns, complexity, dependencies.
-   - Reference [architecture.md](../../../.pair/adoption/tech/architecture.md) and [tech-stack.md](../../../.pair/adoption/tech/tech-stack.md).
+   - Reference [architecture.md](../../.pair/adoption/tech/architecture.md) and [tech-stack.md](../../.pair/adoption/tech/tech-stack.md).
 2. **Act**: Present technical analysis to developer for validation.
 3. **Verify**: Developer approves. Analysis finalized.
 
@@ -109,7 +109,7 @@ Transform a user story from rough breakdown (Todo) into a development-ready spec
 
 ### Step 5: Documentation and PM Tool Update
 
-1. **Act**: Assemble the complete refined story body using the [user-story-template.md](../../../.pair/knowledge/guidelines/collaboration/templates/user-story-template.md) Refined template:
+1. **Act**: Assemble the complete refined story body using the [user-story-template.md](../../.pair/knowledge/guidelines/collaboration/templates/user-story-template.md) Refined template:
    - **Functional sections first**: Story Statement → Epic Context → Acceptance Criteria → Definition of Done → Story Sizing → Dependencies → Validation → Notes.
    - **Technical sections last**: Technical Analysis → (Task Breakdown added later by `/process-plan-tasks`).
 2. **Act**: Compose `/capability-write-issue` with:

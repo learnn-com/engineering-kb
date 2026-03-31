@@ -23,7 +23,7 @@ Evaluate and decide on the development methodology: Scrum, Kanban, Lean, Waterfa
 
 ## Adoption File
 
-- **Target**: [adoption/tech/way-of-working.md](../../../.pair/adoption/tech/way-of-working.md) — **methodology section**
+- **Target**: [adoption/tech/way-of-working.md](../../.pair/adoption/tech/way-of-working.md) — **methodology section**
 - **Ownership**: Methodology section (shared file — /capability-assess-pm owns PM tool section)
 
 ## Algorithm
@@ -39,7 +39,7 @@ Evaluate and decide on the development methodology: Scrum, Kanban, Lean, Waterfa
 
 #### Path B — Adoption Exists
 
-1. **Check**: Does [adoption/tech/way-of-working.md](../../../.pair/adoption/tech/way-of-working.md) exist and contain a methodology reference (e.g. "Kanban", "Scrum", or similar)?
+1. **Check**: Does [adoption/tech/way-of-working.md](../../.pair/adoption/tech/way-of-working.md) exist and contain a methodology reference (e.g. "Kanban", "Scrum", or similar)?
 2. **Skip**: If no methodology defined, go to Path C.
 3. **Act**: Read current adoption. Confirm it's valid.
 4. **Check**: Does a corresponding decision record exist?
@@ -53,17 +53,17 @@ Evaluate and decide on the development methodology: Scrum, Kanban, Lean, Waterfa
 ### Step 2: Read Guidelines
 
 1. **Act**: Read methodology guidelines:
-   - [Methodology README](../../../.pair/knowledge/guidelines/collaboration/methodology/README.md) — decision framework, comparison matrix, decision tree, cost-benefit analysis
+   - [Methodology README](../../.pair/knowledge/guidelines/collaboration/methodology/README.md) — decision framework, comparison matrix, decision tree, cost-benefit analysis
    - Individual methodology files as needed for detail:
-     - [Kanban](../../../.pair/knowledge/guidelines/collaboration/methodology/kanban.md)
-     - [Scrum](../../../.pair/knowledge/guidelines/collaboration/methodology/scrum.md)
-     - [Lean](../../../.pair/knowledge/guidelines/collaboration/methodology/lean.md)
-     - [Waterfall](../../../.pair/knowledge/guidelines/collaboration/methodology/waterfall.md)
-     - [SAFe](../../../.pair/knowledge/guidelines/collaboration/methodology/safe.md)
-     - [LeSS](../../../.pair/knowledge/guidelines/collaboration/methodology/less.md)
+     - [Kanban](../../.pair/knowledge/guidelines/collaboration/methodology/kanban.md)
+     - [Scrum](../../.pair/knowledge/guidelines/collaboration/methodology/scrum.md)
+     - [Lean](../../.pair/knowledge/guidelines/collaboration/methodology/lean.md)
+     - [Waterfall](../../.pair/knowledge/guidelines/collaboration/methodology/waterfall.md)
+     - [SAFe](../../.pair/knowledge/guidelines/collaboration/methodology/safe.md)
+     - [LeSS](../../.pair/knowledge/guidelines/collaboration/methodology/less.md)
 2. **Act**: Read project context:
-   - [adoption/product/PRD.md](../../../.pair/adoption/product/PRD.md) — team size, timeline, requirements stability
-   - [adoption/tech/architecture.md](../../../.pair/adoption/tech/architecture.md) — system complexity
+   - [adoption/product/PRD.md](../../.pair/adoption/product/PRD.md) — team size, timeline, requirements stability
+   - [adoption/tech/architecture.md](../../.pair/adoption/tech/architecture.md) — system complexity
 3. **Verify**: Guidelines and context loaded.
 
 ### Step 3: Evaluate Options
@@ -88,7 +88,7 @@ Evaluate and decide on the development methodology: Scrum, Kanban, Lean, Waterfa
 
 ### Step 4: Write Adoption File
 
-1. **Act**: Write or update **methodology-related content** in [way-of-working.md](../../../.pair/adoption/tech/way-of-working.md):
+1. **Act**: Write or update **methodology-related content** in [way-of-working.md](../../.pair/adoption/tech/way-of-working.md):
    - Methodology name and key practices
    - Development cycle description (iterations, flow, etc.)
    - Preserve all other sections (quality gates, PM tool, etc.)

@@ -24,7 +24,7 @@ Evaluate and decide on the project management tool. Follows the resolution casca
 
 ## Adoption File
 
-- **Target**: [adoption/tech/way-of-working.md](../../../.pair/adoption/tech/way-of-working.md) — **PM tool section**
+- **Target**: [adoption/tech/way-of-working.md](../../.pair/adoption/tech/way-of-working.md) — **PM tool section**
 - **Ownership**: PM tool section (shared file — /capability-assess-methodology owns methodology section)
 
 ## Algorithm
@@ -40,7 +40,7 @@ Evaluate and decide on the project management tool. Follows the resolution casca
 
 #### Path B — Adoption Exists
 
-1. **Check**: Does [adoption/tech/way-of-working.md](../../../.pair/adoption/tech/way-of-working.md) contain a PM tool configuration?
+1. **Check**: Does [adoption/tech/way-of-working.md](../../.pair/adoption/tech/way-of-working.md) contain a PM tool configuration?
 2. **Skip**: If no PM tool defined, go to Path C.
 3. **Act**: Read current PM adoption. Confirm it's valid.
 4. **Check**: Does a corresponding decision record exist?
@@ -54,13 +54,13 @@ Evaluate and decide on the project management tool. Follows the resolution casca
 ### Step 2: Read Guidelines
 
 1. **Act**: Read PM tool guidelines:
-   - [PM Tool README](../../../.pair/knowledge/guidelines/collaboration/project-management-tool/README.md) — decision matrix, decision tree, cost-benefit analysis
+   - [PM Tool README](../../.pair/knowledge/guidelines/collaboration/project-management-tool/README.md) — decision matrix, decision tree, cost-benefit analysis
    - Implementation guides for supported tools:
-     - [GitHub Implementation](../../../.pair/knowledge/guidelines/collaboration/project-management-tool/github-implementation.md)
-     - [Filesystem Implementation](../../../.pair/knowledge/guidelines/collaboration/project-management-tool/filesystem-implementation.md)
+     - [GitHub Implementation](../../.pair/knowledge/guidelines/collaboration/project-management-tool/github-implementation.md)
+     - [Filesystem Implementation](../../.pair/knowledge/guidelines/collaboration/project-management-tool/filesystem-implementation.md)
 2. **Act**: Read project context:
-   - [adoption/product/PRD.md](../../../.pair/adoption/product/PRD.md) — team size, collaboration needs
-   - [adoption/tech/way-of-working.md](../../../.pair/adoption/tech/way-of-working.md) — methodology (PM tool should support it)
+   - [adoption/product/PRD.md](../../.pair/adoption/product/PRD.md) — team size, collaboration needs
+   - [adoption/tech/way-of-working.md](../../.pair/adoption/tech/way-of-working.md) — methodology (PM tool should support it)
 3. **Verify**: Guidelines and context loaded.
 
 ### Step 3: Evaluate Options
@@ -87,7 +87,7 @@ Evaluate and decide on the project management tool. Follows the resolution casca
 
 1. **Check**: Is `/capability-setup-pm` installed?
 2. **Act** (installed): Compose `/capability-setup-pm` with `$tool: [chosen tool]`. `/capability-setup-pm` handles adoption update and decision recording. Done — exit skill.
-3. **Act** (not installed): Write PM tool section in [way-of-working.md](../../../.pair/adoption/tech/way-of-working.md) directly:
+3. **Act** (not installed): Write PM tool section in [way-of-working.md](../../.pair/adoption/tech/way-of-working.md) directly:
    - Tool name
    - Workflow methodology integration
    - Access method (MCP, CLI, filesystem)

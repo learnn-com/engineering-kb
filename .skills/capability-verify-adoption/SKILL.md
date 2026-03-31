@@ -19,11 +19,11 @@ Check code, configuration, or a PR against the project's adoption files. Detecti
 
 | Scope              | Adoption File(s)                                                                                                     |
 | ------------------ | -------------------------------------------------------------------------------------------------------------------- |
-| `tech-stack`       | [adoption/tech/tech-stack.md](../../../.pair/adoption/tech/tech-stack.md)                                             |
-| `architecture`     | [adoption/tech/architecture.md](../../../.pair/adoption/tech/architecture.md) + [adoption/tech/adr/](../../../.pair/adoption/tech/adr) |
-| `security`         | Security-related sections in adoption files + [security guidelines](../../../.pair/knowledge/guidelines/quality-assurance/security/security-guidelines.md) |
-| `coding-standards` | Code design adoption + [code-design guidelines](../../../.pair/knowledge/guidelines/code-design/README.md)           |
-| `infrastructure`   | [adoption/tech/infrastructure.md](../../../.pair/adoption/tech/infrastructure.md)                                     |
+| `tech-stack`       | [adoption/tech/tech-stack.md](../../.pair/adoption/tech/tech-stack.md)                                             |
+| `architecture`     | [adoption/tech/architecture.md](../../.pair/adoption/tech/architecture.md) + [adoption/tech/adr/](../../.pair/adoption/tech/adr) |
+| `security`         | Security-related sections in adoption files + [security guidelines](../../.pair/knowledge/guidelines/quality-assurance/security/security-guidelines.md) |
+| `coding-standards` | Code design adoption + [code-design guidelines](../../.pair/knowledge/guidelines/code-design/README.md)           |
+| `infrastructure`   | [adoption/tech/infrastructure.md](../../.pair/adoption/tech/infrastructure.md)                                     |
 | `all`              | All of the above                                                                                                     |
 
 ## Algorithm
@@ -41,7 +41,7 @@ For each area in scope, follow the **check → skip → act → verify** pattern
 
 _Skip if `tech-stack` not in resolved scope._
 
-1. **Check**: Does [adoption/tech/tech-stack.md](../../../.pair/adoption/tech/tech-stack.md) exist and contain project-specific content?
+1. **Check**: Does [adoption/tech/tech-stack.md](../../.pair/adoption/tech/tech-stack.md) exist and contain project-specific content?
 2. **Skip**: If adoption file missing or template-only → report `tech-stack: NOT CONFIGURED` and move to next area.
 3. **Act**: Read the adoption file. Extract adopted technologies with versions. Scan the codebase or PR for:
    - Dependencies not listed in tech-stack.md (unlisted imports, package.json entries)
@@ -55,9 +55,9 @@ _Skip if `tech-stack` not in resolved scope._
 
 _Skip if `architecture` not in resolved scope._
 
-1. **Check**: Does [adoption/tech/architecture.md](../../../.pair/adoption/tech/architecture.md) exist with project-specific content?
+1. **Check**: Does [adoption/tech/architecture.md](../../.pair/adoption/tech/architecture.md) exist with project-specific content?
 2. **Skip**: If missing → report `architecture: NOT CONFIGURED` and move to next area.
-3. **Act**: Read architecture adoption and existing ADRs in [adoption/tech/adr/](../../../.pair/adoption/tech/adr). Check code for:
+3. **Act**: Read architecture adoption and existing ADRs in [adoption/tech/adr/](../../.pair/adoption/tech/adr). Check code for:
    - Pattern violations (e.g., direct DB access bypassing service layer)
    - Layer boundary crossings not permitted by the architecture
    - Architectural changes without a corresponding ADR
@@ -68,7 +68,7 @@ _Skip if `architecture` not in resolved scope._
 
 _Skip if `security` not in resolved scope._
 
-1. **Check**: Do security-related adoption files or [security guidelines](../../../.pair/knowledge/guidelines/quality-assurance/security/security-guidelines.md) exist?
+1. **Check**: Do security-related adoption files or [security guidelines](../../.pair/knowledge/guidelines/quality-assurance/security/security-guidelines.md) exist?
 2. **Skip**: If no security guidelines found → report `security: NOT CONFIGURED` and move to next area.
 3. **Act**: Check code for:
    - Hardcoded secrets or credentials
@@ -82,7 +82,7 @@ _Skip if `security` not in resolved scope._
 
 _Skip if `coding-standards` not in resolved scope._
 
-1. **Check**: Do [code-design guidelines](../../../.pair/knowledge/guidelines/code-design/README.md) or coding standards adoption files exist?
+1. **Check**: Do [code-design guidelines](../../.pair/knowledge/guidelines/code-design/README.md) or coding standards adoption files exist?
 2. **Skip**: If missing → report `coding-standards: NOT CONFIGURED` and move to next area.
 3. **Act**: Check code for:
    - Naming convention violations
@@ -95,7 +95,7 @@ _Skip if `coding-standards` not in resolved scope._
 
 _Skip if `infrastructure` not in resolved scope._
 
-1. **Check**: Does [adoption/tech/infrastructure.md](../../../.pair/adoption/tech/infrastructure.md) exist with project-specific content?
+1. **Check**: Does [adoption/tech/infrastructure.md](../../.pair/adoption/tech/infrastructure.md) exist with project-specific content?
 2. **Skip**: If missing → report `infrastructure: NOT CONFIGURED` and move to next area.
 3. **Act**: Read infrastructure adoption. Check for:
    - CI/CD configuration deviations from adopted pipeline

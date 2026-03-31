@@ -7,7 +7,7 @@ author: Foomakers
 
 # /capability-manage-flags — Feature Flag Lifecycle Manager
 
-Manage feature flags throughout their lifecycle: creation, activation, deactivation, and cleanup. Follows the [feature flags guidelines](../../../.pair/knowledge/guidelines/technical-standards/feature-flags.md) for flag types, implementation patterns, and cleanup strategies.
+Manage feature flags throughout their lifecycle: creation, activation, deactivation, and cleanup. Follows the [feature flags guidelines](../../.pair/knowledge/guidelines/technical-standards/feature-flags.md) for flag types, implementation patterns, and cleanup strategies.
 
 ## Arguments
 
@@ -20,7 +20,7 @@ Manage feature flags throughout their lifecycle: creation, activation, deactivat
 
 ### Step 1: Read Feature Flag Guidelines
 
-1. **Act**: Read [feature-flags.md](../../../.pair/knowledge/guidelines/technical-standards/feature-flags.md) for:
+1. **Act**: Read [feature-flags.md](../../.pair/knowledge/guidelines/technical-standards/feature-flags.md) for:
    - Flag types (Release, Experiment, Ops, Permission)
    - Implementation patterns (boolean, percentage-based, conditional)
    - Lifecycle management and cleanup strategies
@@ -124,7 +124,7 @@ When invoked **independently**:
 
 ## Graceful Degradation
 
-- If [feature-flags.md](../../../.pair/knowledge/guidelines/technical-standards/feature-flags.md) is not found, provide framework-agnostic patterns: simple boolean flags with environment variables.
+- If [feature-flags.md](../../.pair/knowledge/guidelines/technical-standards/feature-flags.md) is not found, provide framework-agnostic patterns: simple boolean flags with environment variables.
 - If no feature flag tool is configured, use code-level flags (constants, config files) rather than a flag service.
 - If no existing flags are found in the codebase, report empty inventory and offer to create the first flag.
 - If cleanup would break active code paths, warn and require explicit developer confirmation.

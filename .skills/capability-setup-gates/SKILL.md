@@ -7,7 +7,7 @@ author: Foomakers
 
 # /capability-setup-gates — Quality Gate Configuration
 
-Configure CI/CD quality gates for the project. Reads quality assurance guidelines and the adopted tech stack to produce appropriate pipeline configuration. Writes gate configuration to [way-of-working.md](../../../.pair/adoption/tech/way-of-working.md) and CI/CD pipeline files.
+Configure CI/CD quality gates for the project. Reads quality assurance guidelines and the adopted tech stack to produce appropriate pipeline configuration. Writes gate configuration to [way-of-working.md](../../.pair/adoption/tech/way-of-working.md) and CI/CD pipeline files.
 
 ## Arguments
 
@@ -25,7 +25,7 @@ Configure CI/CD quality gates for the project. Reads quality assurance guideline
 
 ### Step 1: Check Existing Configuration
 
-1. **Check**: Read [way-of-working.md](../../../.pair/adoption/tech/way-of-working.md) → look for Quality Gates section and Custom Gate Registry.
+1. **Check**: Read [way-of-working.md](../../.pair/adoption/tech/way-of-working.md) → look for Quality Gates section and Custom Gate Registry.
 2. **Check**: Scan for existing CI/CD pipeline files (`.github/workflows/`, `.gitlab-ci.yml`, `Jenkinsfile`, etc.).
 3. **Branch**:
    - **Gates fully configured** (Quality Gates section + Custom Gate Registry + pipeline files exist) → present current config:
@@ -45,11 +45,11 @@ Configure CI/CD quality gates for the project. Reads quality assurance guideline
 ### Step 2: Read Guidelines and Tech Stack
 
 1. **Act**: Read quality assurance guidelines:
-   - [quality-assurance.md](../../../.pair/knowledge/guidelines/technical-standards/git-workflow/quality-assurance.md) — gate types and checklists
-   - [quality-gates.md](../../../.pair/knowledge/guidelines/quality-assurance/quality-standards/quality-gates.md) — gate framework and registry format
+   - [quality-assurance.md](../../.pair/knowledge/guidelines/technical-standards/git-workflow/quality-assurance.md) — gate types and checklists
+   - [quality-gates.md](../../.pair/knowledge/guidelines/quality-assurance/quality-standards/quality-gates.md) — gate framework and registry format
 2. **Act**: Read adopted tech stack:
-   - [tech-stack.md](../../../.pair/adoption/tech/tech-stack.md) — languages, test framework, linter, formatter
-   - [way-of-working.md](../../../.pair/adoption/tech/way-of-working.md) — existing process
+   - [tech-stack.md](../../.pair/adoption/tech/tech-stack.md) — languages, test framework, linter, formatter
+   - [way-of-working.md](../../.pair/adoption/tech/way-of-working.md) — existing process
 3. **Verify**: Guidelines and stack loaded.
 
 ### Step 3: Propose Gate Configuration
@@ -87,7 +87,7 @@ Configure CI/CD quality gates for the project. Reads quality assurance guideline
 
 ### Step 4: Write Configuration
 
-1. **Act**: Update [way-of-working.md](../../../.pair/adoption/tech/way-of-working.md):
+1. **Act**: Update [way-of-working.md](../../.pair/adoption/tech/way-of-working.md):
    - Set quality gate command (e.g., `pnpm quality-gate`)
    - Write or update Custom Gate Registry table
 2. **Act**: Generate CI/CD pipeline configuration appropriate for the adopted stack and hosting:
@@ -141,4 +141,4 @@ When invoked **independently**:
 - This skill **modifies files** — it writes to way-of-working.md and creates/updates CI/CD pipeline configuration.
 - **Idempotent**: re-invocation on an already-configured project confirms the existing configuration. Update only on explicit developer request.
 - Gate commands must be executable in the project's development environment. Verify commands exist before writing.
-- Custom Gate Registry format follows the table schema from [quality-gates.md](../../../.pair/knowledge/guidelines/quality-assurance/quality-standards/quality-gates.md): Order, Gate, Command, Scope Key, Required, Description.
+- Custom Gate Registry format follows the table schema from [quality-gates.md](../../.pair/knowledge/guidelines/quality-assurance/quality-standards/quality-gates.md): Order, Gate, Command, Scope Key, Required, Description.

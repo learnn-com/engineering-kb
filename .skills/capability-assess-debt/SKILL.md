@@ -7,7 +7,7 @@ author: Foomakers
 
 # /capability-assess-debt — Technical Debt Assessment
 
-Detect, categorize, and prioritize technical debt items. Applies the prioritization framework from [technical-debt.md](../../../.pair/knowledge/guidelines/code-design/quality-standards/technical-debt.md) guidelines. Produces a debt report with categorized items, severity, impact/effort scoring, and remediation recommendations.
+Detect, categorize, and prioritize technical debt items. Applies the prioritization framework from [technical-debt.md](../../.pair/knowledge/guidelines/code-design/quality-standards/technical-debt.md) guidelines. Produces a debt report with categorized items, severity, impact/effort scoring, and remediation recommendations.
 
 ## Arguments
 
@@ -66,7 +66,7 @@ Scan the codebase or PR changes for debt indicators per category. Follow **check
 #### 2.2: Design Debt
 
 1. **Check**: Scan for design-level debt:
-   - Violations of adopted [architecture](../../../.pair/adoption/tech/architecture.md) patterns
+   - Violations of adopted [architecture](../../.pair/adoption/tech/architecture.md) patterns
    - Tight coupling between modules that should be independent
    - Missing abstractions (repeated patterns that should be extracted)
    - God objects or utility catch-all modules
@@ -98,7 +98,7 @@ Scan the codebase or PR changes for debt indicators per category. Follow **check
 #### 2.5: Infrastructure Debt
 
 1. **Check**: Scan for infrastructure issues:
-   - Dependencies not listed in [tech-stack.md](../../../.pair/adoption/tech/tech-stack.md) or with known vulnerabilities
+   - Dependencies not listed in [tech-stack.md](../../.pair/adoption/tech/tech-stack.md) or with known vulnerabilities
    - Outdated dependency versions (major version behind)
    - Missing or broken CI/CD quality gates
    - Configuration drift from adopted infrastructure
@@ -193,8 +193,8 @@ When invoked **independently**:
 ## Graceful Degradation
 
 - If adoption files are missing, skip design and infrastructure categories — report only code-level debt (code smells, duplication, test gaps, documentation).
-- If [tech-stack.md](../../../.pair/adoption/tech/tech-stack.md) is not found, skip infrastructure dependency checks.
-- If [architecture.md](../../../.pair/adoption/tech/architecture.md) is not found, skip design debt detection for architectural violations.
+- If [tech-stack.md](../../.pair/adoption/tech/tech-stack.md) is not found, skip infrastructure dependency checks.
+- If [architecture.md](../../.pair/adoption/tech/architecture.md) is not found, skip design debt detection for architectural violations.
 - If `/capability-record-decision` is not installed, warn and skip decision recording.
 - If guidelines are not found, use built-in heuristics for detection (complexity thresholds, naming patterns, test file presence).
 

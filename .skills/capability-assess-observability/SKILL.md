@@ -23,7 +23,7 @@ Evaluate and decide on the observability strategy: monitoring platform, logging 
 
 ## Adoption File
 
-- **Target**: [adoption/tech/infrastructure.md](../../../.pair/adoption/tech/infrastructure.md) — **observability section only**
+- **Target**: [adoption/tech/infrastructure.md](../../.pair/adoption/tech/infrastructure.md) — **observability section only**
 - **Ownership**: Observability section (shared file — /capability-assess-infrastructure owns core sections)
 
 ## Algorithm
@@ -39,7 +39,7 @@ Evaluate and decide on the observability strategy: monitoring platform, logging 
 
 #### Path B — Adoption Exists
 
-1. **Check**: Does [adoption/tech/infrastructure.md](../../../.pair/adoption/tech/infrastructure.md) exist and contain a populated **observability** section?
+1. **Check**: Does [adoption/tech/infrastructure.md](../../.pair/adoption/tech/infrastructure.md) exist and contain a populated **observability** section?
 2. **Skip**: If no observability section or empty, go to Path C.
 3. **Act**: Read current observability adoption. Confirm it's valid.
 4. **Check**: Does a corresponding decision record exist?
@@ -53,15 +53,15 @@ Evaluate and decide on the observability strategy: monitoring platform, logging 
 ### Step 2: Read Guidelines
 
 1. **Act**: Read observability guidelines:
-   - [Observability README](../../../.pair/knowledge/guidelines/observability/README.md) — tool comparison, decision matrix, decision tree
-   - [Observability Principles](../../../.pair/knowledge/guidelines/observability/observability-principles/README.md) — three pillars, proactive monitoring
-   - [Observability Tools](../../../.pair/knowledge/guidelines/observability/observability-tools.md) — platform options
-   - [Structured Logging](../../../.pair/knowledge/guidelines/observability/structured-logging/README.md) — logging standards
-   - [Metrics](../../../.pair/knowledge/guidelines/observability/metrics/README.md) — metrics strategy
-   - [Alerting](../../../.pair/knowledge/guidelines/observability/alerting/README.md) — alerting strategy
+   - [Observability README](../../.pair/knowledge/guidelines/observability/README.md) — tool comparison, decision matrix, decision tree
+   - [Observability Principles](../../.pair/knowledge/guidelines/observability/observability-principles/README.md) — three pillars, proactive monitoring
+   - [Observability Tools](../../.pair/knowledge/guidelines/observability/observability-tools.md) — platform options
+   - [Structured Logging](../../.pair/knowledge/guidelines/observability/structured-logging/README.md) — logging standards
+   - [Metrics](../../.pair/knowledge/guidelines/observability/metrics/README.md) — metrics strategy
+   - [Alerting](../../.pair/knowledge/guidelines/observability/alerting/README.md) — alerting strategy
 2. **Act**: Read project context:
-   - [adoption/product/PRD.md](../../../.pair/adoption/product/PRD.md) — scale, budget
-   - [adoption/tech/infrastructure.md](../../../.pair/adoption/tech/infrastructure.md) — existing infrastructure choices (observability must integrate)
+   - [adoption/product/PRD.md](../../.pair/adoption/product/PRD.md) — scale, budget
+   - [adoption/tech/infrastructure.md](../../.pair/adoption/tech/infrastructure.md) — existing infrastructure choices (observability must integrate)
 3. **Verify**: Guidelines and context loaded.
 
 ### Step 3: Evaluate Options
@@ -87,7 +87,7 @@ Evaluate and decide on the observability strategy: monitoring platform, logging 
 
 ### Step 4: Write Adoption File
 
-1. **Act**: Write or update **only the observability section** of [infrastructure.md](../../../.pair/adoption/tech/infrastructure.md):
+1. **Act**: Write or update **only the observability section** of [infrastructure.md](../../.pair/adoption/tech/infrastructure.md):
    - Platform, logging, tracing, alerting decisions
    - Preserve all other sections (owned by /capability-assess-infrastructure)
 2. **Act**: If infrastructure.md doesn't exist, create it with observability section. Warn: "Created infrastructure.md — core sections should be populated by /capability-assess-infrastructure."

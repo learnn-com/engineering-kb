@@ -29,7 +29,7 @@ Orchestrate the complete project setup sequence. Transforms a PRD into a fully c
 
 ### Step 0.1: Check PRD State
 
-1. **Check**: Does [adoption/product/PRD.md](../../../.pair/adoption/product/PRD.md) exist and is it populated (not a template)?
+1. **Check**: Does [adoption/product/PRD.md](../../.pair/adoption/product/PRD.md) exist and is it populated (not a template)?
    - A file is a template if it contains `[Product/feature name]` or `[Creation date]`.
 2. **Skip** (populated PRD): Extract project name and key constraints. Move to Phase 1.
 3. **Act** (missing or template): Compose `/process-specify-prd`.
@@ -50,7 +50,7 @@ Orchestrate the complete project setup sequence. Transforms a PRD into a fully c
 
 ### Step 1.1: Check Existing Categorization
 
-1. **Check**: Does [adoption/decision-log/](../../../.pair/adoption/decision-log) contain a `*-project-categorization.md` file?
+1. **Check**: Does [adoption/decision-log/](../../.pair/adoption/decision-log) contain a `*-project-categorization.md` file?
 2. **Skip**: If categorization already recorded, read it and move to Phase 2.
 3. **Act**: Proceed to categorization analysis.
 
@@ -84,7 +84,7 @@ Orchestrate the complete project setup sequence. Transforms a PRD into a fully c
 
 ### Step 2.1: Check Existing Adoption Files
 
-1. **Check**: Scan [adoption/tech/](../../../.pair/adoption/tech) for existing files. Classify each as populated or template:
+1. **Check**: Scan [adoption/tech/](../../.pair/adoption/tech) for existing files. Classify each as populated or template:
    - `architecture.md`
    - `tech-stack.md`
    - `infrastructure.md` (optional — not all project types need it)
@@ -136,22 +136,22 @@ Orchestrate the complete project setup sequence. Transforms a PRD into a fully c
 
 ### Step 2.3: Gather Information per Section
 
-For each missing adoption file, work through the relevant checklist section. Reference the [Bootstrap Checklist](../../../.pair/knowledge/assets/bootstrap-checklist.md) for section-specific questions.
+For each missing adoption file, work through the relevant checklist section. Reference the [Bootstrap Checklist](../../.pair/knowledge/assets/bootstrap-checklist.md) for section-specific questions.
 
 1. **Architecture** — scale, integrations, compliance, patterns
-   - Reference: [Architecture Guidelines](../../../.pair/knowledge/guidelines/architecture/README.md)
+   - Reference: [Architecture Guidelines](../../.pair/knowledge/guidelines/architecture/README.md)
 
 2. **Tech Stack** — languages, frameworks, libraries with versions
-   - Reference: [Technical Standards](../../../.pair/knowledge/guidelines/technical-standards/README.md)
+   - Reference: [Technical Standards](../../.pair/knowledge/guidelines/technical-standards/README.md)
 
 3. **Infrastructure** — deployment, CI/CD, monitoring, environments
-   - Reference: [Infrastructure Guidelines](../../../.pair/knowledge/guidelines/infrastructure/README.md)
+   - Reference: [Infrastructure Guidelines](../../.pair/knowledge/guidelines/infrastructure/README.md)
 
 4. **UX/UI** — design system, accessibility, device support
-   - Reference: [UX Guidelines](../../../.pair/knowledge/guidelines/user-experience/README.md)
+   - Reference: [UX Guidelines](../../.pair/knowledge/guidelines/user-experience/README.md)
 
 5. **Way of Working** — processes, quality gates, release cycles
-   - Reference: [Collaboration Guidelines](../../../.pair/knowledge/guidelines/collaboration/README.md)
+   - Reference: [Collaboration Guidelines](../../.pair/knowledge/guidelines/collaboration/README.md)
 
 **Rules**:
 
@@ -167,18 +167,18 @@ For each missing adoption file (in order: architecture → tech-stack → infras
 
 1. **Check**: Is this file already populated? If yes, skip.
 2. **Act**: Generate the document following:
-   - [Adopted Standards format](../../../.pair/adoption/tech/README.md) (if format guide exists)
+   - [Adopted Standards format](../../.pair/adoption/tech/README.md) (if format guide exists)
    - Concise, prescriptive English
    - Specific versions and configuration details
    - References to KB guidelines for detailed rationale
 3. **Act**: Present key decisions with rationale for developer review.
 4. **Act**: Iterate on feedback until approved.
-5. **Act**: Save to [adoption/tech/](../../../.pair/adoption/tech)`<filename>.md`.
+5. **Act**: Save to [adoption/tech/](../../.pair/adoption/tech)`<filename>.md`.
 6. **Verify**: File written, consistent with other adoption files.
 
 ### Step 3.2: Quality Gate Setup
 
-1. **Check**: Does [adoption/tech/way-of-working.md](../../../.pair/adoption/tech/way-of-working.md) already contain a Custom Gate Registry with entries?
+1. **Check**: Does [adoption/tech/way-of-working.md](../../.pair/adoption/tech/way-of-working.md) already contain a Custom Gate Registry with entries?
 2. **Skip**: If quality gates already configured, move to Phase 4.
 3. **Act**: Ask the developer:
 
@@ -205,9 +205,9 @@ For each missing adoption file (in order: architecture → tech-stack → infras
 ### Step 4.1: Consistency Verification
 
 1. **Act**: Re-read all adoption files:
-   - [architecture.md](../../../.pair/adoption/tech/architecture.md)
-   - [tech-stack.md](../../../.pair/adoption/tech/tech-stack.md)
-   - [way-of-working.md](../../../.pair/adoption/tech/way-of-working.md)
+   - [architecture.md](../../.pair/adoption/tech/architecture.md)
+   - [tech-stack.md](../../.pair/adoption/tech/tech-stack.md)
+   - [way-of-working.md](../../.pair/adoption/tech/way-of-working.md)
    - infrastructure.md and ux-ui.md (if generated)
 2. **Act**: Verify cross-document consistency:
    - Tech stack versions match architecture references

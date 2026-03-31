@@ -23,7 +23,7 @@ Evaluate and decide on the testing strategy: framework, pyramid distribution, co
 
 ## Adoption File
 
-- **Target**: [adoption/tech/tech-stack.md](../../../.pair/adoption/tech/tech-stack.md) — **testing section only**
+- **Target**: [adoption/tech/tech-stack.md](../../.pair/adoption/tech/tech-stack.md) — **testing section only**
 - **Ownership**: Testing section (shared file — /capability-assess-stack owns core sections, /capability-assess-ai owns AI section)
 
 ## Algorithm
@@ -40,13 +40,13 @@ Evaluate and decide on the testing strategy: framework, pyramid distribution, co
    > This will be adopted without full assessment.
    > Confirm?
 
-4. **Check**: Does [tech-stack.md](../../../.pair/adoption/tech/tech-stack.md) already have a testing section with a different framework?
+4. **Check**: Does [tech-stack.md](../../.pair/adoption/tech/tech-stack.md) already have a testing section with a different framework?
    - If yes, warn: "Current testing framework is **[existing]**. Override to **$choice**?"
 5. **Verify**: Developer confirms. Proceed to Step 2.
 
 #### Path B — Adoption Exists
 
-1. **Check**: Does [adoption/tech/tech-stack.md](../../../.pair/adoption/tech/tech-stack.md) exist and contain a populated **Testing** section?
+1. **Check**: Does [adoption/tech/tech-stack.md](../../.pair/adoption/tech/tech-stack.md) exist and contain a populated **Testing** section?
 2. **Skip**: If no testing section or section is empty/template, go to Path C.
 3. **Act**: Read current testing adoption. Present:
 
@@ -57,7 +57,7 @@ Evaluate and decide on the testing strategy: framework, pyramid distribution, co
    >
    > Adoption is current and valid.
 
-4. **Check**: Does a corresponding decision record exist? (Scan [adoption/decision-log/](../../../.pair/adoption/decision-log) or [adoption/tech/adr/](../../../.pair/adoption/tech/adr) for `*testing*` files.)
+4. **Check**: Does a corresponding decision record exist? (Scan [adoption/decision-log/](../../.pair/adoption/decision-log) or [adoption/tech/adr/](../../.pair/adoption/tech/adr) for `*testing*` files.)
 5. **Act**: If decision record missing, compose `/capability-record-decision` to backfill.
 6. **Verify**: Adoption and decision record consistent. Done — exit skill.
 
@@ -68,13 +68,13 @@ Evaluate and decide on the testing strategy: framework, pyramid distribution, co
 ### Step 2: Read Guidelines
 
 1. **Act**: Read testing guidelines:
-   - [Test Strategy README](../../../.pair/knowledge/guidelines/testing/test-strategy/README.md) — strategic framework and philosophy
-   - [Test Pyramid](../../../.pair/knowledge/guidelines/testing/test-strategy/test-pyramid.md) — distribution strategy
-   - [Coverage Strategy](../../../.pair/knowledge/guidelines/testing/test-strategy/coverage-strategy.md) — coverage requirements
-   - [TDD](../../../.pair/knowledge/guidelines/testing/test-strategy/tdd-test-driven-development.md) — TDD practices
+   - [Test Strategy README](../../.pair/knowledge/guidelines/testing/test-strategy/README.md) — strategic framework and philosophy
+   - [Test Pyramid](../../.pair/knowledge/guidelines/testing/test-strategy/test-pyramid.md) — distribution strategy
+   - [Coverage Strategy](../../.pair/knowledge/guidelines/testing/test-strategy/coverage-strategy.md) — coverage requirements
+   - [TDD](../../.pair/knowledge/guidelines/testing/test-strategy/tdd-test-driven-development.md) — TDD practices
 2. **Act**: Read project context:
-   - [adoption/tech/tech-stack.md](../../../.pair/adoption/tech/tech-stack.md) — language and framework (testing tools must be compatible)
-   - [adoption/product/PRD.md](../../../.pair/adoption/product/PRD.md) — project type and quality requirements (if available)
+   - [adoption/tech/tech-stack.md](../../.pair/adoption/tech/tech-stack.md) — language and framework (testing tools must be compatible)
+   - [adoption/product/PRD.md](../../.pair/adoption/product/PRD.md) — project type and quality requirements (if available)
 3. **Verify**: Guidelines and project context loaded.
 
 ### Step 3: Evaluate Options
@@ -103,7 +103,7 @@ Evaluate and decide on the testing strategy: framework, pyramid distribution, co
 
 ### Step 4: Write Adoption File
 
-1. **Check**: Does [adoption/tech/tech-stack.md](../../../.pair/adoption/tech/tech-stack.md) exist?
+1. **Check**: Does [adoption/tech/tech-stack.md](../../.pair/adoption/tech/tech-stack.md) exist?
 2. **Act**: Write or update **only the Testing section** of tech-stack.md:
    - Framework name and version
    - Coverage tool and version

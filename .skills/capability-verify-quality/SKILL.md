@@ -9,8 +9,8 @@ author: Foomakers
 
 Validate the current codebase against quality gates. Two sources of truth:
 
-- **[way-of-working.md](../../../.pair/adoption/tech/way-of-working.md)** — project-specific quality gate command and process (e.g., `pnpm quality-gate`). This is "what command we run."
-- **[quality-standards](../../../.pair/knowledge/guidelines/quality-assurance/quality-standards/README.md)** — universal quality standards (gates, DoD, checklists). This is "what we check."
+- **[way-of-working.md](../../.pair/adoption/tech/way-of-working.md)** — project-specific quality gate command and process (e.g., `pnpm quality-gate`). This is "what command we run."
+- **[quality-standards](../../.pair/knowledge/guidelines/quality-assurance/quality-standards/README.md)** — universal quality standards (gates, DoD, checklists). This is "what we check."
 
 Only check gates that are not already passing.
 
@@ -26,7 +26,7 @@ Execute each gate in order. For every gate, follow the **check → skip → act 
 
 ### Step 1: Read Adoption Quality Gate Configuration
 
-1. **Check**: Read [way-of-working.md](../../../.pair/adoption/tech/way-of-working.md) and look for a **Quality Gates** section declaring the project-specific quality gate command (e.g., `pnpm quality-gate`).
+1. **Check**: Read [way-of-working.md](../../.pair/adoption/tech/way-of-working.md) and look for a **Quality Gates** section declaring the project-specific quality gate command (e.g., `pnpm quality-gate`).
 2. **Skip**: If `way-of-working.md` has no Quality Gates section, fall back to `package.json` scripts for detectable gate commands (e.g., `test`, `lint`, `ts:check`).
 3. **Act**: If found, record the command for use in Step 5. Also note any sub-checks listed (e.g., type checking, testing, linting, formatting).
 
@@ -53,7 +53,7 @@ Execute each gate in order. For every gate, follow the **check → skip → act 
 
 ### Step 5: Custom Gates (from adoption)
 
-1. **Check**: Read [way-of-working.md](../../../.pair/adoption/tech/way-of-working.md) → look for a `### Custom Gate Registry` section.
+1. **Check**: Read [way-of-working.md](../../.pair/adoption/tech/way-of-working.md) → look for a `### Custom Gate Registry` section.
 2. **Branch** based on what is found:
 
    **A) Custom Gate Registry table found** → execute custom gates (Step 5.A).
@@ -84,8 +84,8 @@ Execute each gate in order. For every gate, follow the **check → skip → act 
    > If not, I'll record the opt-out so this question won't be asked again.
 
 2. **Branch**:
-   - **Developer says yes** → help define gates and write the Custom Gate Registry table to [way-of-working.md](../../../.pair/adoption/tech/way-of-working.md). Then execute them (Step 5.A).
-   - **Developer says no** → write the opt-out marker to [way-of-working.md](../../../.pair/adoption/tech/way-of-working.md):
+   - **Developer says yes** → help define gates and write the Custom Gate Registry table to [way-of-working.md](../../.pair/adoption/tech/way-of-working.md). Then execute them (Step 5.A).
+   - **Developer says no** → write the opt-out marker to [way-of-working.md](../../.pair/adoption/tech/way-of-working.md):
 
      ```markdown
      ### Custom Gate Registry
@@ -95,7 +95,7 @@ Execute each gate in order. For every gate, follow the **check → skip → act 
 
 3. **Verify**: way-of-working.md updated. Move to Step 6.
 
-See [quality-gates.md](../../../.pair/knowledge/guidelines/quality-assurance/quality-standards/quality-gates.md) for Custom Gate Registry table schema and enforcement level semantics.
+See [quality-gates.md](../../.pair/knowledge/guidelines/quality-assurance/quality-standards/quality-gates.md) for Custom Gate Registry table schema and enforcement level semantics.
 
 ### Step 6: Aggregate Quality Gate
 
@@ -138,15 +138,15 @@ When invoked **independently**:
 ## Graceful Degradation
 
 - If a standard gate command is not available (e.g., no test script in package.json), skip that gate and report: "Tests: SKIPPED — no test command found."
-- If [quality-standards](../../../.pair/knowledge/guidelines/quality-assurance/quality-standards/README.md) directory is not found, warn and run only detectable gates (lint, type check, tests from package.json scripts).
+- If [quality-standards](../../.pair/knowledge/guidelines/quality-assurance/quality-standards/README.md) directory is not found, warn and run only detectable gates (lint, type check, tests from package.json scripts).
 - If no quality-related scripts are found at all, report: "No quality gates detected. Configure quality gate commands in package.json or way-of-working.md."
 - If a custom gate command fails to execute (command not found), report as WARNING: "Gate `[name]`: SKIPPED — command not found."
-- If [way-of-working.md](../../../.pair/adoption/tech/way-of-working.md) is not found, skip custom gates entirely (standard gates still run).
+- If [way-of-working.md](../../.pair/adoption/tech/way-of-working.md) is not found, skip custom gates entirely (standard gates still run).
 
 ## Notes
 
 - This skill is **read-only** except for Step 5.C (first-time setup writes opt-out or Custom Gate Registry to way-of-working.md). All other steps only run existing commands.
-- Two sources: [way-of-working.md](../../../.pair/adoption/tech/way-of-working.md) for the project-specific quality gate command and custom gates (adoption-driven), [quality-standards](../../../.pair/knowledge/guidelines/quality-assurance/quality-standards/README.md) for universal quality standards.
+- Two sources: [way-of-working.md](../../.pair/adoption/tech/way-of-working.md) for the project-specific quality gate command and custom gates (adoption-driven), [quality-standards](../../.pair/knowledge/guidelines/quality-assurance/quality-standards/README.md) for universal quality standards.
 - Standard gates (Lint, Type Check, Test) are universal and language/platform-independent. Custom gates are project-specific and defined in adoption.
 - Each gate is independent — a failure in one gate does not prevent checking subsequent gates.
 - Re-invoke after fixes to confirm resolution. Already-passing gates are re-verified but complete instantly.

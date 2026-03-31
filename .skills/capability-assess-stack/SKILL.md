@@ -24,7 +24,7 @@ Evaluate and decide on the technology stack: languages, frameworks, runtime, dat
 
 ## Adoption File
 
-- **Target**: [adoption/tech/tech-stack.md](../../../.pair/adoption/tech/tech-stack.md) — **core sections only**
+- **Target**: [adoption/tech/tech-stack.md](../../.pair/adoption/tech/tech-stack.md) — **core sections only**
 - **Ownership**: Core sections (language, framework, runtime, database, monorepo, bundling, release, linting, git hooks, CLI tooling, markdown/docs)
 - **Shared file**: /capability-assess-testing owns Testing section, /capability-assess-ai owns AI section
 
@@ -49,7 +49,7 @@ Detect and evaluate unlisted dependencies. Used when `/process-review` finds a d
 1. **Check**: Is `$mode` provided?
 2. **Skip**: If provided, use it. Proceed to Step 1.
 3. **Act**: Auto-detect mode:
-   - `$choice` provided AND [tech-stack.md](../../../.pair/adoption/tech/tech-stack.md) has populated core sections → `implementation` (adding to existing stack)
+   - `$choice` provided AND [tech-stack.md](../../.pair/adoption/tech/tech-stack.md) has populated core sections → `implementation` (adding to existing stack)
    - `$choice` provided AND tech-stack.md missing or empty → `bootstrap` (initial setup with override)
    - No `$choice` AND tech-stack.md missing or empty → `bootstrap` (full assessment)
    - No `$choice` AND tech-stack.md populated → check caller context
@@ -65,7 +65,7 @@ Detect and evaluate unlisted dependencies. Used when `/process-review` finds a d
 2. **Skip**: If not provided, go to Path B.
 3. **Act** (implementation mode): Validate compatibility:
    - Parse `$choice` as `name@version`.
-   - Check existing [tech-stack.md](../../../.pair/adoption/tech/tech-stack.md) for conflicts:
+   - Check existing [tech-stack.md](../../.pair/adoption/tech/tech-stack.md) for conflicts:
      - Version incompatibility (e.g. library needs Node 20, stack has Node 18)
      - Duplicate entry (same library already listed)
      - Category conflict (e.g. two ORMs)
@@ -80,7 +80,7 @@ Detect and evaluate unlisted dependencies. Used when `/process-review` finds a d
 
 #### Path B — Adoption Exists
 
-1. **Check**: Does [adoption/tech/tech-stack.md](../../../.pair/adoption/tech/tech-stack.md) exist with populated core sections?
+1. **Check**: Does [adoption/tech/tech-stack.md](../../.pair/adoption/tech/tech-stack.md) exist with populated core sections?
 2. **Skip**: If not populated or missing, go to Path C.
 3. **Act**: Read current adoption. Present summary:
 
@@ -98,13 +98,13 @@ Detect and evaluate unlisted dependencies. Used when `/process-review` finds a d
 ### Step 2: Read Guidelines (bootstrap mode only)
 
 1. **Act**: Read technology guidelines:
-   - [Technology Stack Standards](../../../.pair/knowledge/guidelines/technical-standards/technology-stack/stack-standards.md) — stack requirements
-   - [Framework Selection](../../../.pair/knowledge/guidelines/technical-standards/technology-stack/framework-selection.md) — evaluation criteria
-   - [Tech Decisions](../../../.pair/knowledge/guidelines/technical-standards/technology-stack/tech-decisions.md) — decision frameworks
-   - [Conventions](../../../.pair/knowledge/guidelines/technical-standards/technology-stack/conventions.md) — naming and coding conventions
+   - [Technology Stack Standards](../../.pair/knowledge/guidelines/technical-standards/technology-stack/stack-standards.md) — stack requirements
+   - [Framework Selection](../../.pair/knowledge/guidelines/technical-standards/technology-stack/framework-selection.md) — evaluation criteria
+   - [Tech Decisions](../../.pair/knowledge/guidelines/technical-standards/technology-stack/tech-decisions.md) — decision frameworks
+   - [Conventions](../../.pair/knowledge/guidelines/technical-standards/technology-stack/conventions.md) — naming and coding conventions
 2. **Act**: Read project context:
-   - [adoption/product/PRD.md](../../../.pair/adoption/product/PRD.md) — project type, scale, constraints
-   - [adoption/tech/architecture.md](../../../.pair/adoption/tech/architecture.md) — architecture pattern (stack must support it)
+   - [adoption/product/PRD.md](../../.pair/adoption/product/PRD.md) — project type, scale, constraints
+   - [adoption/tech/architecture.md](../../.pair/adoption/tech/architecture.md) — architecture pattern (stack must support it)
 3. **Verify**: Guidelines and context loaded.
 
 ### Step 3: Evaluate and Decide
@@ -169,7 +169,7 @@ Detect and evaluate unlisted dependencies. Used when `/process-review` finds a d
 
 ### Step 4: Write Adoption File
 
-1. **Check**: Does [adoption/tech/tech-stack.md](../../../.pair/adoption/tech/tech-stack.md) exist?
+1. **Check**: Does [adoption/tech/tech-stack.md](../../.pair/adoption/tech/tech-stack.md) exist?
 2. **Act** (bootstrap mode): Write full tech-stack.md with all core sections. Include version for every entry.
 3. **Act** (implementation/review mode): Add or update **only the affected entry** in the appropriate section. Preserve all other content, including sections owned by /capability-assess-testing and /capability-assess-ai.
 4. **Verify**: Adoption file written. All entries have versions. Section ownership respected.

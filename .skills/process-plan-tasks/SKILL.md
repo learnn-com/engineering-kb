@@ -55,8 +55,8 @@ Transform a refined user story into specific, actionable implementation tasks. T
 **Skip if**: Story body already contains Technical Analysis section.
 
 1. **Act**: Analyze the story requirements against adoption files:
-   - Read [architecture.md](../../../.pair/adoption/tech/architecture.md) for architectural patterns.
-   - Read [tech-stack.md](../../../.pair/adoption/tech/tech-stack.md) for implementation choices.
+   - Read [architecture.md](../../.pair/adoption/tech/architecture.md) for architectural patterns.
+   - Read [tech-stack.md](../../.pair/adoption/tech/tech-stack.md) for implementation choices.
    - Identify affected system areas (services/modules) relevant to the story.
 2. **Act**: Present technical context summary to developer for validation.
 3. **Verify**: Developer approves. Context established.
@@ -82,7 +82,7 @@ Transform a refined user story into specific, actionable implementation tasks. T
 
 For each task (skipping tasks that already exist in the story body):
 
-1. **Act**: Define the task following the [task-template.md](../../../.pair/knowledge/guidelines/collaboration/templates/task-template.md):
+1. **Act**: Define the task following the [task-template.md](../../.pair/knowledge/guidelines/collaboration/templates/task-template.md):
    - Task Information (ID, priority, hours, system area)
    - Summary and type
    - Description with implementation context
@@ -98,7 +98,7 @@ For each task (skipping tasks that already exist in the story body):
 1. **Act**: Build the complete Task Breakdown section for the story body:
    - **Condensed Technical Analysis**: Keep strategy summary, data flow/pipeline order, key risks. Remove verbose detail.
    - **Task checklist**: `- [ ] **T-N**: [Title]` for each task.
-   - **Dependency Graph**: ASCII block showing task dependencies (see [task-template.md](../../../.pair/knowledge/guidelines/collaboration/templates/task-template.md) Task Breakdown Format).
+   - **Dependency Graph**: ASCII block showing task dependencies (see [task-template.md](../../.pair/knowledge/guidelines/collaboration/templates/task-template.md) Task Breakdown Format).
    - **AC Coverage table**: Maps each AC to covering tasks.
    - **Detailed tasks**: Full task definition per task (from Step 4).
 
@@ -159,5 +159,5 @@ TASK BREAKDOWN COMPLETE:
 - Task-level idempotency: re-invoking on a story with partial tasks appends only missing ones to the story body.
 - The integrated Technical Analysis + Task Breakdown format positions these as the last content sections in the story body (functional sections first, technical sections last).
 - Condensed TA retains: strategy summary, data flow/pipeline order, key risks. Removes verbose implementation detail that belongs in individual tasks.
-- Task template reference: [task-template.md](../../../.pair/knowledge/guidelines/collaboration/templates/task-template.md).
-- Story template reference: [user-story-template.md](../../../.pair/knowledge/guidelines/collaboration/templates/user-story-template.md).
+- Task template reference: [task-template.md](../../.pair/knowledge/guidelines/collaboration/templates/task-template.md).
+- Story template reference: [user-story-template.md](../../.pair/knowledge/guidelines/collaboration/templates/user-story-template.md).

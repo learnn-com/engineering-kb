@@ -15,7 +15,7 @@ The primary unit for user stories and feature requests.
 - **Equivalent to**: User Story in pair framework
 - **States**: New -> Committed -> Approved -> Done
 - **Key Fields**: Title, Description, Story Points, Priority, Iteration Path
-- **Created by**: [crea-pbi command](../../../../../.cursor/commands/crea-pbi.md) following [Step 6 of pair](../../../how-to/06-how-to-refine-a-user-story.md)
+- **Created by**: following the pair workflow in [06-how-to-refine-a-user-story](../../../how-to/06-how-to-refine-a-user-story.md)
 
 ### Task
 
@@ -24,7 +24,7 @@ Sub-work item of PBI for implementation tracking.
 - **States**: To Do -> In Progress -> Done
 - **Key Fields**: Title, Remaining Work (hours), Assigned To
 - **Relationship**: Always child of a PBI
-- **Created by**: [crea-task-breakdown command](../../../../../.cursor/commands/crea-task-breakdown.md) following [Step 7 of pair](../../../how-to/07-how-to-create-tasks.md)
+- **Created by**: following the pair workflow in [07-how-to-create-tasks](../../../how-to/07-how-to-create-tasks.md)
 
 ### Bug
 
@@ -55,23 +55,23 @@ Strategic initiative spanning multiple epics.
 ### PBI Lifecycle (pair workflow)
 
 ```
-New            -> PBI appena creato (Step 8: crea-pbi)
+New            -> Newly created PBI
   |
-Committed      -> PBI committed in sprint (Step 9: task-breakdown)
+Committed      -> PBI committed into the sprint
   |
-Approved       -> PBI in sviluppo, PR creata (Step 10: implementa-task)
+Approved       -> PBI in development, PR created
   |
-Done           -> PR merged, PBI completato (Step 11: review-pull-request)
+Done           -> PR merged, PBI completed
 ```
 
 ### Task Lifecycle
 
 ```
-To Do          -> Task creato, non iniziato
+To Do          -> Task created, not started
   |
-In Progress    -> Sviluppatore sta lavorando
+In Progress    -> Developer is working on it
   |
-Done           -> Implementazione completata
+Done           -> Implementation completed
 ```
 
 ## Creating Work Items via CLI
@@ -191,12 +191,12 @@ az boards work-item update \
 
 ### pair Step to Work Item Mapping
 
-| pair Step | Command | Work Item Action |
-|-----------|---------|-----------------|
-| Step 8: Refine Story | `@crea-pbi` | Create PBI (New) + Task with Remaining Work |
-| Step 9: Create Tasks | `@crea-task-breakdown` | Append task breakdown to PBI body |
-| Step 10: Implement | `@implementa-task` | Task -> In Progress -> Done, Create PR |
-| Step 11: Code Review | `@review-pull-request` | PBI -> Done (after merge) |
+| pair Step | Work Item Action |
+|-----------|-----------------|
+| Step 8: Refine Story | Create PBI (New) + Task with Remaining Work |
+| Step 9: Create Tasks | Append task breakdown to PBI body |
+| Step 10: Implement | Task -> In Progress -> Done, Create PR |
+| Step 11: Code Review | PBI -> Done (after merge) |
 
 ## Related Topics
 
