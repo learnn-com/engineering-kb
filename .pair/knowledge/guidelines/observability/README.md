@@ -167,4 +167,4 @@ Do you need enterprise support and budget allows?
 
 ---
 
-**Skill**: Use `/pair-capability-assess-observability` to evaluate and adopt an observability strategy from these guidelines via the resolution cascade.
+**Skill**: Use `/capability-assess-observability` to evaluate and adopt an observability strategy from these guidelines via the resolution cascade.

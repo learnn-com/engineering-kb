@@ -850,4 +850,4 @@ Each methodology file includes:
 
 ---
 
-**Skill**: Use `/pair-capability-assess-methodology` to evaluate and adopt a methodology from these guidelines via the resolution cascade.
+**Skill**: Use `/capability-assess-methodology` to evaluate and adopt a methodology from these guidelines via the resolution cascade.

@@ -114,4 +114,4 @@ This strategic foundation enables organizations to build comprehensive, sustaina
 
 ---
 
-**Skill**: Use `/pair-capability-assess-testing` to evaluate and adopt a testing strategy from these guidelines via the resolution cascade.
+**Skill**: Use `/capability-assess-testing` to evaluate and adopt a testing strategy from these guidelines via the resolution cascade.

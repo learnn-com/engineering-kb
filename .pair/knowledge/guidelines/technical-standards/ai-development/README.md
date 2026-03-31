@@ -231,4 +231,4 @@ Integration Strategy:
 
 ---
 
-**Skill**: Use `/pair-capability-assess-ai` to evaluate and adopt AI development tools from these guidelines via the resolution cascade.
+**Skill**: Use `/capability-assess-ai` to evaluate and adopt AI development tools from these guidelines via the resolution cascade.

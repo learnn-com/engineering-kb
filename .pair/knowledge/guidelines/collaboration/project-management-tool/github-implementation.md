@@ -218,7 +218,7 @@ gh pr create --project [PROJECT_ID]
 
 ### PR Review States
 
-GitHub supports three review actions. The `/pair-process-review` skill uses these through a tool-agnostic interface — this section documents the GitHub-specific implementation.
+GitHub supports three review actions. The `/process-review` skill uses these through a tool-agnostic interface — this section documents the GitHub-specific implementation.
 
 #### Review Actions
 
@@ -437,9 +437,9 @@ gh api graphql -f query='mutation {
 
 | Transition | When | Triggered by |
 |-----------|------|-------------|
-| Todo → Refined | Story refinement complete | `/pair-process-refine-story` via `/pair-capability-write-issue $status: Refined` |
-| Refined → In Progress | Implementation starts | `/pair-process-implement` via `/pair-capability-write-issue $status: In Progress` |
-| In Progress → Done | PR merged + issue closed | `/pair-process-review` merge step |
+| Todo → Refined | Story refinement complete | `/process-refine-story` via `/capability-write-issue $status: Refined` |
+| Refined → In Progress | Implementation starts | `/process-implement` via `/capability-write-issue $status: In Progress` |
+| In Progress → Done | PR merged + issue closed | `/process-review` merge step |
 
 ### Issue Close (Post-Merge)
 

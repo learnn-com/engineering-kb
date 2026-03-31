@@ -87,7 +87,7 @@ See [adr-template.md](templates/adr-template.md) for the full template.
 
 ## Workflow
 
-Decision records are created via the `/pair-capability-record-decision` skill:
+Decision records are created via the `/capability-record-decision` skill:
 
 1. **Classify**: Is the decision architectural or non-architectural?
 2. **Write**: Create the decision file in the appropriate directory using the template.
@@ -104,9 +104,9 @@ Decision records are created via the `/pair-capability-record-decision` skill:
 
 | Skill              | Interaction with Decision Records                        |
 | ------------------ | -------------------------------------------------------- |
-| `/pair-capability-record-decision` | Creates ADR or ADL, updates adoption files               |
-| `/pair-capability-assess-stack`    | Composes `/pair-capability-record-decision` for tech stack decisions     |
-| `/pair-capability-assess-*`        | Compose `/pair-capability-record-decision` for domain-specific decisions |
-| `/pair-process-implement`          | Composes `/pair-capability-record-decision` when implementation decisions arise |
-| `/pair-process-review`             | Composes `/pair-capability-record-decision` when review identifies undocumented decisions |
-| `/pair-capability-verify-adoption` | Reads adoption files (informed by ADR/ADL) to check compliance |
+| `/capability-record-decision` | Creates ADR or ADL, updates adoption files               |
+| `/capability-assess-stack`    | Composes `/capability-record-decision` for tech stack decisions     |
+| `/capability-assess-*`        | Compose `/capability-record-decision` for domain-specific decisions |
+| `/process-implement`          | Composes `/capability-record-decision` when implementation decisions arise |
+| `/process-review`             | Composes `/capability-record-decision` when review identifies undocumented decisions |
+| `/capability-verify-adoption` | Reads adoption files (informed by ADR/ADL) to check compliance |

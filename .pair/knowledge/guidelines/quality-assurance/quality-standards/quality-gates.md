@@ -158,18 +158,18 @@ Projects can define additional quality gates beyond the standard ones (Lint, Typ
 | Order       | Execution sequence among custom gates (standard gates always run first)            |
 | Gate        | Human-readable gate name                                                           |
 | Command     | Shell command to execute (e.g., `pnpm prettier:fix`)                               |
-| Scope Key   | Maps to `/pair-capability-verify-quality` `$scope` argument for selective execution                |
+| Scope Key   | Maps to `/capability-verify-quality` `$scope` argument for selective execution                |
 | Required    | `Yes` = failure → FAIL verdict; `No` (Advisory) = failure → WARNING, not a blocker |
 | Description | Brief explanation of what the gate checks                                          |
 
 #### Enforcement levels:
 
-- **Required** (`Yes`): Gate failure contributes to overall FAIL. The composing skill decides the consequence (e.g., `/pair-process-implement` HALTs, `/pair-process-review` reports as finding).
+- **Required** (`Yes`): Gate failure contributes to overall FAIL. The composing skill decides the consequence (e.g., `/process-implement` HALTs, `/process-review` reports as finding).
 - **Advisory** (`No`): Gate failure produces a WARNING. Does not block the pipeline. Useful for auto-fixers (formatting) or informational checks.
 
-**Standard gates** (Lint, Type Check, Test) are built into `/pair-capability-verify-quality` and always Required. Do not duplicate them in the Custom Gate Registry.
+**Standard gates** (Lint, Type Check, Test) are built into `/capability-verify-quality` and always Required. Do not duplicate them in the Custom Gate Registry.
 
-**Adding a custom gate**: Add a row to the Custom Gate Registry table in `way-of-working.md`. The gate becomes available on the next `/pair-capability-verify-quality` invocation.
+**Adding a custom gate**: Add a row to the Custom Gate Registry table in `way-of-working.md`. The gate becomes available on the next `/capability-verify-quality` invocation.
 
 ## 🎯 **SUCCESS CRITERIA**
 

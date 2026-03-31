@@ -98,7 +98,7 @@ Welcome to the AI-Human pairing repository template! This guide provides essenti
 
 1. **Read** `way-of-working.md` to understand the development process
 2. **Adapt** technical guidelines in `guidelines/` folder to your technology stack
-3. **Use skills** (if your agent supports them) — run `/pair-next` to get started. See [skills-guide.md](skills-guide.md)
+3. **Use skills** (if your agent supports them) — run `/next` to get started. See [skills-guide.md](skills-guide.md)
 4. **Follow** the process guides in `how-to/` folder as fallback when skills are not available
 
 ### 🚨 Critical: Technical Guidelines Setup

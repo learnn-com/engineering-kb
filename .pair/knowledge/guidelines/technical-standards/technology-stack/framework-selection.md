@@ -745,4 +745,4 @@ This comprehensive framework selection guide ensures informed decisions based on
 
 ---
 
-**Skill**: Use `/pair-capability-assess-stack` to evaluate and adopt tech stack choices from these guidelines via the resolution cascade.
+**Skill**: Use `/capability-assess-stack` to evaluate and adopt tech stack choices from these guidelines via the resolution cascade.

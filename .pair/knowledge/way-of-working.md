@@ -56,24 +56,24 @@ The process is designed to:
 
 ### 📘 Induction
 
-1. **🤖🤝👨‍💻 PRD Creation** (`/pair-process-specify-prd`) → Generate Product Requirements Document from user needs & market insights
-2. **🤖🤝👨‍💻 Bootstrap Checklist Completion** (`/pair-process-bootstrap`) → Define technical context and operational framework through comprehensive project assessment
-3. **🤖🤝👨‍💻 Initiative Prioritization** (`/pair-process-plan-initiatives`) → Identify and rank initiatives by impact
+1. **🤖🤝👨‍💻 PRD Creation** (`/process-specify-prd`) → Generate Product Requirements Document from user needs & market insights
+2. **🤖🤝👨‍💻 Bootstrap Checklist Completion** (`/process-bootstrap`) → Define technical context and operational framework through comprehensive project assessment
+3. **🤖🤝👨‍💻 Initiative Prioritization** (`/process-plan-initiatives`) → Identify and rank initiatives by impact
 
 ### 🚀 Strategic Initiatives
 
-1. **🤖🤝👨‍💻 Epic Breakdown** (`/pair-process-plan-epics`) → Divide initiative into value increments
+1. **🤖🤝👨‍💻 Epic Breakdown** (`/process-plan-epics`) → Divide initiative into value increments
 
 ### 🧩 Customer-Facing Iterations
 
-1. **🤖🤝👨‍💻 User Story Breakdown** (`/pair-process-plan-stories`) → Decompose epics into granular stories
-2. **🤖🤝👨‍💻 Story Refinement** (`/pair-process-refine-story`) → Complete with description, scope, acceptance criteria, technical notes
-3. **🤖🤝👨‍💻 Task Breakdown** (`/pair-process-plan-tasks`) → Decompose stories into executable tasks
+1. **🤖🤝👨‍💻 User Story Breakdown** (`/process-plan-stories`) → Decompose epics into granular stories
+2. **🤖🤝👨‍💻 Story Refinement** (`/process-refine-story`) → Complete with description, scope, acceptance criteria, technical notes
+3. **🤖🤝👨‍💻 Task Breakdown** (`/process-plan-tasks`) → Decompose stories into executable tasks
 
 ### 🛠️ Sprint Execution
 
-1. **🤖⚡ Task Implementation** (`/pair-process-implement`) → Autonomous completion with TDD, quality gates, and commit-per-task/story strategy
-2. **🤖🤝👨‍💻 Code Review** (`/pair-process-review`) → Structured review with adoption compliance, merge flow, and parent cascade
-3. **🤖⚡ Status Update** → Automatic story/epic/initiative tracking update (handled by `/pair-process-implement` and `/pair-process-review`)
+1. **🤖⚡ Task Implementation** (`/process-implement`) → Autonomous completion with TDD, quality gates, and commit-per-task/story strategy
+2. **🤖🤝👨‍💻 Code Review** (`/process-review`) → Structured review with adoption compliance, merge flow, and parent cascade
+3. **🤖⚡ Status Update** → Automatic story/epic/initiative tracking update (handled by `/process-implement` and `/process-review`)
 
-> **Skill-enabled workflow**: Run `/pair-next` at session start to determine the most relevant skill. See [skills-guide.md](skills-guide.md) for the full catalog (29 skills: 9 process + 19 capability + 1 navigator).
+> **Skill-enabled workflow**: Run `/next` at session start to determine the most relevant skill. See [skills-guide.md](skills-guide.md) for the full catalog (29 skills: 9 process + 19 capability + 1 navigator).
