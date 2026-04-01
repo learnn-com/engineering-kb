@@ -1,0 +1,7 @@
+.DS_Store
+
+# Build/package artifacts
+dist/
+
+# Local auth / machine-specific config
+.npmrc
