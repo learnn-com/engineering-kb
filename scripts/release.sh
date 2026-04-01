@@ -6,7 +6,7 @@ usage() {
 Create a GitHub Release with the latest KB package zip.
 
 Usage:
-  scripts/release.sh --tag vX.Y.Z [--draft] [--prerelease] [--notes "text"] [--title "text"] [--no-package]
+  scripts/release.sh --version X.Y.Z [--tag vX.Y.Z] [--draft] [--prerelease] [--notes "text"] [--title "text"] [--no-package]
 
 Defaults:
   - Builds package with `npx @foomakers/pair-cli package ...` (unless --no-package)
@@ -20,6 +20,7 @@ Env overrides:
 EOF
 }
 
+VERSION=""
 TAG=""
 TITLE=""
 NOTES=""
@@ -29,6 +30,7 @@ NO_PACKAGE=0
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
+    --version) VERSION="${2:-}"; shift 2 ;;
     --tag) TAG="${2:-}"; shift 2 ;;
     --title) TITLE="${2:-}"; shift 2 ;;
     --notes) NOTES="${2:-}"; shift 2 ;;
@@ -40,10 +42,14 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-if [[ -z "$TAG" ]]; then
-  echo "Missing required --tag (e.g. --tag v1.0.0)" >&2
+if [[ -z "$VERSION" ]]; then
+  echo "Missing required --version (e.g. --version 1.0.0)" >&2
   usage
   exit 2
+fi
+
+if [[ -z "$TAG" ]]; then
+  TAG="v$VERSION"
 fi
 
 if ! command -v gh >/dev/null 2>&1; then
@@ -73,12 +79,13 @@ if [[ "$NO_PACKAGE" -eq 0 ]]; then
     exit 1
   fi
 
-  echo "Packaging KB (layout=$PAIR_LAYOUT, config=$PAIR_CONFIG)..."
+  echo "Packaging KB (version=$VERSION, layout=$PAIR_LAYOUT, config=$PAIR_CONFIG)..."
   npx @foomakers/pair-cli package -s . \
     --config "$PAIR_CONFIG" \
     --layout "$PAIR_LAYOUT" \
     --author "$PAIR_AUTHOR" \
-    --org-name "$PAIR_ORG_NAME"
+    --org-name "$PAIR_ORG_NAME" \
+    --pkg-version "$VERSION"
 fi
 
 ZIP="$(ls -1t dist/kb-package-*.zip 2>/dev/null | head -n 1 || true)"
