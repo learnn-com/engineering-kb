@@ -1,6 +1,6 @@
 ---
 name: process-review
-description: "Reviews a pull request through a structured 6-phase process: validation, technical review, adoption compliance, completeness check, decision, and optional merge with parent cascade. Composes /capability-verify-quality, /capability-verify-done, /capability-record-decision, /capability-assess-debt (required) and /capability-verify-adoption, /capability-assess-stack (optional with graceful degradation). Output follows the code review template. Idempotent — re-invocation resumes from incomplete phases."
+description: "Reviews a pull request through a structured 6-phase process: validation, technical review, adoption compliance, completeness check, decision, and optional merge with parent cascade. Composes /capability-verify-quality, /capability-verify-done, /capability-record-decision, /capability-assess-debt, /capability-assess-security (required) and /capability-verify-adoption, /capability-assess-stack (optional with graceful degradation). Output follows the code review template. Idempotent — re-invocation resumes from incomplete phases."
 version: 0.4.1
 author: Foomakers
 ---
@@ -11,15 +11,16 @@ Review a pull request through 6 sequential phases (5 review + 1 optional merge).
 
 ## Composed Skills
 
-| Skill              | Type       | Required | Phase | Purpose                              |
-| ------------------ | ---------- | -------- | ----- | ------------------------------------ |
-| `/capability-verify-quality`  | Capability | Yes      | 2     | Quality gate checking                |
-| `/capability-verify-done`     | Capability | Yes      | 4     | Definition of Done checking          |
-| `/capability-record-decision` | Capability | Yes      | Any   | Record missing ADR (HALT condition)  |
-| `/capability-assess-debt`     | Capability | Yes      | 4     | Flag tech debt items                 |
-| `/capability-verify-adoption`       | Capability | Optional | 3     | Full adoption compliance (from #105)           |
-| `/capability-assess-stack`          | Capability | Optional | 3     | Tech-stack resolution (from #104)              |
-| `/capability-execute-manual-tests`  | Capability | Optional | 6     | Post-merge release validation (manual tests)   |
+| Skill                                   | Type       | Required | Phase | Purpose                                       |
+| --------------------------------------- | ---------- | -------- | ----- | --------------------------------------------- |
+| `/capability-verify-quality`       | Capability | Yes      | 2     | Quality gate checking                         |
+| `/capability-verify-done`          | Capability | Yes      | 4     | Definition of Done checking                   |
+| `/capability-record-decision`      | Capability | Yes      | Any   | Record missing ADR (HALT condition)           |
+| `/capability-assess-debt`          | Capability | Yes      | 4     | Flag tech debt items                          |
+| `/capability-verify-adoption`      | Capability | Optional | 3     | Full adoption compliance (from #105)          |
+| `/capability-assess-stack`         | Capability | Optional | 3     | Tech-stack resolution (from #104)             |
+| `/capability-assess-security`      | Capability | Yes      | 3     | Security posture check against adoption files |
+| `/capability-execute-manual-tests` | Capability | Optional | 6     | Post-merge release validation (manual tests)  |
 
 ## Arguments
 
@@ -127,11 +128,11 @@ Ask: _"Proceed with review?"_
 This phase uses a **4-level graceful degradation cascade** depending on which optional skills are installed:
 
 | Level | /capability-verify-adoption | /capability-assess-stack | Behavior                                                   |
-| ----- | ---------------- | ------------- | ---------------------------------------------------------- |
-| 1     | Installed        | Installed     | Full adoption compliance + automatic tech-stack resolution |
-| 2     | Installed        | Not installed | Full compliance detection, manual stack resolution         |
-| 3     | Not installed    | Installed     | Inline tech-stack check only + automatic resolution        |
-| 4     | Not installed    | Not installed | Warn developer for manual verification                     |
+| ----- | -------------------------------- | ----------------------------- | ---------------------------------------------------------- |
+| 1     | Installed                        | Installed                     | Full adoption compliance + automatic tech-stack resolution |
+| 2     | Installed                        | Not installed                 | Full compliance detection, manual stack resolution         |
+| 3     | Not installed                    | Installed                     | Inline tech-stack check only + automatic resolution        |
+| 4     | Not installed                    | Not installed                 | Warn developer for manual verification                     |
 
 ### Step 3.1: Determine Degradation Level
 
@@ -175,9 +176,20 @@ This phase uses a **4-level graceful degradation cascade** depending on which op
 ### Step 3.3: Verify Adoption Results
 
 1. **Check**: Are there unresolved non-conformities?
-2. **Skip**: If all resolved or Level 4 (warned) — move to Phase 4.
+2. **Skip**: If all resolved or Level 4 (warned) — move to Step 3.4.
 3. **Act**: Unresolved tech-stack items become review findings. Unresolved architectural gaps are HALT conditions.
 4. **Verify**: All items resolved or catalogued as findings.
+
+### Step 3.4: Security Assessment
+
+1. **Check**: Has `/capability-assess-security` already run in this session?
+2. **Skip**: If yes — reuse results, move to Phase 4.
+3. **Act**: Compose `/capability-assess-security` with `$scope` derived from changed files (e.g. if PR touches `apps/web` → `$scope = web`; if touches multiple packages → omit `$scope` for full assessment).
+   - The skill runs in **review mode**: reads existing adoption files and package `.pair.security.md` files, checks PR diff against them, returns findings. It does NOT write ADL or modify adoption files.
+4. **Verify**: Security findings recorded by severity:
+   - P0 Critical / P1 High → critical or major review issues
+   - P2 Medium / P3 Low → minor issues
+   - Missing `.pair.security.md` for a package touched by the PR → major issue
 
 ## Phase 4: Completeness Check
 
@@ -203,7 +215,7 @@ This phase uses a **4-level graceful degradation cascade** depending on which op
    - **Review Information**: PR number, author, reviewer, date, story, review type
    - **Review Summary**: overall assessment, key changes, business value
    - **Code Review Checklist**: functionality, code quality, technical standards (from Phase 2)
-   - **Security Review**: security findings (from Phase 2 + Phase 3)
+   - **Security Review**: security findings (from Phase 2 + Phase 3 Step 3.4 `/capability-assess-security`)
    - **Testing Review**: test coverage and quality (from /capability-verify-quality)
    - **Documentation Review**: documentation completeness (from /capability-verify-done)
    - **Detailed Review Comments**: issues by severity, positive feedback
@@ -238,6 +250,7 @@ Based on compiled findings:
 3. **Act**: If APPROVED or TECH-DEBT → ask reviewer:
 
    > PR approved. Merge now or let the author merge?
+   >
    > 1. **Merge now** — proceed to Phase 6
    > 2. **Author merges** — stop here, author re-invokes `/process-implement` Phase 4
 
@@ -327,6 +340,7 @@ REVIEW COMPLETE:
 ├── Quality:    [PASS | FAIL — N gates]
 ├── DoD:        [N/N criteria met]
 ├── Adoption:   [Level N — summary]
+├── Security:   [PASS | N findings (P0: N | P1: N | P2: N)]
 ├── Debt:       [N items flagged]
 └── Report:     [Posted as PR comment]
 ```
@@ -370,6 +384,7 @@ Re-invoking `/process-review` on a partially reviewed PR is safe:
 - **/verify-adoption not installed**: Falls back to inline dependency checking against [tech-stack.md](../../.pair/adoption/tech/tech-stack.md). Warning logged. See degradation cascade (Phase 3).
 - **/assess-stack not installed**: Unlisted dependencies flagged as warnings for manual verification. Does NOT HALT.
 - **/assess-debt not available**: Skip debt assessment, note in report.
+- **/assess-security not installed**: Skip Step 3.4. Warn: "Security assessment skipped — /capability-assess-security not installed. Manually verify PR against `.pair.security.md` files." Does NOT HALT.
 - **Story not found**: Review proceeds with PR-only validation (no AC check). Phase 6 skips parent cascade.
 - **Code review template not found**: **HALT** — cannot produce review without template.
 - **PM tool not accessible**: Ask reviewer to manually provide PR details. Phase 6 merge via CLI only.
@@ -380,7 +395,7 @@ Re-invoking `/process-review` on a partially reviewed PR is safe:
 ## Notes
 
 - This skill **reads code, posts review comments, and optionally merges PRs** — it does not modify source code.
-- First skill to compose 7 atomic skills (4 required + 3 optional). Proves composition pattern at scale.
+- Composes 8 atomic skills (5 required + 3 optional).
 - Review phases are sequential — each phase builds on findings from prior phases.
 - The reviewer can stop between phases. Re-invoke to resume (idempotency ensures correct state).
 - Output follows [code-review-template.md](../../.pair/knowledge/guidelines/collaboration/templates/code-review-template.md) — the template defines structure, /process-review fills it with findings.

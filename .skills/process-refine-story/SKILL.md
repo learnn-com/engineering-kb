@@ -1,6 +1,6 @@
 ---
 name: process-refine-story
-description: "Refines a user story from Todo to Refined state through structured phases: selection, requirements analysis (Given-When-Then), technical analysis, sprint readiness, and documentation. Section-level idempotency — detects partial refinement and resumes. Composes /capability-write-issue for PM tool updates."
+description: "Refines a user story from Todo to Refined state through structured phases: selection, requirements analysis (numbered AC), technical analysis, sprint readiness, and documentation. Section-level idempotency — detects partial refinement and resumes. Composes /capability-write-issue for PM tool updates."
 version: 0.4.1
 author: Foomakers
 ---
@@ -11,8 +11,8 @@ Transform a user story from rough breakdown (Todo) into a development-ready spec
 
 ## Composed Skills
 
-| Skill          | Type       | Required                                                |
-| -------------- | ---------- | ------------------------------------------------------- |
+| Skill                          | Type       | Required                                                |
+| ------------------------------ | ---------- | ------------------------------------------------------- |
 | `/capability-write-issue` | Capability | Yes — creates or updates the story issue in the PM tool |
 
 ## Arguments
@@ -43,19 +43,19 @@ Transform a user story from rough breakdown (Todo) into a development-ready spec
 
 1. **Check**: Read the current story body and classify each section as **present** or **missing**:
 
-| Section                               | Detection                                                                  |
-| ------------------------------------- | -------------------------------------------------------------------------- |
-| Story Statement                       | Has `**As a**` / `**I want**` / `**So that**` with non-placeholder content |
-| Epic Context                          | Has `**Parent Epic**` with actual link                                     |
-| Acceptance Criteria (Given-When-Then) | Has `**Given**` / `**When**` / `**Then**` blocks                           |
-| Business Rules                        | Has non-placeholder business rules                                         |
-| Edge Cases                            | Has non-placeholder edge case handling                                     |
-| Technical Analysis                    | Has `### Implementation Approach` or `### Strategy` with content           |
-| Technical Risks                       | Has risk table with entries                                                |
-| Definition of Done                    | Has DoD checklist with items                                               |
-| Story Sizing                          | Has `**Final Story Points**` with value                                    |
-| Dependencies                          | Has dependency information                                                 |
-| Validation Strategy                   | Has testing approach                                                       |
+| Section                        | Detection                                                                  |
+| ------------------------------ | -------------------------------------------------------------------------- |
+| Story Statement                | Has `**As a**` / `**I want**` / `**So that**` with non-placeholder content |
+| Epic Context                   | Has `**Parent Epic**` with actual link                                     |
+| Acceptance Criteria (Numbered) | Has numbered list of AC with non-placeholder content                       |
+| Business Rules                 | Has non-placeholder business rules                                         |
+| Edge Cases                     | Has non-placeholder edge case handling                                     |
+| Technical Analysis             | Has `### Implementation Approach` or `### Strategy` with content           |
+| Technical Risks                | Has risk table with entries                                                |
+| Definition of Done             | Has DoD checklist with items                                               |
+| Story Sizing                   | Has `**Final Story Points**` with value                                    |
+| Dependencies                   | Has dependency information                                                 |
+| Validation Strategy            | Has testing approach                                                       |
 
 1. **Act**: Determine refinement state:
    - **All sections present** → story is already Refined. Offer selective update (Step 6).
@@ -70,13 +70,13 @@ Transform a user story from rough breakdown (Todo) into a development-ready spec
 **Skip if**: Acceptance Criteria, Business Rules, and Edge Cases are all present.
 
 1. **Act**: Expand the story scope into detailed, testable acceptance criteria:
-   - Convert requirements into **Given-When-Then** scenarios.
+   - Convert requirements into **numbered acceptance criteria**.
    - Identify **business rules** with measurable criteria.
    - Address **edge cases** and error handling conditions.
 2. **Act**: Present the proposed criteria to the developer for validation:
 
    > Proposed acceptance criteria for `#[ID]`:
-   > [List Given-When-Then scenarios]
+   > [Numbered AC list]
    > [Business rules]
    > [Edge cases]
    > Approve or adjust?
@@ -109,15 +109,16 @@ Transform a user story from rough breakdown (Todo) into a development-ready spec
 
 ### Step 5: Documentation and PM Tool Update
 
-1. **Act**: Assemble the complete refined story body using the [user-story-template.md](../../.pair/knowledge/guidelines/collaboration/templates/user-story-template.md) Refined template:
+1. **Act**: Determine the story title following the format `[Area] [Obiettivo esplicativo]` — describe what must happen, include the actor only if relevant (e.g., `[Security] L'utente deve poter accedere con MFA`, `[Billing] Il sistema deve gestire il rinnovo automatico degli abbonamenti`). Confirm with developer if area is unclear.
+2. **Act**: Assemble the complete refined story body using the [user-story-template.md](../../.pair/knowledge/guidelines/collaboration/templates/user-story-template.md) Refined template:
    - **Functional sections first**: Story Statement → Epic Context → Acceptance Criteria → Definition of Done → Story Sizing → Dependencies → Validation → Notes.
    - **Technical sections last**: Technical Analysis → (Task Breakdown added later by `/process-plan-tasks`).
-2. **Act**: Compose `/capability-write-issue` with:
+3. **Act**: Compose `/capability-write-issue` with:
    - `$type: story`
    - `$content`: the assembled refined story body
    - `$id`: the story identifier (update mode — story already exists)
    - `$status: Refined` — transitions the project board field from Todo to Refined
-3. **Verify**: Story updated in PM tool. Board status is Refined.
+4. **Verify**: Story updated in PM tool. Board status is Refined.
 
 ### Step 6: Already-Refined Update (optional path)
 
@@ -126,6 +127,7 @@ Reached only when Step 1 detects all sections are present.
 1. **Act**: Ask the developer which sections to update:
 
    > Story `#[ID]` is already refined. Which sections need updating?
+   >
    > 1. Acceptance Criteria
    > 2. Technical Analysis
    > 3. Sprint Sizing

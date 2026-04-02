@@ -15,10 +15,10 @@ Run `/next` at the start of every session. It reads project adoption files and P
 | Type | Count | Purpose |
 |------|-------|---------|
 | **Process** | 9 | Lifecycle phases — orchestrate capability skills |
-| **Capability** | 19 | Atomic units — perform a single focused operation |
+| **Capability** | 22 | Atomic units — perform a single focused operation |
 | **Navigator** | 1 | Recommend the next most relevant skill |
 
-Process skills compose capability skills. Capability skills are independently invocable. Total: 29 (9 process + 19 capability + 1 navigator).
+Process skills compose capability skills. Capability skills are independently invocable. Total: 32 (9 process + 22 capability + 1 navigator).
 
 ## Full Catalog
 
@@ -38,7 +38,7 @@ Process skills compose capability skills. Capability skills are independently in
 
 ### Capability Skills (19)
 
-#### Assessment Skills (8)
+#### Assessment Skills (9)
 
 | Skill | Scope |
 |-------|-------|
@@ -50,6 +50,7 @@ Process skills compose capability skills. Capability skills are independently in
 | `/capability-assess-infrastructure` | Infrastructure strategy evaluation |
 | `/capability-assess-observability` | Observability strategy evaluation |
 | `/capability-assess-ai` | AI development tools evaluation |
+| `/capability-assess-security` | Security posture + adoption alignment (guidelines, package `.pair.security.md`) |
 
 #### Verification Skills (4)
 
@@ -86,13 +87,13 @@ Process skills compose capability skills. Capability skills are independently in
 
 ## Directory Structure
 
+In this repository, skills live under `.skills/` (each skill is a folder with `SKILL.md`):
+
 ```text
-.cursor/skills/
+.skills/
 ├── next/
 ├── process-*/
-├── capability-*/
-└── agent-browser/
-    └── SKILL.md
+└── capability-*/
 ```
 
 Each skill directory contains a `SKILL.md` file with YAML frontmatter (`name` + `description`) and a structured algorithm using the **check → skip → act → verify** pattern.
@@ -127,6 +128,7 @@ Skills read from and write to adoption files in `.pair/adoption/`:
 |------|--------------|------------------|-------------------|
 | Tech stack | `tech/tech-stack.md` | `/capability-verify-adoption`, `/process-review` | `/capability-assess-stack`, `/process-bootstrap` |
 | Architecture | `tech/architecture.md` | `/capability-verify-adoption`, `/process-review` | `/capability-assess-architecture` |
+| Security | `tech/security.md` + package `.pair.security.md` | `/capability-verify-adoption`, `/process-review` | `/capability-assess-security` |
 | Way of working | `tech/way-of-working.md` | `/process-implement`, `/process-review`, `/capability-estimate` | `/capability-assess-methodology`, `/capability-setup-pm` |
 | Decisions (ADR) | `tech/adr/*.md` | `/capability-verify-adoption`, `/process-review` | `/capability-record-decision` |
 | Decisions (ADL) | `decision-log/*.md` | `/capability-verify-adoption` | `/capability-record-decision` |
