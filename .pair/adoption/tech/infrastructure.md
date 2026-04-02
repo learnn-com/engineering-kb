@@ -170,41 +170,12 @@
 - Data retention policies are configured per GDPR requirements.
 - User data deletion workflows are implemented in compliance with GDPR.
 
-## Backup & Disaster Recovery
+## App-Specific Deployment
 
-- **RDS Automated Backups**: Daily snapshots with 7-day retention.
-- **DynamoDB Point-in-Time Recovery**: Enabled for critical tables.
-- **S3 Versioning**: Enabled for critical buckets to prevent accidental deletions.
-- **Recovery Time Objective (RTO)**: < 4 hours for critical services.
-- **Recovery Point Objective (RPO)**: < 1 hour for database data.
+Deployment details for individual client apps live in their local `.pair` contexts:
 
-## Cost Optimization
-
-- **Lambda**: Pay-per-invocation model reduces idle costs.
-- **DynamoDB**: On-demand billing scales with usage.
-- **S3 Lifecycle Policies**: Archive old content to Glacier storage class.
-- **CloudWatch Log Retention**: Limited to 7-30 days per service.
-- **Spot Instances**: Not currently used (future consideration for batch jobs).
-
-## DevOps Practices
-
-- **Pre-commit Hooks**: Prettier formatting (`prettier:fix`).
-- **Pre-push Hooks**: Build + unit tests (`turbo build && turbo test`).
-- **Code Review**: All changes require PR approval before merging to `Development`.
-- **Infrastructure Review**: CDK diffs are reviewed before production deployment.
-
-## Mobile App Deployment (Separate Pipeline)
-
-- **iOS**: Built and distributed via App Store Connect (manual process).
-- **Android**: Built and distributed via Google Play Console (manual process).
-- **React Native**: Metro bundler generates JS bundles for native apps.
-- **OTA Updates**: Not currently adopted (future consideration via CodePush).
-
-## Browser Extension Deployment (Separate Pipeline)
-
-- **Chrome Web Store**: Manual upload of production builds.
-- **Firefox Add-ons**: Manual upload of production builds.
-- **Build Process**: Vite bundles extension with `@crxjs/vite-plugin`.
+- **Mobile App** (iOS/Android): [`apps/mobile/.pair — ux-ui.md`](../../../apps/mobile/.pair/.pair.ux-ui.md)
+- **Browser Extension** (Chrome/Firefox): [`apps/extension/.pair — ux-ui.md`](../../../apps/extension/.pair/.pair.ux-ui.md)
 
 ---
 

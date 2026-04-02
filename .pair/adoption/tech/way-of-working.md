@@ -18,4 +18,20 @@
 
 ---
 
+## Enabled How-To Guides
+
+Only the following how-to guides are relevant for this project. Agents must not invoke skills or workflows related to disabled how-tos.
+
+| # | File | Skill |
+|---|------|-------|
+| 05 | `05-how-to-breakdown-user-stories.md` | `/process-plan-stories` |
+| 06 | `06-how-to-refine-a-user-story.md` | `/process-refine-story` |
+| 07 | `07-how-to-create-tasks.md` | `/process-plan-tasks` |
+| 08 | `08-how-to-implement-a-task.md` | `/process-implement` |
+| 09 | `09-how-to-code-review.md` | `/process-review` |
+
+**Disabled** (not applicable to this project): `01-how-to-create-PRD.md`, `02-how-to-complete-bootstrap-checklist.md`, `03-how-to-create-and-prioritize-initiatives.md`, `04-how-to-breakdown-epics.md`.
+
+---
+
 All development activities must follow these adopted practices. For process and rationale, see [way-of-working.md](../../knowledge/way-of-working.md).

@@ -8,44 +8,38 @@
 - Architecture supports three client applications: web platform (desktop-first), mobile apps (iOS/Android), and browser extension.
 
 ## Microservices (15 Services)
+[`.pair` context](../../../services/.pair/.pair.README.md)
 
-1. **identity** - Authentication and authorization via Keycloak (OAuth 2.0/OIDC)
-2. **checkout** - Purchase flow and payment processing
-3. **billing** - Subscription management (Stripe)
-4. **my** - User dashboard and personal data
-5. **engagement** - User activity tracking and analytics
-6. **webhooks** - External integrations and event handling
-7. **vod** - Video-on-demand streaming with DRM
-8. **assistant** - AI-powered learning assistant (Learnn AI)
-9. **user-content** - User-generated content management
-10. **quiz** - Assessments, certifications, and skill verification
-11. **recommender** - Personalized recommendations (AWS Personalize)
-12. **profile** - User profile management
-13. **expert** - Expert and instructor management
-14. **uptime** - System monitoring and health checks
-15. **cms-v4** - Headless CMS (Strapi v4.12.4) for content management
+1. **identity** - Authentication and authorization via Keycloak (OAuth 2.0/OIDC) → [`.pair` context](../../../services/identity/.pair/.pair.README.md)
+2. **checkout** - Purchase flow and payment processing → [`.pair` context](../../../services/checkout/.pair/.pair.README.md)
+3. **billing** - Subscription management (Stripe) → [`.pair` context](../../../services/billing/.pair/.pair.README.md)
+4. **my** - User dashboard and personal data → [`.pair` context](../../../services/my/.pair/.pair.README.md)
+5. **engagement** - User activity tracking and analytics → [`.pair` context](../../../services/engagement/.pair/.pair.README.md)
+6. **webhooks** - External integrations and event handling → [`.pair` context](../../../services/webhooks/.pair/.pair.README.md)
+7. **vod** - Video-on-demand streaming with DRM → [`.pair` context](../../../services/vod/.pair/.pair.README.md)
+8. **assistant** - AI-powered learning assistant (Learnn AI) → [`.pair` context](../../../services/assistant/.pair/.pair.README.md)
+9. **user-content** - User-generated content management → [`.pair` context](../../../services/user-content/.pair/.pair.README.md)
+10. **quiz** - Assessments, certifications, and skill verification → [`.pair` context](../../../services/quiz/.pair/.pair.README.md)
+11. **recommender** - Personalized recommendations (AWS Personalize) → [`.pair` context](../../../services/recommender/.pair/.pair.README.md)
+12. **profile** - User profile management → [`.pair` context](../../../services/profile/.pair/.pair.README.md)
+13. **expert** - Expert and instructor management → [`.pair` context](../../../services/expert/.pair/.pair.README.md)
+14. **uptime** - System monitoring and health checks → [`.pair` context](../../../services/uptime/.pair/.pair.README.md)
+15. **cms-v4** - Headless CMS (Strapi v4.12.4) for content management → [`.pair` context](../../../services/cms-v4/.pair/.pair.README.md)
 
 ## Client Applications
 
-- **Web App**: React 17 + Vite, desktop-first responsive design
-- **Mobile Apps**: React Native 0.74.5, iOS and Android native apps with offline support
-- **Browser Extension**: Vite + React 18 + Tailwind CSS 4, Chrome/Firefox support
+- **Web App**: React 17 + Vite, desktop-first responsive design → [`.pair` context](../../../apps/web/.pair/.pair.README.md)
+- **Mobile Apps**: React Native 0.74.5, iOS and Android native apps with offline support → [`.pair` context](../../../apps/mobile/.pair/.pair.README.md)
+- **Browser Extension**: Vite + React 18, Chrome/Firefox support → [`.pair` context](../../../apps/extension/.pair/.pair.README.md)
+- **Docs Site**: VitePress internal documentation → [`.pair` context](../../../apps/docs/.pair/.pair.README.md)
 
 ## Shared Libraries
 
-- `@learnn/sdk` - Shared business logic, GraphQL client (Apollo), domain models
-- `@learnn/analytics` - Analytics abstraction (PostHog, Mixpanel, Firebase)
-- `@learnn/utils-be` - Backend utilities and common functions
+- `@learnn/sdk` - Shared business logic, GraphQL client (Apollo), domain models → [`.pair` context](../../../packages/sdk/.pair/.pair.README.md)
+- `@learnn/analytics` - Analytics abstraction (PostHog, Mixpanel, Firebase) → [`.pair` context](../../../packages/analytics/.pair/.pair.README.md)
+- `@learnn/utils-be` - Backend utilities and common functions → [`.pair` context](../../../packages/utils-be/.pair/.pair.README.md)
 - `@learnn/cdk` - AWS CDK shared constructs for infrastructure
-- `@learnn/designn` - Design system components (used in extension)
-
-## Data Architecture
-
-- **PostgreSQL (RDS)**: Strapi CMS content, relational data
-- **DynamoDB**: High-performance NoSQL for services requiring low latency
-- **Amazon S3**: Video assets, course materials, user uploads
-- **CloudFront CDN**: Content delivery and caching
-- Each microservice owns its database (no shared databases between services)
+- `@learnn/designn` - Design system components, available on a separate repository (not in the current monorepo)
 
 ## Communication Patterns
 
@@ -54,42 +48,8 @@
 - **GraphQL**: Complex queries, real-time data fetching via Apollo Client 3.9.4
 - **WebSockets**: Real-time updates (where applicable)
 
-### Service-to-Service
-- **Synchronous HTTP**: Direct calls for immediate responses
-- **Event-Driven**: Webhooks for asynchronous communication
-- **Amazon SQS**: Asynchronous message queuing between services
-- **Amazon Kinesis**: Real-time event streaming (engagement events, lesson events)
-- **AWS Step Functions**: Orchestration of complex multi-service workflows
-
-## Deployment Model
-
-- **Serverless-First**: AWS Lambda for stateless compute (most services)
-- **Container-Based**: ECS Fargate for stateful services (e.g., identity backend cluster)
-- **Infrastructure as Code**: AWS CDK (TypeScript) for all infrastructure
-- **Region**: eu-south-1 (Milan) for GDPR compliance and low latency to Italian users
-
-## Security & Compliance
-
-- **Authentication**: Keycloak (OAuth 2.0, OpenID Connect)
-- **Authorization**: JWT tokens, role-based access control (RBAC)
-- **Encryption**: At-rest (S3, RDS) and in-transit (TLS/HTTPS)
-- **Secrets Management**: AWS Secrets Manager / Systems Manager Parameter Store
-- **GDPR Compliance**: Data residency in EU region, user data control
-
-## Scalability Strategy
-
-- **Horizontal Scaling**: Lambda auto-scaling, ECS task auto-scaling
-- **Caching**: CloudFront CDN, Apollo Client cache, DynamoDB caching
-- **Database Scaling**: RDS read replicas, DynamoDB on-demand scaling
-- **Failure Isolation**: Service independence limits blast radius of failures
-
-## Monitoring & Observability
-
-- **Error Tracking**: Sentry 9.30.0 (web, extension)
-- **Analytics**: PostHog 1.180.1 (web, extension), Mixpanel (mobile), Firebase Analytics (mobile)
-- **Crashlytics**: Firebase Crashlytics (mobile apps)
-- **Metrics**: AWS CloudWatch for infrastructure and application metrics
-- **Logging**: CloudWatch Logs, structured logging in Lambda functions
+For implementation patterns (Lambda structure, fp-ts, TaskEither): → [`coding-patterns.md`](coding-patterns.md)
+For infrastructure details (databases, service-to-service messaging, deployment, security, monitoring): → [`infrastructure.md`](infrastructure.md)
 
 ## Architecture Evolution
 

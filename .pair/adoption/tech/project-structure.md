@@ -5,7 +5,7 @@
 ```
 learnn/
 ├── apps/                         # Client applications (deployable)
-│   ├── web/                      # Web platform (React 17 + Vite)
+│   ├── web/                      # Web platform (React 17 + Vite) → [.pair](../../../apps/web/.pair/.pair.README.md)
 │   │   ├── app/                  # Frontend source (pnpm workspace: apps/web/app)
 │   │   │   └── src/
 │   │   │       ├── screens/      # Page-level components (route targets)
@@ -21,7 +21,7 @@ learnn/
 │   │   ├── lib/                  # CDK stack (infrastructure as code)
 │   │   ├── cypress/              # E2E tests (Cypress)
 │   │   └── pipeline.yml          # Azure Pipelines CI/CD
-│   ├── mobile/                   # Mobile apps (React Native 0.74.5, Yarn workspace)
+│   ├── mobile/                   # Mobile apps (React Native 0.74.5, Yarn workspace) → [.pair](../../../apps/mobile/.pair/.pair.README.md)
 │   │   ├── screens/              # Screen components
 │   │   ├── components/           # Reusable components
 │   │   ├── controllers/          # Business logic
@@ -31,7 +31,7 @@ learnn/
 │   │   ├── styles/               # Shared styles
 │   │   ├── types/                # TypeScript types
 │   │   └── utils/                # Utilities
-│   ├── extension/                # Browser extension (Vite + React 18 + Tailwind)
+│   ├── extension/                # Browser extension (Vite + React 18 + Tailwind) → [.pair](../../../apps/extension/.pair/.pair.README.md)
 │   │   └── src/
 │   │       ├── pages/            # Extension pages (popup, sidepanel, options)
 │   │       ├── components/       # Reusable components
@@ -39,33 +39,33 @@ learnn/
 │   │       ├── services/         # Extension services and API calls
 │   │       ├── types/            # TypeScript types
 │   │       └── utils/            # Utilities
-│   └── docs/                     # Documentation site (VitePress)
+│   └── docs/                     # Documentation site (VitePress) → [.pair](../../../apps/docs/.pair/.pair.README.md)
 │
-├── services/                     # Backend microservices (AWS Lambda + CDK)
-│   ├── identity/                 # Auth & authorization (Keycloak)
-│   ├── checkout/                 # Payment processing
-│   ├── billing/                  # Subscription management (Stripe)
-│   ├── my/                       # User dashboard & personal data
-│   ├── engagement/               # Activity tracking & analytics
-│   ├── webhooks/                 # External integrations & event handling
-│   ├── vod/                      # Video-on-demand & DRM
-│   ├── assistant/                # AI assistant (Learnn AI)
-│   ├── user-content/             # User-generated content
-│   ├── quiz/                     # Assessments & certifications
-│   ├── recommender/              # Recommendations (AWS Personalize)
-│   ├── profile/                  # User profile management
-│   ├── expert/                   # Instructor management
-│   ├── uptime/                   # Health monitoring
-│   ├── cms-v4/                   # Headless CMS (Strapi v4.12.4)
+├── services/                     # Backend microservices (AWS Lambda + CDK) → [.pair](../../../services/.pair/.pair.README.md)
+│   ├── identity/                 # Auth & authorization (Keycloak) → [.pair](../../../services/identity/.pair/.pair.README.md)
+│   ├── checkout/                 # Payment processing → [.pair](../../../services/checkout/.pair/.pair.README.md)
+│   ├── billing/                  # Subscription management (Stripe) → [.pair](../../../services/billing/.pair/.pair.README.md)
+│   ├── my/                       # User dashboard & personal data → [.pair](../../../services/my/.pair/.pair.README.md)
+│   ├── engagement/               # Activity tracking & analytics → [.pair](../../../services/engagement/.pair/.pair.README.md)
+│   ├── webhooks/                 # External integrations & event handling → [.pair](../../../services/webhooks/.pair/.pair.README.md)
+│   ├── vod/                      # Video-on-demand & DRM → [.pair](../../../services/vod/.pair/.pair.README.md)
+│   ├── assistant/                # AI assistant (Learnn AI) → [.pair](../../../services/assistant/.pair/.pair.README.md)
+│   ├── user-content/             # User-generated content → [.pair](../../../services/user-content/.pair/.pair.README.md)
+│   ├── quiz/                     # Assessments & certifications → [.pair](../../../services/quiz/.pair/.pair.README.md)
+│   ├── recommender/              # Recommendations (AWS Personalize) → [.pair](../../../services/recommender/.pair/.pair.README.md)
+│   ├── profile/                  # User profile management → [.pair](../../../services/profile/.pair/.pair.README.md)
+│   ├── expert/                   # Instructor management → [.pair](../../../services/expert/.pair/.pair.README.md)
+│   ├── uptime/                   # Health monitoring → [.pair](../../../services/uptime/.pair/.pair.README.md)
+│   ├── cms-v4/                   # Headless CMS (Strapi v4.12.4) → [.pair](../../../services/cms-v4/.pair/.pair.README.md)
 │   ├── community/                # Community features
-│   ├── search/                   # Search functionality
+│   ├── search/                   # Search functionality → [.pair](../../../services/search/.pair/.pair.README.md)
 │   ├── growth/                   # Growth & analytics backend
 │   └── cms/                      # Legacy CMS (Strapi v3, deprecated)
 │
-├── packages/                     # Shared internal libraries
-│   ├── sdk/                      # @learnn/sdk - GraphQL client, business logic, Apollo
-│   ├── analytics/                # @learnn/analytics - PostHog, Mixpanel, Firebase
-│   ├── utils-be/                 # @learnn/utils-be - Backend utilities, AWS SDK clients
+├── packages/                     # Shared internal libraries → [.pair](../../../packages/.pair/.pair.README.md)
+│   ├── sdk/                      # @learnn/sdk - GraphQL client, business logic, Apollo → [.pair](../../../packages/sdk/.pair/.pair.README.md)
+│   ├── analytics/                # @learnn/analytics - PostHog, Mixpanel, Firebase → [.pair](../../../packages/analytics/.pair/.pair.README.md)
+│   ├── utils-be/                 # @learnn/utils-be - Backend utilities, AWS SDK clients → [.pair](../../../packages/utils-be/.pair/.pair.README.md)
 │   ├── cdk/                      # @learnn/cdk - AWS CDK shared constructs
 │   ├── eslint-config/            # @learnn/eslint-config - Shared ESLint rules
 │   └── e2e/                      # @learnn/e2e - End-to-end tests (Playwright)

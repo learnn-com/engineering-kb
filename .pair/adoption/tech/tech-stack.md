@@ -26,6 +26,8 @@
 ## Frontend Frameworks & Libraries
 
 ### Web App
+> See also: [`apps/web/.pair`](../../../apps/web/.pair/.pair.README.md) for web-specific patterns and structure.
+
 - **React** v17.0.1 is adopted for web application.
 - **Vite** v6.x is adopted as build tool and dev server.
 - **React Router DOM** v5.2.0 is adopted for client-side routing.
@@ -39,12 +41,16 @@
 - **react-helmet-async** v1.0.9 is adopted for SEO meta tag management.
 
 ### Mobile Apps
+> See also: [`apps/mobile/.pair`](../../../apps/mobile/.pair/.pair.README.md) for mobile-specific patterns and structure.
+
 - **React Native** v0.74.5 is adopted for cross-platform mobile development.
 - **React Navigation** v6.x is adopted for navigation (Stack + Bottom Tabs).
 - **React Native Reanimated** v3.15.3 is adopted for animations.
 - **React Native Video** v6.16.1 is adopted for video playback with DRM support.
 
 ### Browser Extension
+> See also: [`apps/extension/.pair`](../../../apps/extension/.pair/.pair.README.md) for extension-specific patterns and structure.
+
 - **Vite** v6.1.0 is adopted for extension build and bundling.
 - **@crxjs/vite-plugin** v2.0.0-beta.32 is adopted for Chrome extension development.
 - **React** v18.2.0 is adopted for extension UI.
@@ -85,9 +91,12 @@
 
 ### Web App
 - **Jest** v29.x is adopted for unit testing.
-- **Cypress** v13.13.1 is adopted for E2E testing.
-- **@frsource/cypress-plugin-visual-regression-diff** v3.3.10 is adopted for visual regression testing.
+- **Cypress** v13.13.1 is adopted for visual regression testing (via `apps/web/cypress/`).
+- **@frsource/cypress-plugin-visual-regression-diff** v3.3.10 is adopted for visual regression diffing.
 - **@testing-library/react** v9.5.0 is adopted for component testing.
+
+### E2E (Cross-App)
+- **Playwright** v1.48.0 is adopted for E2E functional testing (`packages/e2e`).
 
 ### Mobile Apps
 - **Jest** v29.6.3 is adopted for unit testing.
@@ -196,8 +205,8 @@
 
 ## Shared Packages (Internal)
 
-- `@learnn/sdk` - Shared SDK (GraphQL client, business logic, Apollo setup).
-- `@learnn/analytics` - Analytics wrapper (PostHog, Mixpanel, Firebase).
+- `@learnn/sdk` - Shared SDK (GraphQL client, business logic, Apollo setup) → [`.pair` context](../../../packages/sdk/.pair/.pair.README.md)
+- `@learnn/analytics` - Analytics wrapper (PostHog, Mixpanel, Firebase) → [`.pair` context](../../../packages/analytics/.pair/.pair.README.md)
 - `@learnn/utils-be` - Backend utilities and common functions.
 - `@learnn/cdk` - AWS CDK shared constructs and patterns.
 - `@learnn/designn` - Design system components (web + extension).

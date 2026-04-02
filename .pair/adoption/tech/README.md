@@ -25,7 +25,11 @@ All adopted documents must:
 
 - **[infrastructure.md](infrastructure.md)** – Infrastructure and deployment choices
 - **[way-of-working.md](way-of-working.md)** – Development practices and team workflows
-- **[coding-patterns.md](coding-patterns.md)** – Lambda structure, fp-ts patterns, utils-be conventions, and testing
+- **[coding-patterns.md](coding-patterns.md)** – Router to local coding pattern contexts (services, utils-be, sdk, apps)
+
+### 🔒 Security
+
+- **[security.md](security.md)** – Security adoption: cookies, redirects, secrets, WordPress hardening, API auth
 
 ### 🎨 User Experience
 

@@ -9,25 +9,25 @@ Transform User Stories from rough breakdown units into development-ready specifi
 
 ## Skill Composition
 
-This how-to orchestrates the `/refine-story` skill.
+This how-to orchestrates the `/process-refine-story` skill.
 
 | Skill           | Purpose                                                                                                                                                         |
 | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `/refine-story` | Executes the full refinement process: selection, requirements (Given-When-Then), technical analysis, sprint readiness, documentation. Section-level idempotent. |
-| `/write-issue`  | Composed by `/refine-story` — creates or updates the story issue in the PM tool.                                                                                |
+| `/process-refine-story` | Executes the full refinement process: selection, requirements (numbered AC), technical analysis, sprint readiness, documentation. Section-level idempotent. |
+| `/capability-write-issue`  | Composed by `/process-refine-story` — creates or updates the story issue in the PM tool.                                                                                |
 
 > **If skills are not installed**, follow the manual workflow below.
 
 ## Orchestration Flow
 
 1. **Verify prerequisites**: PM tool configured per [way-of-working.md](../../adoption/tech/way-of-working.md), stories exist in Todo state from [story breakdown](05-how-to-breakdown-user-stories.md).
-2. **Invoke `/refine-story`** with optional `$story` argument. The skill handles:
+2. **Invoke `/process-refine-story`** with optional `$story` argument. The skill handles:
    - Story selection (highest-priority Todo, or specified `$story`)
    - Section-level idempotency detection (resumes from first missing section)
-   - Requirements analysis (Given-When-Then acceptance criteria, business rules, edge cases)
+   - Requirements analysis (numbered acceptance criteria, business rules, edge cases)
    - Technical analysis (architecture alignment, risks, spike identification)
    - Sprint readiness (re-estimation, split if oversized, dependency mapping)
-   - Documentation and PM tool update via `/write-issue`
+   - Documentation and PM tool update via `/capability-write-issue`
 3. **Developer validates** each phase when prompted by the skill.
 4. **Repeat** for each story requiring refinement.
 
@@ -41,7 +41,7 @@ This how-to orchestrates the `/refine-story` skill.
 
 ### Phase 2: Requirements Analysis
 
-- Expand scope into Given-When-Then acceptance criteria
+- Expand scope into numbered acceptance criteria
 - Identify business rules with measurable criteria
 - Address edge cases and error handling
 - Define user experience and interaction details
@@ -71,7 +71,7 @@ This how-to orchestrates the `/refine-story` skill.
 ## Quality Checklist
 
 - [ ] Story selected based on priority and sprint needs
-- [ ] Acceptance criteria comprehensive and testable (Given-When-Then)
+- [ ] Acceptance criteria comprehensive and testable (lista numerata)
 - [ ] Technical approach and risks analyzed
 - [ ] Story sized for sprint or split with value preservation
 - [ ] All uncertainties resolved
@@ -88,11 +88,11 @@ This how-to orchestrates the `/refine-story` skill.
 ## Key Principles
 
 - **Transform uncertainty into clarity** — resolve all open questions
-- **Given-When-Then for all ACs** — every criterion must be specific and testable
+- **Lista numerata per tutti gli AC** — ogni criterio deve essere specifico e testabile
 - **INVEST compliance** — Independent, Negotiable, Valuable, Estimable, Small, Testable
 - **Split preserves value** — each split delivers end-to-end user value
 - **Functional first, technical last** — template section ordering
-- **Re-invoke safely** — `/refine-story` is section-level idempotent
+- **Re-invoke safely** — `/process-refine-story` is section-level idempotent
 
 ## References
 
