@@ -11,8 +11,8 @@ Implement a user story by processing its tasks sequentially. Each task follows a
 
 ## Composed Skills
 
-| Skill              | Type       | Required                                                                                            |
-| ------------------ | ---------- | --------------------------------------------------------------------------------------------------- |
+| Skill                         | Type       | Required                                                                                            |
+| ----------------------------- | ---------- | --------------------------------------------------------------------------------------------------- |
 | `/capability-verify-quality`  | Capability | Yes — invoked at quality validation phase                                                           |
 | `/capability-record-decision` | Capability | Yes — invoked when a decision needs recording                                                       |
 | `/capability-assess-stack`    | Capability | Optional — invoked when a new dependency is detected. If not installed, warn and continue.          |
@@ -98,6 +98,7 @@ Ask: _"Ready to proceed with implementation?"_
 3. **Act**: Ask the developer:
 
    > **Commit strategy for this story:**
+   >
    > 1. **Commit per task** (recommended) — develop one task, ask dev, commit, update checkbox, next task. Single PR at end.
    > 2. **Commit per story** — develop all tasks continuously, then ask dev, commit all, update all checkboxes, single PR.
 
@@ -176,7 +177,7 @@ Follow the TDD discipline rules strictly:
 2. **Skip**: If not installed, warn:
 
    > `/capability-verify-adoption` is not installed — skipping adoption compliance check. Please manually verify code against adoption files.
-   Move to Step 2.7.
+   > Move to Step 2.7.
 
 3. **Act**: Compose `/capability-verify-adoption` with `$scope` appropriate to the task.
    - Non-conformities reported → resolve via `/capability-assess-stack` (tech-stack issues) or `/capability-record-decision` (architectural gaps).
@@ -297,6 +298,8 @@ Follow the TDD discipline rules strictly:
      - **Story Context**: link to user story issue, list AC coverage
      - **Changes Made**: list all completed tasks, files added/modified/deleted
      - **Testing**: test coverage, quality gate results (from /capability-verify-quality output)
+     - **Services to Release**: run `git diff --name-only origin/main...HEAD`, group changed files by top-level package (`apps/*`, `services/*`), and list each affected app/service in the table. Include only packages that actually have changed files.
+     - **Screenshots**: run `git diff --name-only origin/main...HEAD` and check if any changed files are under `apps/web`, `apps/mobile`, or `apps/extension`. If yes, keep the Screenshots section in the PR body (with empty placeholders — the PR author will add them manually). If no UI changes, remove the Screenshots section entirely.
    - Omit template sections that do not apply (e.g., Database Changes, API Changes for KB-only PRs) — do not leave unfilled placeholders.
    - **Link**: Reference the user story issue (`Closes #<story-id>`)
    - **Labels**: Apply appropriate labels

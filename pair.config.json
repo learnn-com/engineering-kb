@@ -6,12 +6,6 @@
       "description": "Knowledge base and documentation",
       "targets": [{ "path": ".pair/knowledge", "mode": "canonical" }]
     },
-    "adoption": {
-      "source": ".pair/adoption",
-      "behavior": "add",
-      "description": "Adoption guides and onboarding materials",
-      "targets": [{ "path": ".pair/adoption", "mode": "canonical" }]
-    },
     "agents": {
       "source": "AGENTS.md",
       "behavior": "mirror",
