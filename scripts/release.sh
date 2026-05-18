@@ -9,7 +9,7 @@ Usage:
   scripts/release.sh --version X.Y.Z [--tag vX.Y.Z] [--draft] [--prerelease] [--notes "text"] [--title "text"] [--no-package]
 
 Defaults:
-  - Builds package with `npx @foomakers/pair-cli package ...` (unless --no-package)
+  - Builds package with `pair-cli package ...` (unless --no-package)
   - Attaches latest dist/kb-package-*.zip
 
 Env overrides:
@@ -74,13 +74,18 @@ PAIR_LAYOUT="${PAIR_LAYOUT:-source}"
 PAIR_CONFIG="${PAIR_CONFIG:-pair.config.json}"
 
 if [[ "$NO_PACKAGE" -eq 0 ]]; then
+  if ! command -v pair-cli >/dev/null 2>&1; then
+    echo "pair-cli is required. Install with: npm install -g @foomakers/pair-cli" >&2
+    exit 1
+  fi
+
   if [[ ! -f "$PAIR_CONFIG" ]]; then
     echo "Missing $PAIR_CONFIG. Pass PAIR_CONFIG or create it." >&2
     exit 1
   fi
 
   echo "Packaging KB (version=$VERSION, layout=$PAIR_LAYOUT, config=$PAIR_CONFIG)..."
-  npx @foomakers/pair-cli package -s . \
+  pair-cli package -s . \
     --config "$PAIR_CONFIG" \
     --layout "$PAIR_LAYOUT" \
     --author "$PAIR_AUTHOR" \

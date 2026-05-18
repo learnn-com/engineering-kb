@@ -12,7 +12,7 @@ Operational guide to validate, package, and publish the **engineering knowledge 
 - Node.js + npm
 - Git
 - GitHub CLI (`gh`) (used by the release script)
-- Access to Pair CLI via `npx @foomakers/pair-cli` (requires GitHub Packages auth)
+- Pair CLI (`pair-cli`) installed globally
 
 ## 1) One-time CLI setup
 
@@ -35,10 +35,15 @@ gh auth login -h github.com
 gh auth status
 ```
 
-### Ensure `pair-cli` can run via `npx`
+### Install `pair-cli`
 
-The release script runs the Pair CLI via `npx @foomakers/pair-cli ...`.
-To make this work, you must authenticate npm against **GitHub Packages**.
+The release script invokes `pair-cli package ...`. Install it globally:
+
+```bash
+npm install -g @foomakers/pair-cli
+```
+
+If the package is hosted on **GitHub Packages**, authenticate npm before installing.
 
 #### 1. Create a GitHub Personal Access Token (PAT)
 
@@ -67,11 +72,10 @@ Then export the token in your shell:
 export GITHUB_TOKEN="YOUR_PAT_HERE"
 ```
 
-After setup, verify `npx` works:
+After setup, verify the CLI:
 
 ```bash
-npx --version
-npx @foomakers/pair-cli --help
+pair-cli --help
 ```
 
 ## 2) Release (packages + publishes)
@@ -115,6 +119,15 @@ Re-authenticate:
 
 ```bash
 gh auth login -h github.com
+```
+
+### `pair-cli: command not found`
+
+Install or reinstall globally:
+
+```bash
+npm install -g @foomakers/pair-cli
+pair-cli --help
 ```
 
 ### Package version vs CLI version
