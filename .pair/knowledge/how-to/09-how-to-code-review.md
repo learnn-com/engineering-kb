@@ -81,6 +81,7 @@ Follow [project management tool guidelines](../guidelines/collaboration/project-
 1. **Quality gates** — run linter, type checker, tests per [quality standards](../guidelines/quality-assurance/quality-standards/README.md)
 2. **Code quality assessment** — readability, maintainability, naming per [code design guidelines](../guidelines/code-design/README.md)
 3. **ADR & adoption compliance** — scan for new technical decisions (libraries, patterns, technologies). **Missing ADR → HALT** (see Core Principles)
+4. **Cost assessment** — scan for cost signals per [cost assessment guidelines](../guidelines/quality-assurance/cost-assessment/README.md). **RED classification → HALT until human sign-off**
 
 ### Phase 2: Story & Requirements Validation
 
@@ -91,17 +92,18 @@ Follow [project management tool guidelines](../guidelines/collaboration/project-
 
 ### Phase 3: Review Report & Decision
 
-1. **Generate review report** using [code-review-template.md](../guidelines/collaboration/templates/code-review-template.md)
+1. **Generate review report** using [code-review-template.md](../guidelines/collaboration/templates/code-review-template.md) — always include a **Cost Assessment** section
 2. **Post report as PR comment** with all findings by severity
 3. **Set PR status** based on findings:
 
 #### Review Decisions:
 
-| Decision              | Condition                                               | Next Step                                                                |
-| --------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------ |
-| **APPROVED**          | All requirements met, quality gates pass                | Squash merge, mark story "Done"                                          |
-| **CHANGES REQUESTED** | Critical issues, missing ADR, failing tests, AC not met | Return to [08-how-to-implement-a-task.md](08-how-to-implement-a-task.md) |
-| **TECH DEBT**         | Only minor issues, tracked as debt                      | Approve PR, create debt items                                            |
+| Decision              | Condition                                                              | Next Step                                                                                                                           |
+| --------------------- | ---------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | --- |
+| **APPROVED**          | All requirements met, quality gates pass                               | Squash merge, mark story "Done"                                                                                                     |
+| **CHANGES REQUESTED** | Critical issues, missing ADR, failing tests, AC not met                | Return to [08-how-to-implement-a-task.md](08-how-to-implement-a-task.md)                                                            |
+| **COST REVIEW**       | RED cost signal detected — new paid service, AI calls, cloud resources | HALT merge, request human cost sign-off per [cost assessment guidelines](../guidelines/quality-assurance/cost-assessment/README.md) |
+| **TECH DEBT**         | Only minor issues, tracked as debt                                     | Approve PR, create debt items                                                                                                       |     |
 
 ### Phase 4: Completion & Integration
 
@@ -119,6 +121,8 @@ Follow [project management tool guidelines](../guidelines/collaboration/project-
 - [ ] Phase 0 completed — PR and story context loaded
 - [ ] ADR and adoption compliance validated for all new technical decisions
 - [ ] All technical standards verified against adoption guidelines
+- [ ] Cost assessment completed and classified (GREEN/YELLOW/RED) per [cost assessment guidelines](../guidelines/quality-assurance/cost-assessment/README.md)
+- [ ] If RED cost signal: human sign-off obtained before proceeding
 - [ ] Review report generated using [code-review-template.md](../guidelines/collaboration/templates/code-review-template.md)
 - [ ] Report posted as PR comment
 - [ ] PR status updated (pending/changes-requested/approved)
@@ -150,6 +154,7 @@ Follow [project management tool guidelines](../guidelines/collaboration/project-
 - [Testing Strategy](../guidelines/testing/test-strategy/README.md) — testing standards
 - [Quality Standards](../guidelines/quality-assurance/quality-standards/README.md) — quality gates
 - [Security Guidelines](../guidelines/quality-assurance/security/README.md) — security validation
+- [Cost Assessment](../guidelines/quality-assurance/cost-assessment/README.md) — cost signal classification and escalation rules
 
 ### Related Workflows
 
