@@ -7,7 +7,7 @@ author: Foomakers
 
 # /capability-checkpoint — Resumable Progress State
 
-Write and resume a self-contained progress checkpoint so a fresh session (or a subagent) can continue a story exactly where the previous one stopped. Follows the [checkpoint template](../../../.pair/knowledge/guidelines/collaboration/templates/checkpoint-template.md) (resolve override-first — [template resolution](../../../.pair/knowledge/guidelines/technical-standards/ai-development/skill-conventions/template-resolution.md)) — five sections: story, branch, tasks done, key decisions, remaining todos.
+Write and resume a self-contained progress checkpoint so a fresh session (or a subagent) can continue a story exactly where the previous one stopped. Follows the [checkpoint template](../../.pair/knowledge/guidelines/collaboration/templates/checkpoint-template.md) (resolve override-first — [template resolution](../../.pair/knowledge/guidelines/technical-standards/ai-development/skill-conventions/template-resolution.md)) — five sections: story, branch, tasks done, key decisions, remaining todos.
 
 ## Arguments
 
@@ -46,8 +46,8 @@ Write and resume a self-contained progress checkpoint so a fresh session (or a s
 2. **Skip**: If yes, use it directly. Proceed to Step 4.
 3. **Act**: If not (e.g., invoked by a subagent with no prior context), reconstruct from artifacts:
    - **Branch**: `git branch --show-current`.
-   - **Tasks done/pending**: read the story's Task Breakdown checklist (per [way-of-working.md](../../../.pair/adoption/tech/way-of-working.md)), cross-referenced with commits on the branch — the same technique `/process-implement` uses for idempotent resume.
-   - **Decisions**: scan [adoption/tech/adr/](../../../.pair/adoption/tech/adr) and [adoption/decision-log/](../../../.pair/adoption/decision-log) for files touched since the branch diverged from main.
+   - **Tasks done/pending**: read the story's Task Breakdown checklist (per [way-of-working.md](../../.pair/adoption/tech/way-of-working.md)), cross-referenced with commits on the branch — the same technique `/process-implement` uses for idempotent resume.
+   - **Decisions**: scan [adoption/tech/adr/](../../.pair/adoption/tech/adr) and [adoption/decision-log/](../../.pair/adoption/decision-log) for files touched since the branch diverged from main.
 4. **Verify**: All five state elements resolved. Anything that cannot be reconstructed confidently is marked `[unknown — needs confirmation]` — never guessed.
 
 ### Step 4: Detect Existing Checkpoint
@@ -60,7 +60,7 @@ Write and resume a self-contained progress checkpoint so a fresh session (or a s
 
 ### Step 5: Write / Return Checkpoint
 
-1. **Act**: Render the checkpoint following the [checkpoint template](../../../.pair/knowledge/guidelines/collaboration/templates/checkpoint-template.md), filling all five sections.
+1. **Act**: Render the checkpoint following the [checkpoint template](../../.pair/knowledge/guidelines/collaboration/templates/checkpoint-template.md), filling all five sections.
 2. **Check**: Is `$persist` `false`?
 3. **Skip**: If `$persist` is `true` (default) — create `.pair/working/checkpoints/` if missing, write the rendered content to `<story-id>.md` (overwrite in place, per Core Rule).
 4. **Act**: If `$persist` is `false` — do not touch the filesystem. Synthesize the text only.
@@ -179,16 +179,16 @@ When invoked **independently**:
 
 ## Graceful Degradation
 
-See [graceful degradation](../../../.pair/knowledge/guidelines/technical-standards/ai-development/skill-conventions/graceful-degradation.md) (guideline/template missing → use a minimal structure directly; PM tool not accessible during state reconstruction, Step 3 → ask the developer to confirm tasks done/pending directly) for the standard scenarios. Additional cases:
+See [graceful degradation](../../.pair/knowledge/guidelines/technical-standards/ai-development/skill-conventions/graceful-degradation.md) (guideline/template missing → use a minimal structure directly; PM tool not accessible during state reconstruction, Step 3 → ask the developer to confirm tasks done/pending directly) for the standard scenarios. Additional cases:
 
-- If the [checkpoint template](../../../.pair/knowledge/guidelines/collaboration/templates/checkpoint-template.md) is not found, use the minimal five-section structure directly: Story, Branch, Tasks Done, Key Decisions, Remaining Todos.
+- If the [checkpoint template](../../.pair/knowledge/guidelines/collaboration/templates/checkpoint-template.md) is not found, use the minimal five-section structure directly: Story, Branch, Tasks Done, Key Decisions, Remaining Todos.
 - If `.pair/working/` does not exist yet, create it (and `checkpoints/` under it) on first write.
 - If git is not available or the branch cannot be determined, mark the Branch section `[unknown — needs confirmation]` rather than guessing.
 
 ## Notes
 
 - This skill **writes at most one file** — `.pair/working/checkpoints/<story-id>.md` — and only in write mode with `$persist=true` (default).
-- **Idempotent** — see [idempotency convention](../../../.pair/knowledge/guidelines/technical-standards/ai-development/skill-conventions/idempotency.md). This skill's check: write mode updates the same file in place (never duplicates); resume mode is read-only and safe to repeat.
+- **Idempotent** — see [idempotency convention](../../.pair/knowledge/guidelines/technical-standards/ai-development/skill-conventions/idempotency.md). This skill's check: write mode updates the same file in place (never duplicates); resume mode is read-only and safe to repeat.
 - `.pair/working/` holds operational, per-project runtime state — never touched by install or update (D14). It is not part of the distributed KB defaults.
 - Checkpoints complement, not replace, git/PM-tool state. Even when state is reliably reconstructible from git and the PM tool (as `/process-implement` does today), a checkpoint adds an explicit, fast-to-read summary — most valuable across context resets and subagent handoffs, where reconstruction from scratch is expensive or impossible.
 - The write-free (`$persist=false`) option serves composers that own their own persistence (e.g., embedding the handoff directly into a PR body) rather than writing a separate file.

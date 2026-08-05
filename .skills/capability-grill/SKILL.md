@@ -51,8 +51,8 @@ Systematic AI↔human alignment on a specific story, covering all six aspects of
 ### Step 1: Explore Before Asking
 
 1. **Act**: Before drafting any question, gather what is already knowable:
-   - `interview`: read the [PRD](../../../.pair/adoption/product/PRD.md), related epics/issues (per [way-of-working.md](../../../.pair/adoption/tech/way-of-working.md)), and grep the codebase for the topic's terms.
-   - `sync`: read the target story's current body (sections already populated), [architecture.md](../../../.pair/adoption/tech/architecture.md), [tech-stack.md](../../../.pair/adoption/tech/tech-stack.md), [way-of-working.md](../../../.pair/adoption/tech/way-of-working.md), prior decisions in decision-log/adr, and the codebase for the touched components.
+   - `interview`: read the [PRD](../../.pair/adoption/product/PRD.md), related epics/issues (per [way-of-working.md](../../.pair/adoption/tech/way-of-working.md)), and grep the codebase for the topic's terms.
+   - `sync`: read the target story's current body (sections already populated), [architecture.md](../../.pair/adoption/tech/architecture.md), [tech-stack.md](../../.pair/adoption/tech/tech-stack.md), [way-of-working.md](../../.pair/adoption/tech/way-of-working.md), prior decisions in decision-log/adr, and the codebase for the touched components.
 2. **Act**: For every fact resolvable this way, mark it **explored** with its source. It is never asked — anything answerable by exploring KB/codebase is explored instead of asked.
 3. **Verify**: An explored/unresolved map exists before the first question is asked.
 
@@ -92,7 +92,7 @@ Systematic AI↔human alignment on a specific story, covering all six aspects of
 
 1. **Act**: Compile recorded answers, explored facts (with source), and flagged assumptions:
    - `interview` → raw requirements blob (topic, findings per sub-question, open items, assumptions).
-   - `sync` → alignment synthesis mapped to the six [Sync Coverage Checklist](#sync-coverage-checklist) aspects, ready to drop into the matching [user-story-template.md](../../../.pair/knowledge/guidelines/collaboration/templates/user-story-template.md) (resolve override-first — [template resolution](../../../.pair/knowledge/guidelines/technical-standards/ai-development/skill-conventions/template-resolution.md)) sections.
+   - `sync` → alignment synthesis mapped to the six [Sync Coverage Checklist](#sync-coverage-checklist) aspects, ready to drop into the matching [user-story-template.md](../../.pair/knowledge/guidelines/collaboration/templates/user-story-template.md) (resolve override-first — [template resolution](../../.pair/knowledge/guidelines/technical-standards/ai-development/skill-conventions/template-resolution.md)) sections.
 2. **Verify**: Synthesis accounts for every answered/explored/assumed item — nothing silently dropped.
 
 ### Step 6: Return — Never Write
@@ -205,7 +205,7 @@ AI:  GRILL SESSION COMPLETE — Mode: sync · Coverage: 6/6 · returns alignment
 
 ## Graceful Degradation
 
-See [graceful degradation](../../../.pair/knowledge/guidelines/technical-standards/ai-development/skill-conventions/graceful-degradation.md) (composing skill not installed → this skill still runs standalone) for the standard scenarios. Additional cases:
+See [graceful degradation](../../.pair/knowledge/guidelines/technical-standards/ai-development/skill-conventions/graceful-degradation.md) (composing skill not installed → this skill still runs standalone) for the standard scenarios. Additional cases:
 
 - If KB/codebase exploration is unavailable (no repo access), skip Step 1 (nothing marked explored), ask every aspect/topic question directly, and note in the synthesis that explore-first was skipped.
 - If `.pair/working/` cannot be created or written, present the handoff content inline in conversation and tell the human to save it manually.
