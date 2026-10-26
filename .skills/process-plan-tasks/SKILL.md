@@ -9,6 +9,12 @@ author: Foomakers
 
 Transform a refined user story into specific, actionable implementation tasks. Task-level idempotency: detects existing tasks in the story body and creates only missing ones. Appends an integrated Technical Analysis + Task Breakdown section to the story issue body. Tasks live inside the story — no separate task issues are created in the PM tool.
 
+## Process Profile
+
+<!-- process-step: id=plan-tasks -->
+
+Executable form of the **`plan-tasks`** step, and a composer of `define-bounded-contexts`. A **direct** invocation while a step is disabled by the project's profile warns and asks for confirmation; a **composed** one never prompts — it degrades exactly as a step that is not installed. No section ⇒ no-op. See [process-profile gate](../../.pair/knowledge/guidelines/technical-standards/ai-development/skill-conventions/process-profile-gate.md).
+
 ## Composed Skills
 
 | Skill          | Type       | Required                                                   |
@@ -136,7 +142,7 @@ TASK BREAKDOWN COMPLETE:
 ├── Types:      [Development: N, Documentation: N, Configuration: N]
 ├── AC Coverage:[K/K ACs covered]
 ├── PM Tool:    [Story updated with Task Breakdown section]
-└── Next:       /process-implement to start task execution
+└── Next:       /pair-process-implement to start task execution
 ```
 
 ## HALT Conditions

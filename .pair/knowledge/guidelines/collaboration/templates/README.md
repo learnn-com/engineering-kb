@@ -22,6 +22,14 @@ Our template collection covers the complete software development lifecycle, from
 - **[Code Review Template](code-review-template.md)** - Structured code review checklists
 - **[Team Template](user-story-template.md)** - Team formation and collaboration guidelines
 
+### Quality, Domain and Operational Templates
+
+- **[Manual Test Case Template](manual-test-case-template.md)** - Manual test case design with version-agnostic variables and priority classification
+- **[Manual Test Report Template](manual-test-report-template.md)** - Manual test execution results with sign-off criteria
+- **[Context Map Template](context-map-template.md)** - Dispatcher + index + core domain glossary, entities, and common rules, maintained inline (see [Context Map Maintenance](../../architecture/design-patterns/context-map-maintenance.md))
+- **[Subdomain Context Template](subdomain-context-template.md)** - Lazy per-subdomain split of the context map, co-located with the subdomain catalog entry
+- **[Checkpoint Template](checkpoint-template.md)** - Resumable progress state (story, branch, tasks done, decisions, remaining todos) for context-reset handoffs
+
 ## Template Categories
 
 ### 🎯 Strategic Templates
@@ -143,6 +151,11 @@ Templates work with popular project management tools:
 - **Azure DevOps:** Work items and backlogs
 - **Linear:** Issues and projects
 - **Trello:** Cards and boards
+
+### Process and Tool Integration
+
+- **Agile/Scrum:** user stories, tasks, sprints. **SAFe:** initiatives, epics, program increments. **Kanban:** continuous flow with stories and tasks. **DevOps:** branch, commit and PR templates for CI/CD.
+- **GitHub** (issues, PRs, project boards), **Jira** (stories, epics, tasks), **Azure DevOps** (work items, backlogs), **Linear** (issues, projects), **Trello** (cards, boards).
 
 ## Best Practices
 

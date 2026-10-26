@@ -110,7 +110,7 @@ Each phase follows the **check → skip → act → verify** pattern. Phases run
    - **`/capability-write-issue` installed** → compose it in **comment mode**, which is non-destructive by contract (no template, no body render, no board write):
 
      ```text
-     /capability-write-issue $mode: comment $id: <issue-id> $comment: "PR: <pr-url>"
+     /pair-capability-write-issue $mode: comment $id: <issue-id> $comment: "PR: <pr-url>"
      ```
 
    - **not installed** → write the comment directly through the PM tool's implementation guide (e.g. Linear `commentCreate`, `gh issue comment`, the Azure DevOps work-item comments endpoint, the Jira comment API).
@@ -134,7 +134,7 @@ The PR is ready; it must now be **under review and mechanically blocked** — se
 6. **The dispatch prompt** (identical for either actor) is the PR reference plus a **bounded** instruction — the review must not merge:
 
    ```text
-   Run /process-review $pr=<number> $dispatched=true.
+   Run /pair-process-review $pr=<number> $dispatched=true.
    Phases 1–5 only: produce the verdict, publish the `pair-review` check, synthesize the PR state.
    NEVER run Phase 6 and NEVER merge, even if the verdict is APPROVED and every gate is green —
    the merge is a human act (pr-states.md). Stop after Phase 5 and report.
@@ -162,7 +162,7 @@ PUBLISH-PR REPORT:
 ├── Conditional: [Services to Release: N deployable packages / n-a | Screenshots: UI touched / n-a]
 ├── Board:      [→ Review | not updated — reason]
 ├── PR state:   [pr-state:to-be-reviewed]
-└── Review:     [dispatched — subagent (clean context) | review-dispatch-required — /process-review $pr=<n> (caller dispatches) | pending — dispatch unavailable, run /process-review <pr> | already submitted on this head]
+└── Review:     [dispatched — subagent (clean context) | review-dispatch-required — /pair-process-review $pr=<n> (caller dispatches) | pending — dispatch unavailable, run /pair-process-review <pr> | already submitted on this head]
 
 RESULT: [PR UNDER REVIEW — merge blocked by required check `pair-review` | HALTED — <reason>]
 ```

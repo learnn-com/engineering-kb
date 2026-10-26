@@ -9,7 +9,7 @@ In all interactions and commit messages, be extremely coincise and sacrify gramm
 If your agent supports **Agent Skills** (agentskills.io), start every session by running:
 
 ```text
-/next
+/pair-next
 ```
 
 The `/next` skill reads project adoption files and PM tool state to recommend the most relevant action. Follow its suggestion or override with a specific skill.

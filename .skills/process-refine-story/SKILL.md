@@ -9,6 +9,12 @@ author: Foomakers
 
 Transform a user story from rough breakdown (Draft) into a development-ready specification (Ready). This is **THE single Draft→Ready path** — no separate "make-ready" skill exists and none is ever born (R3.12, D24); refinement IS the transition (canonical-states.md). **Section-level idempotency** — see [idempotency convention](../../.pair/knowledge/guidelines/technical-standards/ai-development/skill-conventions/idempotency.md): each refinement section is checked before acting; partial refinements resume from the first missing section, an already-Ready story is confirmed and exits.
 
+## Process Profile
+
+<!-- process-step: id=refine-story -->
+
+Executable form of the **`refine-story`** step, and a composer of `define-subdomains`, `define-bounded-contexts`. A **direct** invocation while a step is disabled by the project's profile warns and asks for confirmation; a **composed** one never prompts — it degrades exactly as a step that is not installed. No section ⇒ no-op. See [process-profile gate](../../.pair/knowledge/guidelines/technical-standards/ai-development/skill-conventions/process-profile-gate.md).
+
 ## Composed Skills
 
 | Skill             | Type       | Required                                                                                                          |
@@ -178,7 +184,7 @@ STORY REFINEMENT COMPLETE:
 ├── Domain:   [subdomain placement + touched contexts | map-* not installed — skipped]
 ├── Sizing:   [X points — fits sprint: Yes/No]
 ├── PM Tool:  [Issue updated — #ID]
-└── Next:     /process-plan-tasks to create task breakdown
+└── Next:     /pair-process-plan-tasks to create task breakdown
 ```
 
 ## HALT Conditions

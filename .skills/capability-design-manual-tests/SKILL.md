@@ -132,7 +132,7 @@ MANUAL TEST SUITE GENERATED:
 ├── Files:   [N critical path files + README]
 ├── Tests:   [N total (N P0, N P1, N P2)]
 ├── Categories: [list]
-└── Ready for: /capability-execute-manual-tests
+└── Ready for: /pair-capability-execute-manual-tests
 ```
 
 ## Composition Interface

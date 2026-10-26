@@ -9,6 +9,12 @@ author: Foomakers
 
 Review a pull request through 6 sequential phases (5 review + 1 optional merge). Each phase composes atomic skills and follows the **check → skip → act → verify** pattern for idempotent re-invocation.
 
+## Process Profile
+
+<!-- process-step: id=review -->
+
+Executable form of the **`review`** step. A **direct** invocation while a step is disabled by the project's profile warns and asks for confirmation; a **composed** one never prompts — it degrades exactly as a step that is not installed. No section ⇒ no-op. See [process-profile gate](../../.pair/knowledge/guidelines/technical-standards/ai-development/skill-conventions/process-profile-gate.md).
+
 ## Composed Skills
 
 | Skill                   | Type       | Required | Phase | Purpose                                      |
@@ -348,7 +354,7 @@ See [graceful degradation](../../.pair/knowledge/guidelines/technical-standards/
 - **/capability-verify-adoption not installed**: Falls back to inline dependency checking against [tech-stack.md](../../.pair/adoption/tech/tech-stack.md). Warning logged. See degradation cascade (Phase 3).
 - **/capability-assess-stack not installed**: Unlisted dependencies flagged as warnings for manual verification. Does NOT HALT.
 - **/capability-assess-debt not available**: Skip debt assessment, note in report.
-- **/capability-assess-security not installed**: Skip Step 2.4. The five Security sections (input validation, output handling, authentication, authorization, introduced vulnerabilities) read **not assessed** — never dropped. Does NOT HALT; a manual security read of the diff is still expected per [how-to-11](../../.pair/knowledge/how-to/11-how-to-code-review.md).
+- **/capability-assess-security not installed**: Skip Step 2.4. The five Security sections (input validation, output handling, authentication, authorization, introduced vulnerabilities) read **not assessed** — never dropped. Does NOT HALT; a manual security read of the diff is still expected per [how-to-11](../../.pair/knowledge/how-to/09-how-to-code-review.md).
 - **/capability-assess-cost not installed**: Skip Step 2.5. The Cost section reads **not assessed**. Does NOT HALT.
 - **/capability-assess-coupling not installed**: Skip Step 2.6. The Architecture (Coupling) section reads **not assessed**. Does NOT HALT.
 - **Self-authored PR (self-review)**: GitHub blocks `APPROVE` / `REQUEST_CHANGES` on your own PR, so the native verdict action is rejected for solo authors. Fall back to `event = COMMENT` (`gh pr review <number> --comment --body-file <report>`), keeping the verdict token at the head of the body — the full verdict-first report is still recorded as a review, so nothing is lost (unlike a rejected APPROVE/REQUEST_CHANGES). Does NOT HALT.
@@ -373,5 +379,5 @@ See [graceful degradation](../../.pair/knowledge/guidelines/technical-standards/
 - Review phases are sequential — each phase builds on findings from prior phases.
 - The reviewer can stop between phases; re-invoke to resume (see [idempotency convention](../../.pair/knowledge/guidelines/technical-standards/ai-development/skill-conventions/idempotency.md)).
 - Output follows [code-review-template.md](../../.pair/knowledge/guidelines/collaboration/templates/code-review-template.md) — the template defines structure, /process-review fills it with findings.
-- HALT on missing ADR is inherited from [how-to-11](../../.pair/knowledge/how-to/11-how-to-code-review.md) — this is a business rule, not a skill limitation.
+- HALT on missing ADR is inherited from [how-to-11](../../.pair/knowledge/how-to/09-how-to-code-review.md) — this is a business rule, not a skill limitation.
 - **Parent cascade is best-effort** — if sub-issue queries fail, the skill reports which updates need manual attention.

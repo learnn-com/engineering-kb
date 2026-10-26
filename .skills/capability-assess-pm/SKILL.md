@@ -22,6 +22,13 @@ Evaluate and decide on the project management tool. Follows the resolution casca
 | `/capability-record-decision` | Capability | Yes — records PM tool decision as ADL            |
 | `/capability-setup-pm`        | Capability | Optional — delegates tool configuration if installed |
 
+## Proposal Target
+
+The rendered adoption content is destined for this section — the caller (or `/capability-setup-pm`) writes it:
+
+- **Target**: [adoption/tech/way-of-working.md](../../.pair/adoption/tech/way-of-working.md) — **PM tool section**
+- **Ownership**: PM tool section (shared file — /capability-assess-methodology owns methodology section)
+
 ## Adoption File
 
 - **Target**: [adoption/tech/way-of-working.md](../../.pair/adoption/tech/way-of-working.md) — **PM tool section**
@@ -110,8 +117,8 @@ ASSESSMENT COMPLETE:
 ├── Domain:    Project Management
 ├── Path:      [Argument Override | Adoption Exists | Full Assessment]
 ├── Decision:  [tool name]
-├── Adoption:  [way-of-working.md PM section — written | confirmed | delegated to /capability-setup-pm]
-├── Record:    [ADL path — created | exists | delegated to /capability-setup-pm]
+├── Adoption:  [way-of-working.md PM section — written | confirmed | delegated to /pair-capability-setup-pm]
+├── Record:    [ADL path — created | exists | delegated to /pair-capability-setup-pm]
 └── Status:    [Complete | Confirmed existing | Delegated]
 ```
 

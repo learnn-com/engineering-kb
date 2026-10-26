@@ -9,6 +9,12 @@ author: Foomakers
 
 Transform strategic initiatives into comprehensive epic breakdowns. Each epic delivers end-to-end user value in 2-4 sprints. Composes `/capability-write-issue` for PM tool integration.
 
+## Process Profile
+
+<!-- process-step: id=plan-epics -->
+
+Executable form of the **`plan-epics`** step, and a composer of `define-subdomains`. A **direct** invocation while a step is disabled by the project's profile warns and asks for confirmation; a **composed** one never prompts — it degrades exactly as a step that is not installed. No section ⇒ no-op. See [process-profile gate](../../.pair/knowledge/guidelines/technical-standards/ai-development/skill-conventions/process-profile-gate.md).
+
 ## Composed Skills
 
 | Skill          | Type       | Required                                                  |
@@ -122,7 +128,7 @@ EPICS COMPLETE:
 ├── Skipped:    [Y existing]
 ├── Sprints:    [estimated total sprints]
 ├── PM Tool:    [adopted tool]
-└── Next:       /process-plan-stories
+└── Next:       /pair-process-plan-stories
 ```
 
 ## HALT Conditions

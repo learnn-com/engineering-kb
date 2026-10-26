@@ -15,6 +15,12 @@ Implement a user story by processing its tasks sequentially. Each task follows a
 
 **One PR per story:** the story lands on ONE branch with ONE PR; subsequent work on the story (further tasks/features) updates that same PR, never a new one unless a human explicitly requests it.
 
+## Process Profile
+
+<!-- process-step: id=implement -->
+
+Executable form of the **`implement`** step. A **direct** invocation while a step is disabled by the project's profile warns and asks for confirmation; a **composed** one never prompts — it degrades exactly as a step that is not installed. No section ⇒ no-op. See [process-profile gate](../../.pair/knowledge/guidelines/technical-standards/ai-development/skill-conventions/process-profile-gate.md).
+
 ## Composed Skills
 
 | Skill              | Type       | Required                                                                                            |
@@ -308,7 +314,7 @@ The PR is produced on a **guaranteed-clean context**: a fresh subagent whose ent
 4. **Act — dispatch the review (AC1 of #234; this session is the actor)**: `/capability-publish-pr` Phase 5 registers the `pair-review` check as **pending** (merge blocked from t0) but cannot spawn the review subagent from inside the handoff subagent — nested dispatch is commonly forbidden — so it returns **`Review: review-dispatch-required — /process-review $pr=<n>`**. When that signal comes back, **this top-level session** spawns the anonymous review subagent (a sibling of the publish subagent, not a nested one), prompt = the PR reference plus the bounded instruction:
 
    ```text
-   Run /process-review $pr=<number> $dispatched=true.
+   Run /pair-process-review $pr=<number> $dispatched=true.
    Phases 1–5 only: verdict, `pair-review` check, PR-state synthesis.
    NEVER run Phase 6 and NEVER merge, whatever the verdict — the merge is a human act.
    ```
@@ -340,8 +346,8 @@ IMPLEMENTATION COMPLETE:
 ├── Commits:    [N commits on branch]
 ├── Checkpoint: [.pair/working/checkpoints/<id>.md — written]
 ├── Context:    [clean — subagent handoff-only | degraded — inline publish, no subagent reset]
-├── PR:         [#PR-number — URL — Created | Updated (from /capability-publish-pr)]
-├── Review:     [dispatched — subagent (clean context) | pending — dispatch unavailable, run /process-review <pr>]
+├── PR:         [#PR-number — URL — Created | Updated (from /pair-capability-publish-pr)]
+├── Review:     [dispatched — subagent (clean context) | pending — dispatch unavailable, run /pair-process-review <pr>]
 └── Quality:    [All gates passing]
 ```
 

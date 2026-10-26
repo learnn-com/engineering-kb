@@ -21,6 +21,13 @@ Evaluate and decide on the system architecture pattern. Follows the resolution c
 | ------------------ | ---------- | ------------------------------------------------- |
 | `/capability-record-decision` | Capability | Yes — records architecture decision as ADR |
 
+## Proposal Target
+
+The rendered adoption content is destined for this file — the caller writes it via `/capability-record-decision`:
+
+- **Target**: [adoption/tech/architecture.md](../../.pair/adoption/tech/architecture.md)
+- **Ownership**: Full file (sole owner)
+
 ## Adoption File
 
 - **Target**: [adoption/tech/architecture.md](../../.pair/adoption/tech/architecture.md)
