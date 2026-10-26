@@ -18,6 +18,7 @@ Our template collection covers the complete software development lifecycle, from
 - **[Branch Template](branch-template.md)** - Git branch naming and workflow standards
 - **[Commit Template](commit-template.md)** - Commit message formats and best practices
 - **[Pull Request Template](pr-template.md)** - Comprehensive PR description and review guide
+- **[Changelog Template](changelog-template.md)** - Linear Release notes (Upcoming/Completed phases, staging↔prod delta)
 - **[Code Review Template](code-review-template.md)** - Structured code review checklists
 - **[Team Template](user-story-template.md)** - Team formation and collaboration guidelines
 
@@ -220,6 +221,7 @@ Templates work with popular project management tools:
 | `branch-template.md`      | Development    | Git workflow      | Low        |
 | `commit-template.md`      | Development    | Code commits      | Low        |
 | `pr-template.md`          | Development    | Code review       | Medium     |
+| `changelog-template.md`   | Development    | Release notes      | Low        |
 | `code-review-template.md` | Quality        | Review process    | Medium     |
 | `team-template.md`        | Collaboration  | Team formation    | Medium     |
 | `manual-test-case-template.md`   | Quality | Manual test design   | Low     |
