@@ -249,6 +249,11 @@
 
 ### Implementation Approach
 
+**Design:** [not required | required — reference: <link>]
+**Doc team:** [non richiesta | richiesta — team: <Corsi|Growth|User|Social|B2B|Amministrazione>]
+
+> Le due righe sopra sono i flag DoR 6 e 7: si leggono come testo letterale (`Design:`, `Doc team:`), quindi il formato non si riscrive. Criterio sì/no per `Doc team:` in [way-of-working.md](/.pair/adoption/tech/way-of-working.md#documentazione-funzionalità-per-gli-altri-team).
+
 **Technical Strategy**: [High-level implementation approach]
 **Key Components**: [Major technical components involved]
 **Data Flow**: [How data moves through the system]

@@ -21,6 +21,13 @@ Evaluate and decide on the observability strategy: monitoring platform, logging 
 | ------------------ | ---------- | ----------------------------------------------------- |
 | `/capability-record-decision` | Capability | Yes — records observability decision as ADR or ADL    |
 
+## Proposal Target
+
+The rendered adoption content is destined for this section — the caller writes it via `/capability-record-decision`:
+
+- **Target**: [adoption/tech/infrastructure.md](../../.pair/adoption/tech/infrastructure.md) — **observability section only**
+- **Ownership**: Observability section (shared file — /capability-assess-infrastructure owns core sections)
+
 ## Adoption File
 
 - **Target**: [adoption/tech/infrastructure.md](../../.pair/adoption/tech/infrastructure.md) — **observability section only**

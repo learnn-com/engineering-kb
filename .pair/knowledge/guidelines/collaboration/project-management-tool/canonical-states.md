@@ -73,7 +73,7 @@ These are the rules every skill follows when it needs to read or write item stat
 Some boards don't distinguish "not yet refined" from "refined" with a dedicated column (see Example 3) — structurally, no board state anywhere in the map is mapped to `Ready` at all. When a board can't distinguish `Draft` from `Ready` this way (no dedicated Ready column), skills needing readiness fall back to evaluating **Definition of Ready criteria** against the item's content (acceptance criteria present, technical analysis complete, etc.) instead of guessing from the board-state name.
 
 - The **mapped state is always the primary signal** — DoR criteria are a fallback only for the Draft/Ready boundary, and only when no board state in the map resolves to `Ready`.
-- Full DoR/DoD criteria are defined in [definition-of-ready-and-done.md](definition-of-ready-and-done.md), this document's companion — the 6 DoR criteria plus the inline-task-breakdown signal and legacy-story degradation used above.
+- Full DoR/DoD criteria are defined in [definition-of-ready-and-done.md](definition-of-ready-and-done.md), this document's companion — the 7 DoR criteria plus the inline-task-breakdown signal and legacy-story degradation used above.
 
 ## Examples
 
@@ -170,6 +170,28 @@ Azure Boards' default Scrum **states** for Product Backlog Items are `New`, `App
 ```
 
 The `Removed` state is deliberately **unmapped** — removed items are out of scope for pair semantics and ignored (partial mapping is allowed by the n-m schema). Without a state mapped to `Review` (route (a) or (b) above), `Review` would have no mapped board state and a write targeting it would HALT per the write rules (route (c)).
+
+## Closure Without Completion
+
+Not every item that leaves the flow was delivered. An item can be closed because its premise was wrong, because another story already resolved it, or because it was folded into a different card. **None of those is `Done`.**
+
+**There is no sixth macrostate for this, by design.** The five macrostates exist so that a skill can *decide something*: `/pair-next` suggests, `/pair-capability-write-issue` writes, `/pair-process-refine-story` transitions. An item closed without completion asks nothing of any skill — it is outside the flow, exactly like the `Removed` board state above, which is deliberately left unmapped. What it needs is not a state of its own, but protection from being read as delivered.
+
+**The rule:**
+
+1. **It is never `Done`.** `Done` means delivered and accepted ([definition-of-ready-and-done.md](definition-of-ready-and-done.md)). A closure without completion is not a weaker `Done` — it is a different outcome.
+2. **The outcome lives in the tracker's native field**, not in a pair macrostate: GitHub `state_reason: not planned`, Jira a "Won't Do" resolution, Linear a cancelled state. Resolve it through the [routing table](../../technical-standards/ai-development/skill-conventions/way-of-working-pm-resolution.md) like any other tool-specific field.
+3. **The specific reason goes in a comment**, because the native field flattens causes whose consequences for the next reader are opposite:
+
+   | Reason                                                              | What the next reader must do                                              |
+   | -------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+   | **Premise was wrong** — the card mis-described its own object         | Do not re-file it: an identical card reaches the same wrong conclusion      |
+   | **Resolved elsewhere** — premise was valid, another story delivered it | Find where, and re-open only if that protection regresses                   |
+   | **Consolidated** — folded into another card                           | Follow the consolidation; the scope lives under a different number           |
+
+4. **It does not belong in the tracked view.** With no macrostate to map it to, board automation typically files any closed item under `Done` — precisely the misreading rule 1 forbids, and it inflates every per-epic rollup. Remove the item from the tracked view; the closed item and its comment are the record.
+
+A skill encountering such an item resolves it as "not in the tracked view" and ignores it, exactly as it does for `Removed`.
 
 ## Edge Cases and Error Handling
 

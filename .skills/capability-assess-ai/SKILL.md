@@ -21,6 +21,13 @@ Evaluate and decide on AI development tools: AI assistants, MCP integrations, AI
 | ------------------ | ---------- | ------------------------------------------- |
 | `/capability-record-decision` | Capability | Yes — records AI tool decision as ADL       |
 
+## Proposal Target
+
+The rendered adoption content is destined for this section — the caller writes it via `/capability-record-decision`:
+
+- **Target**: [adoption/tech/tech-stack.md](../../.pair/adoption/tech/tech-stack.md) — **AI section only**
+- **Ownership**: AI section (shared file — /capability-assess-stack owns core sections, /capability-assess-testing owns testing section)
+
 ## Adoption File
 
 - **Target**: [adoption/tech/tech-stack.md](../../.pair/adoption/tech/tech-stack.md) — **AI section only**

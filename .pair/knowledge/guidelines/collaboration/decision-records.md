@@ -67,6 +67,34 @@ The ADR template captures architectural decisions with these sections:
 
 See [adr-template.md](templates/adr-template.md) for the full template.
 
+## DDR Format
+
+The DDR template captures domain decisions with these sections:
+
+1. **Status** — `Proposed`, `Accepted`, or `Superseded by ddr-NNN-<topic>`
+2. **Date** — When the decision was made
+3. **Context** — Domain rule/term/behavior affected, plus evidence for each of the 3 gate criteria (hard to reverse, surprising without context, real trade-off)
+4. **Decision** — The rule now in force; references the predecessor DDR if superseding one
+5. **Consequences** — Benefits and trade-offs/limitations
+6. **Context Map Impact** — Which context file (`context-map.md` or `<slug>.context.md`) reflects the rule and the exact entry changed
+
+See [ddr-template.md](templates/ddr-template.md) for the full template.
+
+## Analysis-Log Format
+
+The analysis-log template captures completed technical analyses with these sections:
+
+1. **Date** — When the analysis was completed (YYYY-MM-DD)
+2. **Status** — Fixed value `Active` (analysis-log entries are never superseded in place — a repeated analysis always appends a new record; see [Lifecycle](#lifecycle))
+3. **Category** — Fixed value `Analysis` (distinguishes the entry from an ADL in the same directory)
+4. **Context** — What prompted the analysis (question, investigation trigger, evaluation need)
+5. **Analysis / Findings** — What was investigated and found
+6. **Recommendation** — What should happen next, if anything — need not amount to a decision
+7. **Consequences** — Impact on the project's current understanding
+8. **Adoption Impact** — Which adoption file's current-state summary now reflects this analysis; if no file is clearly pertinent, the developer is asked instead of one being guessed
+
+See [analysis-log-template.md](templates/analysis-log-template.md) for the full template.
+
 ## Directory Structure
 
 ```text

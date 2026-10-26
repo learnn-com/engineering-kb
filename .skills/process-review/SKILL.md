@@ -9,6 +9,12 @@ author: Foomakers
 
 Review a pull request through 6 sequential phases (5 review + 1 optional merge). Each phase composes atomic skills and follows the **check → skip → act → verify** pattern for idempotent re-invocation.
 
+## Process Profile
+
+<!-- process-step: id=review -->
+
+Executable form of the **`review`** step. A **direct** invocation while a step is disabled by the project's profile warns and asks for confirmation; a **composed** one never prompts — it degrades exactly as a step that is not installed. No section ⇒ no-op. See [process-profile gate](../../.pair/knowledge/guidelines/technical-standards/ai-development/skill-conventions/process-profile-gate.md).
+
 ## Composed Skills
 
 | Skill                   | Type       | Required | Phase | Purpose                                      |
@@ -81,6 +87,13 @@ CODE REVIEW STATE:
    - Task breakdown and completion claims
    - Epic context
 4. **Verify**: Story loaded with AC. If story not found, warn and proceed with PR-only review.
+
+### Step 1.2b: Sync Deploy Notes on Re-Review (T-2, TT-388, AC2)
+
+1. **Check**: Does the loaded PR body carry a **Deploy Config Declaration** section with at least one non-default field, **or** does the linked PM item already carry a `## Deploy Notes` block? (The pr-template resolves override-first — [template resolution](../../.pair/knowledge/guidelines/technical-standards/ai-development/skill-conventions/template-resolution.md); KB default [here](../../.pair/knowledge/guidelines/collaboration/templates/pr-template.md).)
+2. **Skip**: Neither holds — the PR declares no deploy impact and the item has no block to clear → nothing to do, move to Step 1.3. Note the asymmetry with the PR-side check alone: an existing block must still be reconciled even when the PR now declares nothing, or a reverted declaration would survive as stale state.
+3. **Act**: Run the same **upsert-or-delete** `/capability-publish-pr` performs in its Phase 4 step 3 — same heading match (by text, at any level; section ends at the first heading of equal or higher level), same `_Esempio:_`-discarding field parse, same render, same outcomes: replace an existing `## Deploy Notes`, insert one, or **remove** it when the PR's declaration went back to all-defaults — and the same **provenance scoping**: only a block whose `_Fonte:_` names this PR is ever replaced or removed; one written by another PR (or by hand) is kept and reported. Every other section of the item is left untouched. One algorithm, two call sites: this step exists because the author's fix-loop ("Author addresses findings, then re-invokes `/process-review`" — Step 5.5) can push a section change straight to the branch without ever re-invoking `/capability-publish-pr`; a re-review is the next guaranteed point this skill reads the PR body, so it is the natural place to catch a drifted section — whether the fix **added** a new env var or **removed** one.
+4. **Verify**: The linked PM item's `## Deploy Notes` reflects the current PR body — present and current, or absent when the PR declares no deploy impact — or the sync failure is reported. Non-blocking — never HALTs the review, and never re-runs a full `/capability-classify`/`/capability-verify-quality` pass just for this.
 
 ### Step 1.3: Classify Review Type
 
@@ -326,12 +339,13 @@ On HALT: report the blocker, compose the resolution skill if available, wait for
 See [idempotency convention](../../.pair/knowledge/guidelines/technical-standards/ai-development/skill-conventions/idempotency.md). Re-invoking `/process-review` on a partially reviewed PR is safe — per-phase:
 
 1. **PR context**: detects already-loaded PR, skips re-loading.
-2. **Phases**: checks which phases completed (via session state or PR review comments). Resumes from first incomplete phase.
-3. **Skill compositions**: /capability-verify-quality, /capability-verify-done, /capability-assess-security results cached in session. Not re-run if already passing/current on current commit.
-4. **New commits**: if PR updated since last check, re-validates affected phases only.
-5. **Review report**: re-review appends a fresh native review (MCP `create` / `gh pr review`); GitHub's latest-review-governs semantics make the newest one carry the verdict while prior reviews remain as history. The report is always the review body, never a separate comment — so no duplicate comment artifact is created.
-6. **PR state & check** (Step 5.4): re-publishing is a no-op when the head commit already carries a `pair-review` check matching the verdict and the `pr-state:*` label already matches the synthesis. A **new head commit** (including a force-push) has no check of its own, so the review re-runs on it and the merge stays blocked meanwhile. A tier raised between runs re-synthesizes on the new tier — raise-only, so a re-run never loosens a requirement.
-7. **Merge**: detects already-merged PR. Skips Phase 6 if already merged. Resumes parent cascade if merge succeeded but status updates are incomplete.
+2. **Deploy Notes sync** (Step 1.2b): an upsert-or-delete — re-running it against an unchanged Deploy Config Declaration section is a no-op write, never a duplicate `## Deploy Notes` block; against a reverted (all-defaults) section it removes the stale block once, then is a no-op.
+3. **Phases**: checks which phases completed (via session state or PR review comments). Resumes from first incomplete phase.
+4. **Skill compositions**: /capability-verify-quality, /capability-verify-done, /capability-assess-security results cached in session. Not re-run if already passing/current on current commit.
+5. **New commits**: if PR updated since last check, re-validates affected phases only.
+6. **Review report**: re-review appends a fresh native review (MCP `create` / `gh pr review`); GitHub's latest-review-governs semantics make the newest one carry the verdict while prior reviews remain as history. The report is always the review body, never a separate comment — so no duplicate comment artifact is created.
+7. **PR state & check** (Step 5.4): re-publishing is a no-op when the head commit already carries a `pair-review` check matching the verdict and the `pr-state:*` label already matches the synthesis. A **new head commit** (including a force-push) has no check of its own, so the review re-runs on it and the merge stays blocked meanwhile. A tier raised between runs re-synthesizes on the new tier — raise-only, so a re-run never loosens a requirement.
+8. **Merge**: detects already-merged PR. Skips Phase 6 if already merged. Resumes parent cascade if merge succeeded but status updates are incomplete.
 
 ## Graceful Degradation
 
@@ -340,7 +354,7 @@ See [graceful degradation](../../.pair/knowledge/guidelines/technical-standards/
 - **/capability-verify-adoption not installed**: Falls back to inline dependency checking against [tech-stack.md](../../.pair/adoption/tech/tech-stack.md). Warning logged. See degradation cascade (Phase 3).
 - **/capability-assess-stack not installed**: Unlisted dependencies flagged as warnings for manual verification. Does NOT HALT.
 - **/capability-assess-debt not available**: Skip debt assessment, note in report.
-- **/capability-assess-security not installed**: Skip Step 2.4. The five Security sections (input validation, output handling, authentication, authorization, introduced vulnerabilities) read **not assessed** — never dropped. Does NOT HALT; a manual security read of the diff is still expected per [how-to-11](../../.pair/knowledge/how-to/11-how-to-code-review.md).
+- **/capability-assess-security not installed**: Skip Step 2.4. The five Security sections (input validation, output handling, authentication, authorization, introduced vulnerabilities) read **not assessed** — never dropped. Does NOT HALT; a manual security read of the diff is still expected per [how-to-11](../../.pair/knowledge/how-to/09-how-to-code-review.md).
 - **/capability-assess-cost not installed**: Skip Step 2.5. The Cost section reads **not assessed**. Does NOT HALT.
 - **/capability-assess-coupling not installed**: Skip Step 2.6. The Architecture (Coupling) section reads **not assessed**. Does NOT HALT.
 - **Self-authored PR (self-review)**: GitHub blocks `APPROVE` / `REQUEST_CHANGES` on your own PR, so the native verdict action is rejected for solo authors. Fall back to `event = COMMENT` (`gh pr review <number> --comment --body-file <report>`), keeping the verdict token at the head of the body — the full verdict-first report is still recorded as a review, so nothing is lost (unlike a rejected APPROVE/REQUEST_CHANGES). Does NOT HALT.
@@ -354,15 +368,16 @@ See [graceful degradation](../../.pair/knowledge/guidelines/technical-standards/
 - **`pr-state:*` label absent / no label API** (Step 5.4): report `pr-state label: not applied` — **non-blocking**, the required checks remain the authority. Does NOT HALT and does not block Phase 6's `merge_allowed` evaluation, which reads the synthesized state, not the label.
 - **🔴 PR on a single-maintainer repository, with `Review enforcement: enabled`**: the non-author human approval is unobtainable (GitHub rejects a self-approval), so the state stays `to-be-reviewed` and Phase 6 HALTs. **With enforcement `disabled` — the default — nothing HALTs**: report the tier, the verdict and the synthesized state, say that the 🔴 approval requirement is advisory here, and stop there. A default that blocks is how a single-maintainer repository becomes unmergeable. Report it as a repository constraint — a second human account is required, or `pair-explicit-approval` must deliberately not be a required context there (pr-states.md edge cases). Never self-approve to unblock.
 - **/capability-execute-manual-tests not installed**: Skip Step 6.6. Log "Manual test validation skipped — skill not installed." Does NOT block merge.
+- **Deploy Notes sync fails or the PM item is unreachable** (Step 1.2b): warn and continue the review — never HALTs. Retried on the next re-invocation (idempotent).
 - **No manual test suite**: Skip Step 6.6. Log "No manual test suite found." Does NOT block merge.
 
 ## Notes
 
-- This skill **reads code, submits the native review (verdict = the review action), publishes the required `pair-review` check + the `pr-state:*` label, and optionally merges PRs** — it does not modify source code and posts no separate review comment (AC2).
+- This skill **reads code, submits the native review (verdict = the review action), publishes the required `pair-review` check + the `pr-state:*` label, reconciles the PM item's `## Deploy Notes` section with the PR's Deploy Config Declaration — writing, updating or removing it (Step 1.2b, T-2, TT-388) — and optionally merges PRs** — it does not modify source code and posts no separate review comment (AC2).
 - **Gate ≠ review** ([pr-states.md](../../.pair/knowledge/guidelines/collaboration/project-management-tool/pr-states.md)): the mechanical gate is the first filter (Step 2.1) and the judgment verdict never overrides it; the merge block itself is the required check, not this skill's opinion. The `pr-state:*` label is a view — enforcement lives in branch protection (R5.7), which this skill never edits or bypasses.
 - **Per-tier requirements are read, never invented** — reviewer count, SLA, checklist depth, and the 🔴 explicit-approval requirement come from [quality-model.md](../../.pair/knowledge/guidelines/quality-assurance/quality-model.md) §4 through its `Argument > Adoption > KB default` cascade (D10). The tier comes from the PR's `risk:*` label (`resolve_tier`, tags only, untagged ⇒ 🔴 fail-safe): **this flow contains no classification criteria** (D18).
 - Review phases are sequential — each phase builds on findings from prior phases.
 - The reviewer can stop between phases; re-invoke to resume (see [idempotency convention](../../.pair/knowledge/guidelines/technical-standards/ai-development/skill-conventions/idempotency.md)).
 - Output follows [code-review-template.md](../../.pair/knowledge/guidelines/collaboration/templates/code-review-template.md) — the template defines structure, /process-review fills it with findings.
-- HALT on missing ADR is inherited from [how-to-11](../../.pair/knowledge/how-to/11-how-to-code-review.md) — this is a business rule, not a skill limitation.
+- HALT on missing ADR is inherited from [how-to-11](../../.pair/knowledge/how-to/09-how-to-code-review.md) — this is a business rule, not a skill limitation.
 - **Parent cascade is best-effort** — if sub-issue queries fail, the skill reports which updates need manual attention.

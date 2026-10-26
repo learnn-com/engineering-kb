@@ -21,6 +21,13 @@ Evaluate and decide on the testing strategy: framework, pyramid distribution, co
 | ------------------ | ---------- | --------------------------------------------- |
 | `/capability-record-decision` | Capability | Yes — records testing decision as ADL or ADR  |
 
+## Proposal Target
+
+The rendered adoption content is destined for this section — the caller writes it via `/capability-record-decision`:
+
+- **Target**: [adoption/tech/tech-stack.md](../../.pair/adoption/tech/tech-stack.md) — **testing section only**
+- **Ownership**: Testing section (shared file — /capability-assess-stack owns core sections, /capability-assess-ai owns AI section)
+
 ## Adoption File
 
 - **Target**: [adoption/tech/tech-stack.md](../../.pair/adoption/tech/tech-stack.md) — **testing section only**

@@ -77,3 +77,8 @@ The process is designed to:
 3. **🤖⚡ Status Update** → Automatic story/epic/initiative tracking update (handled by `/process-implement` and `/process-review`)
 
 > **Skill-enabled workflow**: Run `/next` at session start to determine the most relevant skill. See [skills-guide.md](skills-guide.md) for the full catalog (29 skills: 9 process + 19 capability + 1 navigator).
+
+### 🔍 Discovery (optional entry point, before any level)
+
+- **🤖🤝👨‍💻 Structured Discovery** (`/pair-process-brainstorm`) → Turn a rough theme, or an existing epic/story `$root`, into an integrated **Draft** epic/story tree (interview → domain → triage). Human-initiated and optional: it feeds the levels below and never modifies the PRD. It is not one of the nine numbered steps and has no numbered how-to guide — see the ADL on `/pair-process-brainstorm`'s catalog exceptions.
+
