@@ -21,6 +21,13 @@ Evaluate and decide on infrastructure strategy: cloud provider, CI/CD pipeline, 
 | ------------------ | ---------- | ------------------------------------------------------ |
 | `/capability-record-decision` | Capability | Yes — records infrastructure decision as ADR or ADL    |
 
+## Proposal Target
+
+The rendered adoption content is destined for this file — the caller writes it via `/capability-record-decision`:
+
+- **Target**: [adoption/tech/infrastructure.md](../../.pair/adoption/tech/infrastructure.md) — core infrastructure sections
+- **Ownership**: Full file, except observability section (owned by /capability-assess-observability)
+
 ## Adoption File
 
 - **Target**: [adoption/tech/infrastructure.md](../../.pair/adoption/tech/infrastructure.md) — core infrastructure sections

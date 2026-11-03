@@ -9,6 +9,12 @@ author: Foomakers
 
 Create a comprehensive Product Requirements Document through collaborative analysis and structured information gathering. Follows a template-first approach: analyze PRD template, gather information via hypothesis-driven questions, create PRD, review and approve.
 
+## Process Profile
+
+<!-- process-step: id=specify-prd -->
+
+Executable form of the **`specify-prd`** step. A **direct** invocation while a step is disabled by the project's profile warns and asks for confirmation; a **composed** one never prompts — it degrades exactly as a step that is not installed. No section ⇒ no-op. See [process-profile gate](../../.pair/knowledge/guidelines/technical-standards/ai-development/skill-conventions/process-profile-gate.md).
+
 ## Arguments
 
 | Argument   | Required | Description                                                                              |

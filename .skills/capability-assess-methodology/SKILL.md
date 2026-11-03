@@ -21,6 +21,13 @@ Evaluate and decide on the development methodology: Scrum, Kanban, Lean, Waterfa
 | ------------------ | ---------- | --------------------------------------------------- |
 | `/capability-record-decision` | Capability | Yes — records methodology decision as ADL           |
 
+## Proposal Target
+
+The rendered adoption content is destined for this section — the caller writes it via `/capability-record-decision`:
+
+- **Target**: [adoption/tech/way-of-working.md](../../.pair/adoption/tech/way-of-working.md) — **methodology section**
+- **Ownership**: Methodology section (shared file — /capability-assess-pm owns PM tool section)
+
 ## Adoption File
 
 - **Target**: [adoption/tech/way-of-working.md](../../.pair/adoption/tech/way-of-working.md) — **methodology section**

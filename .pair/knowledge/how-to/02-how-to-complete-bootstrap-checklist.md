@@ -73,6 +73,28 @@ For each document:
 
 See `/bootstrap` Phase 3 for generation procedures and quality gate setup.
 
+### Phase 2.5: Domain Modeling (optional, full-catalog)
+
+Runs once architecture.md and tech-stack.md are adopted — both are prerequisites for bounded context placement.
+
+1. Compose `/pair-capability-map-subdomains` with `$scope: all` — classifies business capabilities from the PRD into Core/Supporting/Generic subdomains with a Volatility rating. Falls back to "system areas" if no initiatives exist yet.
+2. Compose `/pair-capability-map-contexts` with `$scope: all` — derives bounded context boundaries from the subdomain catalog, architecture, and tech stack; assesses per-relationship integration strength/distance/volatility.
+3. Both capabilities degrade gracefully if not installed — domain modeling never blocks bootstrap completion.
+
+This is the **only** point where either capability runs a full-catalog `$scope: all` mapping — every other caller (`/pair-process-plan-initiatives`, `/pair-process-plan-epics`, `/pair-process-plan-tasks`, `/pair-process-refine-story`) invokes them scoped to what it just touched. See [Callers Matrix](../skills-guide.md#callers-matrix-scoped-capabilities).
+
+See `/pair-process-bootstrap` Phase 3.5 for operational details.
+
+### Phase 2.6: Classification Delta (optional, opt-in)
+
+Runs after domain modeling, so the criticality rows are **proposed from** the subdomains and bounded contexts just mapped instead of asked from nothing.
+
+1. Offer the `## Criticality Table` and `## Overrides` sections of `tech/risk-matrix.md` — the two classification-delta sections nothing else authors (`/pair-capability-classify` self-proposes `## Tag Projection` only), **for the families this phase asks about**. `## Overrides` also holds a dimension-resolution family (today `business-impact.trivial-diff`, [quality model](../guidelines/quality-assurance/quality-model.md) §6) that this phase does **not** ask about: it is hand-authored from the example asset, so having answered the questions below does not mean the section is complete.
+2. Confirmed sections are written with the same propose-then-write-if-confirmed registry pattern `/pair-capability-classify` uses for its own section — registry state, so not via `/pair-capability-record-decision`.
+3. Strictly opt-in: the file is optional by design, so declining writes nothing and classification resolves from KB defaults. Never blocks bootstrap completion.
+
+See `/pair-process-bootstrap` Phase 3.6 for the question set and the write path.
+
 ### Phase 3: Finalization
 
 1. Verify consistency across all standards documents

@@ -22,6 +22,13 @@ Evaluate and decide on the technology stack: languages, frameworks, runtime, dat
 | ------------------ | ---------- | -------------------------------------------- |
 | `/capability-record-decision` | Capability | Yes — records stack decision as ADL (or ADR) |
 
+## Proposal Target
+
+The rendered adoption content is destined for this file — the caller writes it via `/capability-record-decision`:
+
+- **Target**: [adoption/tech/tech-stack.md](../../.pair/adoption/tech/tech-stack.md) — **core sections only**
+- **Ownership**: Core sections only — see [Section Ownership](#section-ownership) below for the full table (Testing owned by /capability-assess-testing, AI by /capability-assess-ai).
+
 ## Adoption File
 
 - **Target**: [adoption/tech/tech-stack.md](../../.pair/adoption/tech/tech-stack.md) — **core sections only**

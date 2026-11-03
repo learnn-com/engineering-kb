@@ -65,6 +65,23 @@ Refs: #T-456
 Refs: #T-456
 ```
 
+## Commit Message Example
+
+```text
+[US-789] feat: add real-time notifications system
+
+Implement WebSocket-based notification delivery:
+- Add WebSocket server configuration
+- Create notification event handlers
+- Implement client-side notification display
+
+This enables users to receive instant updates without page refresh.
+
+Refs: #T-234, #T-235
+```
+
+Every type (fix, refactor, docs, chore, ...) has the same structure: subject line, optional body with bullets (what and why), optional footer with references.
+
 ## Commit Message Examples
 
 ### Feature Implementation

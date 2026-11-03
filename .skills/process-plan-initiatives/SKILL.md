@@ -9,6 +9,12 @@ author: Foomakers
 
 Transform Product Requirements Documents into strategic initiatives through PRD analysis, prioritization, and collaborative validation. Composes `/capability-write-issue` for PM tool integration.
 
+## Process Profile
+
+<!-- process-step: id=plan-initiatives -->
+
+Executable form of the **`plan-initiatives`** step. A **direct** invocation while a step is disabled by the project's profile warns and asks for confirmation; a **composed** one never prompts — it degrades exactly as a step that is not installed. No section ⇒ no-op. See [process-profile gate](../../.pair/knowledge/guidelines/technical-standards/ai-development/skill-conventions/process-profile-gate.md).
+
 ## Composed Skills
 
 | Skill          | Type       | Required                                                        |
@@ -122,7 +128,7 @@ INITIATIVES COMPLETE:
 ├── Skipped:  [Y existing]
 ├── Priority: [P0: A, P1: B, P2: C]
 ├── PM Tool:  [adopted tool]
-└── Next:     /process-plan-epics
+└── Next:     /pair-process-plan-epics
 ```
 
 ## HALT Conditions
