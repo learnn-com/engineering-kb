@@ -245,6 +245,27 @@ human_approval_jq_filter() {
   printf '%s' '.[] | select(.state=="APPROVED" and .commit_id==env.HEAD_SHA and .user.type=="User" and .user.login!=env.PR_AUTHOR and .user.login!=env.REVIEW_IDENTITY_LOGIN) | .id'
 }
 
+# human_approval_commits_jq_filter — the variant for an approval that SURVIVES later
+# commits (fix-ups, a base merge to resolve a conflict). Same human/author/identity
+# exclusions as `human_approval_jq_filter`, but it does not bind to HEAD_SHA: it
+# echoes the reviewed commit of each qualifying approval, and the caller accepts it
+# only when that commit is HEAD_SHA or an ANCESTOR of it (e.g. GitHub
+# `compare/<commit>...<head>` status `ahead`/`identical`). A force-push that drops
+# the approved commit therefore still voids it.
+#
+#   Input  : ALL pages of `GET /repos/{owner}/{repo}/pulls/{n}/reviews` merged into ONE
+#            array (`gh api --paginate ... | jq -s 'add // []'`) — the latest-review rule
+#            below needs every review of a user in the same document.
+#   Env    : PR_AUTHOR, REVIEW_IDENTITY_LOGIN (as above).
+#   Output : one commit SHA per line.
+#
+# Only each user's LATEST non-COMMENTED/PENDING review counts: an approval later
+# followed by CHANGES_REQUESTED, or DISMISSED, no longer approves — needed once the
+# approval is no longer pinned to the head.
+human_approval_commits_jq_filter() {
+  printf '%s' '[.[] | select(.state!="COMMENTED" and .state!="PENDING")] | group_by(.user.login) | map(sort_by(.submitted_at) | last) | .[] | select(.state=="APPROVED" and .user.type=="User" and .user.login!=env.PR_AUTHOR and .user.login!=env.REVIEW_IDENTITY_LOGIN) | .commit_id'
+}
+
 # --- The solo-maintainer approval token (#398) --------------------------------
 #
 # THE ALTERNATIVE satisfaction path for D10, never a replacement for the one above.

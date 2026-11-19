@@ -1194,24 +1194,26 @@ jobs:
           STATE=success
           DESC="tier $TIER — explicit approval not required"
           if explicit_approval_required "$TIER"; then
-            # A HUMAN approval on the CURRENT head: exclude bots and the PR author.
-            # The predicate is NOT written out here — it is `human_approval_jq_filter`
-            # from the sourced pr-state.sh, so this job and the tests that verify it
-            # read one text and cannot drift (it rejects non-APPROVED, another commit,
-            # `user.type != "User"`, the author's own approval, and the dedicated review
-            # identity by login — the clause that covers a bot USER account, which types
-            # as "User" and the type clause therefore does NOT reject).
+            # A HUMAN approval on the CURRENT head or on an ANCESTOR of it: commits pushed
+            # after the approval (fix-ups, a base merge for a conflict) keep it; a
+            # force-push that drops the approved commit voids it. Exclude bots and the
+            # PR author. The predicate is NOT written out here — it is
+            # `human_approval_commits_jq_filter` from the sourced pr-state.sh, so this
+            # job and the tests that verify it read one text and cannot drift (latest
+            # review per user, non-APPROVED rejected, `user.type != "User"`, the
+            # author's own approval, and the dedicated review identity by login).
             # Use the REST reviews endpoint — it is the only one carrying BOTH the
-            # account type and the reviewed commit. `gh pr view --json reviews` exposes
-            # `author.login` and NO bot flag whatsoever, so filtering there on a
-            # bot-exclusion field matches nothing and silently yields 0 approvals.
-            # `--paginate` (no per_page cap): reviews accumulate over a PR's life, so
-            # the approval can sit on page 2 — a single page would read it as zero and
-            # block the PR forever. Aggregate by counting the paginated stream.
-            APPROVALS="$(gh api --paginate "repos/$REPO/pulls/$PR/reviews" \
-              --jq "$(human_approval_jq_filter)" | grep -c . || true)"
-            if [ "${APPROVALS:-0}" -ge 1 ]; then
-              DESC="explicit human approval recorded on the current head"
+            # account type and the reviewed commit. `--paginate` merged with `jq -s`:
+            # the latest-review rule needs every page in one document.
+            APPROVALS=0
+            REVIEWS="$(gh api --paginate "repos/$REPO/pulls/$PR/reviews" | jq -s 'add // []')"
+            for C in $(printf '%s' "$REVIEWS" | jq -r "$(human_approval_commits_jq_filter)" | sort -u); do
+              if [ "$C" = "$HEAD_SHA" ]; then APPROVALS=1; break; fi
+              REL="$(gh api "repos/$REPO/compare/$C...$HEAD_SHA" --jq .status 2>/dev/null || true)"
+              case "$REL" in ahead | identical) APPROVALS=1; break ;; esac
+            done
+            if [ "$APPROVALS" -ge 1 ]; then
+              DESC="explicit human approval recorded on the current head or an ancestor"
             else
               # FALLBACK ONLY (#398): the review path is queried FIRST and wins
               # wherever an approval exists. Where none has been submitted yet — the

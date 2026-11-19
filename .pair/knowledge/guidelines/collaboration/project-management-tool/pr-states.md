@@ -147,7 +147,7 @@ One row, and it is inert unless a project turns it on. When **all four** hold �
 - [canonical-states.md](canonical-states.md) — the five work-item macrostates (`Review` is the macrostate a PR lives under)
 - [quality-model.md](../../quality-assurance/quality-model.md) — §3.2 fail-safe tier, §4 per-tier requirements (the single source of the thresholds this flow reads)
 - [tier-aware-pipeline.md](../../infrastructure/cicd-strategy/tier-aware-pipeline.md) — the gate side of the flow (tags-only pre-merge pipeline, fail-safe red)
-- [`pr-state.sh`](../../../assets/pr-state.sh) — the provider-agnostic synthesis evaluator (`resolve_pr_state`, `merge_allowed`, `explicit_approval_required`, `review_check_conclusion`, `human_approval_jq_filter`)
+- [`pr-state.sh`](../../../assets/pr-state.sh) — the provider-agnostic synthesis evaluator (`resolve_pr_state`, `merge_allowed`, `explicit_approval_required`, `review_check_conclusion`, `human_approval_jq_filter`, `human_approval_commits_jq_filter`)
 - [`tier-resolve.sh`](../../../assets/tier-resolve.sh) — the provider-agnostic, tags-only tier resolver
 - [code-review-template.md](../templates/code-review-template.md) — the verdict-first review body whose verdict this flow consumes
 - [github-implementation.md](github-implementation.md) — GitHub check-run + branch-protection mechanics for the two pair checks
